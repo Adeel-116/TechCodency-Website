@@ -15,11 +15,12 @@ const teko = Teko({
 
 export default function HeroSection() {
     return (
-
         <div className="w-full h-auto">
             <div className={`w-[90%] py-5 mx-auto flex ${outfit.className}`}>
                 <div className="w-1/2">
-                    <h1 className={`w-full text-[14rem] text-white font-bold ${teko.className}`}>
+                    <h1
+                        className={`w-full text-[14rem] text-white font-bold ${teko.className}`}
+                    >
                         DIGITAL
                     </h1>
 
@@ -28,7 +29,9 @@ export default function HeroSection() {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
-                        <h1 className={`absolute left-[45%] z-[50] w-fit text-[14rem]  text-[#E6F620] font-bold ${teko.className}`}>
+                        <h1
+                            className={`absolute left-[45%] z-[50] w-fit text-[14rem]  text-[#E6F620] font-bold ${teko.className}`}
+                        >
                             AGENCY
                         </h1>
                     </div>
@@ -100,9 +103,7 @@ export default function HeroSection() {
                 </div>
             </div>
 
-            <div className="w-full h-auto mt-8 flex items-center justify-center relative z-[50]">
-
-
+            <div className="w-full h-auto py-10 flex items-center justify-center relative z-[50]">
                 <div className="w-[190px] h-[190px] bg-black rounded-full flex items-center justify-center relative">
                     <svg
                         className="w-[170px] h-[170px]"
@@ -115,16 +116,23 @@ export default function HeroSection() {
                             <path
                                 id="textCirclePath"
                                 d="
-              M 90, 90
-              m -60, 0
-              a 60,60 0 1,1 120,0
-              a 60,60 0 1,1 -120,0
+                                 M 90, 90
+                                 m -60, 0
+                                 a 60,60 0 1,1 120,0
+                                 a 60,60 0 1,1 -120,0
             "
                             />
                         </defs>
 
                         {/* Big Circle */}
-                        <circle cx="90" cy="90" r="85" stroke="#1D1D1D" strokeWidth="10" fill="#1D1D1D" />
+                        <circle
+                            cx="90"
+                            cy="90"
+                            r="85"
+                            stroke="#1D1D1D"
+                            strokeWidth="10"
+                            fill="#1D1D1D"
+                        />
 
                         {/* Rotating text along circular path */}
                         <g>
@@ -135,7 +143,12 @@ export default function HeroSection() {
                                 dur="10s"
                                 repeatCount="indefinite"
                             />
-                         <text className={`${outfit.className} text-[#B1B1AF] fill-[#B1B1AF]`} fontSize="22" wordSpacing={10} letterSpacing={2}>
+                            <text
+                                className={`${outfit.className} text-[#B1B1AF] fill-[#B1B1AF]`}
+                                fontSize="22"
+                                wordSpacing={10}
+                                letterSpacing={2}
+                            >
                                 <textPath href="#textCirclePath" startOffset="0%">
                                     Explore More. Explore More.
                                 </textPath>
@@ -153,9 +166,83 @@ export default function HeroSection() {
                     </div>
                 </div>
 
+                <div className="absolute top-0 -left-[500px] w-full h-full flex items-center justify-center">
+                    <img
+                        src="/images/h1-shape1.png"
+                        alt="shape"
+                        className="moveAnimation"
+                    />
+                </div>
+            </div>
 
+            <div>
 
             </div>
+          
+
+           <div className="marquee-container">
+    {/* First marquee section - Right to Left (Infinite Loop) */}
+    {/* <div className="w-full h-auto py-6 bg-[#E6F620] relative z-[50] flex items-center justify-center overflow-hidden">
+        <div className="flex animate-marquee-rtl whitespace-nowrap gap-x-4" style={{ width: 'max-content' }}>
+            {[...Array(4)].flatMap((_, arrayIndex) =>
+                Array.from({ length: 15 }).map((_, index) => (
+                    <div
+                        key={`green-${arrayIndex}-${index}`}
+                        className="flex items-center justify-center px-4 flex-shrink-0"
+                    >
+                        <span
+                            className={`inline-flex font-bold text-3xl ${teko.className} text-[#1D1D1D] justify-center items-center px-2`}
+                        >
+                            Website Design
+                        </span>
+                        <img src="/images/icon1.png" alt="Icon" className="ml-2" />
+                    </div>
+                ))
+            )}
+        </div>
+    </div> */}
+<div className="w-full h-auto py-6 bg-[#E6F620] relative z-[50] flex items-center justify-center overflow-hidden">
+       <div className="flex animate-marquee-rtl whitespace-nowrap gap-x-4" style={{ width: 'max-content' }}>
+            {[...Array(4)].flatMap((_, arrayIndex) =>
+                 Array.from({ length: 15 }).map((_, index) => (
+                    <div
+                        key={`dark-${arrayIndex}-${index}`}
+                        className="flex items-center justify-center px-4 flex-shrink-0"
+                    >
+                        <span
+                            className={`inline-flex font-bold text-3xl ${teko.className} text-[#1D1D1D] justify-center items-center px-2`}
+                        >
+                            Website Design
+                        </span>
+                        <img src="/images/icon1.png" alt="Icon" className="ml-2" />
+                    </div>
+                ))
+            )}
+        </div>
+    </div>
+
+    {/* Second marquee section - Left to Right (Infinite Loop) */}
+    <div className="w-full h-auto py-6 bg-[#1D1D1D] relative z-[50] flex items-center justify-center overflow-hidden">
+       <div className="flex animate-marquee-ltr whitespace-nowrap gap-x-4" style={{ width: 'max-content' }}>
+            {[...Array(4)].flatMap((_, arrayIndex) =>
+                 Array.from({ length: 15 }).map((_, index) => (
+                    <div
+                        key={`dark-${arrayIndex}-${index}`}
+                        className="flex items-center justify-center px-4 flex-shrink-0"
+                    >
+                        <span
+                            className={`inline-flex font-bold text-3xl ${teko.className} text-[#E6F620] justify-center items-center px-2`}
+                        >
+                            Website Design
+                        </span>
+                        <img src="/images/icon2.png" alt="Icon" className="ml-2" />
+                    </div>
+                ))
+            )}
+        </div>
+    </div>
+</div>
+
 
         </div>
     );

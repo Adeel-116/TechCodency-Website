@@ -14,7 +14,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-[#0A090F] relative overflow-hidden">
+    <div className="w-full h-auto bg-[#0A090F] relative overflow-hidden">
 
       {/* Header placed at the top */}
       <header className="w-full absolute top-0 left-0 z-50"

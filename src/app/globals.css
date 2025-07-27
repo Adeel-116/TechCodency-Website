@@ -80,3 +80,54 @@ body {
   animation: rotateAround 6s linear infinite;
   transform-origin: center;
 }
+
+
+@keyframes moveAnimation {
+  0%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(20px);
+  }
+  100%{
+    transform: translateY(-20px);
+  }
+}
+
+.moveAnimation{
+  animation: moveAnimation 5s linear infinite;
+  will-change: transform;
+}
+
+ @keyframes marquee-rtl {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        @keyframes marquee-ltr {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0%);
+          }
+        }
+        
+        .animate-marquee-rtl {
+          animation: marquee-rtl 70s linear infinite;
+        }
+        
+        .animate-marquee-ltr {
+          animation: marquee-ltr 70s linear infinite;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee-rtl,
+          .animate-marquee-ltr {
+            animation-play-state: paused;
+          }
+        }
