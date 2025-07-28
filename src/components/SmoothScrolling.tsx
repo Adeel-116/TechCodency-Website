@@ -7,15 +7,14 @@ export default function SmoothScrolling(): null {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
-      mouseMultiplier: 1,
-      smoothTouch: false,
+      touchMultiplier: 1.5, 
     })
 
     function raf(time: number): void {
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
+
     requestAnimationFrame(raf)
 
     return () => lenis.destroy()
