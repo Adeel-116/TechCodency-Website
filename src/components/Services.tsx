@@ -117,8 +117,8 @@ const Services = () => {
     },
   ];
 
-  const containerRef = useRef(null);
-  const scrollRef = useRef(null);
+ const containerRef = useRef<HTMLDivElement | null>(null);
+const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
