@@ -1,13 +1,26 @@
 import { Outfit } from "next/font/google";
-import GetStartedButton from "./GetStartedButton"; // Adjust the import path as needed
+import GetStartedButton from "./GetStartedButton";
 
 const outfit = Outfit({
   weight: ["100", "300", "400", "700", "900"],
   subsets: ["latin"],
 });
 
-const ServiceCard = ({ service, index }) => {
+// ✅ Define the proper type for the service
+type Service = {
+  title: string;
+  description: string;
+  icon: React.ReactNode; // because you're rendering it like JSX
+  features: string[];
+  cta: string;
+};
 
+type ServiceCardProps = {
+  service: Service;
+  index: number;
+};
+
+const ServiceCard = ({ service, index }: ServiceCardProps) => {
   return (
     <div
       className={`group relative bg-gradient-to-br from-[#E6F620]/10 to-[#9FEC1C]/5 border-2 border-transparent rounded-3xl p-8 cursor-pointer transition-all duration-500 ease-out backdrop-blur-sm hover:border-[#E6F620] hover:-translate-y-3 hover:scale-105 hover:shadow-2xl hover:shadow-[#E6F620]/30 ${outfit.className}`}
@@ -20,7 +33,6 @@ const ServiceCard = ({ service, index }) => {
 
       {/* Service Icon */}
       <div className="relative w-16 h-16 bg-gradient-to-br from-[#E6F620] to-[#9FEC1C] rounded-2xl flex items-center justify-center mb-6 text-black transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 overflow-hidden">
-        {/* Shimmer Effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
         {service.icon}
       </div>
@@ -48,7 +60,7 @@ const ServiceCard = ({ service, index }) => {
         ))}
       </ul>
 
-      {/* CTA Button using your custom component */}
+      {/* CTA Button */}
       <div className="flex-shrink-0">
         <GetStartedButton buttonTitle={service.cta.toUpperCase()} />
       </div>
