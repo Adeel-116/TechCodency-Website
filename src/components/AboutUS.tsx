@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Outfit, Teko } from "next/font/google";
 import GetStartedButton from "./GetStartedButton";
 
@@ -18,10 +19,13 @@ export default function AboutUS() {
       <div className={`w-[90%] py-5 mx-auto flex ${outfit.className}`}>
         <div className="w-[42%] py-10 px-10">
           <div className="overflow-hidden rounded-lg">
-            <img 
-              src="/images/about1-img.jpg" 
-              alt="About our agency" 
+            <Image
+              src="/images/about1-img.jpg"
+              alt="About our agency"
+              width={500}
+              height={500}
               className="w-full h-auto transition-transform duration-300 ease-in-out hover:scale-105"
+              priority
             />
           </div>
         </div>
@@ -29,10 +33,16 @@ export default function AboutUS() {
         <div className="w-[55%] py-10 px-20 relative">
           {/* Background Shape */}
           <div className="absolute -bottom-10 right-0">
-            <img src="/images/about-shape1.png" alt="" className="w-full h-auto moveAnimation" />
+            <Image
+              src="/images/about-shape1.png"
+              alt="Decorative shape"
+              width={300}
+              height={300}
+              className="w-full h-auto moveAnimation"
+            />
           </div>
 
-          {/* Content - with higher z-index */}
+          {/* Content */}
           <div className="relative z-10">
             <div className="flex items-center">
               <div className="w-8 h-2 bg-[#C9F31D] rounded-2xl"></div>
@@ -45,9 +55,9 @@ export default function AboutUS() {
 
             <div>
               <h1
-                className={`w-[100%] pt-4 leading-none text-[5.4rem] font-bold text-white ${teko.className}`}
+                className={`w-full pt-4 leading-none text-[5.4rem] font-bold text-white ${teko.className}`}
               >
-                AI-Driven Agency Promote Your Brand's
+                AI-Driven Agency Promote Your Brand’s
               </h1>
             </div>
 
@@ -68,7 +78,9 @@ export default function AboutUS() {
                     >
                       25
                     </h1>
-                    <span className={`text-[120px] text-[#BBBBB9] ml-2 ${teko.className}`}>
+                    <span
+                      className={`text-[120px] text-[#BBBBB9] ml-2 ${teko.className}`}
+                    >
                       +
                     </span>
                   </div>
@@ -81,15 +93,16 @@ export default function AboutUS() {
               {/* Description Section */}
               <div className="w-[55%] pl-6 text-[#BBBBB9]">
                 <p className="text-base leading-relaxed mb-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore 
-                  praesentium et omnis expedita earum? Velit asperiores harum 
-                  consectetur vel, tempore blanditiis incidunt voluptas aut adipisci 
-                  officiis eligendi itaque amet cum quas, atque accusantium, modi 
-                  facilis quibusdam soluta? Recusandae quibusdam iure nesciunt 
-                  consequatur ex. Praesentium in qui ex maxime sequi neque?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolore praesentium et omnis expedita earum? Velit asperiores
+                  harum consectetur vel, tempore blanditiis incidunt voluptas
+                  aut adipisci officiis eligendi itaque amet cum quas, atque
+                  accusantium, modi facilis quibusdam soluta? Recusandae
+                  quibusdam iure nesciunt consequatur ex. Praesentium in qui ex
+                  maxime sequi neque?
                 </p>
                 <div className="flex-shrink-0 py-5">
-                  <GetStartedButton buttonTitle='EXPLORE MORE'/>
+                  <GetStartedButton buttonTitle="EXPLORE MORE" />
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 'use client'
-import React, { useState, useEffect, useRef} from 'react';
+import React from 'react';
 import { Outfit } from 'next/font/google';
+import Image from 'next/image';
 import GetStartedButton from './GetStartedButton';
 
 const outfit = Outfit({
@@ -8,17 +9,17 @@ const outfit = Outfit({
   subsets: ['latin'],
 });
 
-
 export default function Header() {
-
   return (
     <header className={`w-[90%] mx-auto py-4 ${outfit.className}`}>
       <div className="flex items-center justify-between">
         
         <div className="flex items-center relative group">
-          <img
+          <Image
             src="/images/logo.png"
             alt="Logo"
+            width={56}
+            height={56}
             className="w-14 h-auto group-hover:scale-110 transition-transform duration-300"
           />
           <span
@@ -30,7 +31,6 @@ export default function Header() {
             TECH
             <span className="ml-1 text-[#DAF220]">CODENCY</span>
           </span>
-
         </div>
 
         {/* Navigation */}
@@ -43,7 +43,7 @@ export default function Header() {
 
         {/* Get Started Button */}
         <div className="flex-shrink-0">
-          <GetStartedButton buttonTitle='GET STARTED'/>
+          <GetStartedButton buttonTitle='GET STARTED' />
         </div>
       </div>
     </header>

@@ -1,5 +1,6 @@
 import React from 'react';
 import UserAvatar from './UserAvatar';
+import Image from 'next/image';
 
 export default function HeroRightSection() {
     return (
@@ -13,15 +14,19 @@ export default function HeroRightSection() {
             </div>
 
             <div className="w-full h-auto relative">
-                <img
-                    src="images/h1-shape2.png"
-                    alt=""
+                <Image
+                    src="/images/h1-shape2.png"
+                    alt="Shape"
+                    width={500}
+                    height={300}
                     className="mx-auto w-[500px] h-auto"
                 />
                 <div className="absolute top-[20%]">
-                    <img
-                        src="images/banner1-img.jpg"
-                        alt=""
+                    <Image
+                        src="/images/banner1-img.jpg"
+                        alt="Banner"
+                        width={800}
+                        height={800}
                         className="rounded-tr-[200px]"
                     />
                 </div>
