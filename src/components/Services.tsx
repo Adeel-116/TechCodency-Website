@@ -5,7 +5,7 @@ import { Outfit, Teko } from 'next/font/google';
 import ServiceCard from './ServiceCard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import CTA from './CTA';
 gsap.registerPlugin(ScrollTrigger);
 
 const outfit = Outfit({
@@ -130,7 +130,7 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
     const cardWidth = 350; // Width of each card
     const cardGap = 40; // Gap between cards (space-x-10 = 2.5rem = 40px)
     const containerPadding = 80; // px-10 = 2.5rem = 40px on each side = 80px total
-    const extraBuffer = 200; // Extra space to ensure the last card is fully visible
+    const extraBuffer = 210; // Extra space to ensure the last card is fully visible
     
     // Total scroll width calculation
     const totalContentWidth = (services.length * cardWidth) + ((services.length - 1) * cardGap) + containerPadding + extraBuffer;
@@ -202,8 +202,12 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
                 </div>
               ))}
             </div>
+
+             
           </div>
+        
         </div>
+  
       </div>
     </div>
   );

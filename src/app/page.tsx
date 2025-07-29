@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import AboutUS from '@/components/AboutUS';
 import ServicesCard from '@/components/Services';
 import SmoothScrolling from '@/components/SmoothScrolling';
+import PortfolioSection from '@/components/PortfolioSection';
+import CTA from '@/components/CTA';
 
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -89,6 +91,8 @@ export default function Home() {
         <AboutUS />
         <ServicesCard />
         <SmoothScrolling />
+        <PortfolioSection />
+        <CTA />
       </main>
     </div>
   );
