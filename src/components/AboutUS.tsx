@@ -98,7 +98,7 @@ export default function AboutUS() {
                   harum consectetur vel, tempore blanditiis incidunt voluptas
                   aut adipisci officiis eligendi itaque amet cum quas, atque
                   accusantium, modi facilis quibusdam soluta? Recusandae
-                  quibusdam iure nesciunt consequatur ex. Praesentium in qui ex
+                  quibusdam iure nesciunt consequatur ex. Praesentium in qui exss
                   maxime sequi neque?
                 </p>
                 <div className="flex-shrink-0 py-5">
