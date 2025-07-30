@@ -8,6 +8,9 @@ import SmoothScrolling from '@/components/SmoothScrolling';
 import PortfolioSection from '@/components/PortfolioSection';
 import CTA from '@/components/CTA';
 import CaseStudy from '@/components/CaseStudy';
+import PricingPlans from '@/components/PricingPlans';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import ContactForm from '@/components/ContactForm';
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -19,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-auto bg-[#0A090F] relative overflow-hidden">
+    <div className="w-full h-auto bg-black relative overflow-hidden">
 
       {/* Header */}
       <header className="w-full absolute top-0 left-0 z-100" ref={headerRef}>
@@ -89,11 +92,14 @@ export default function Home() {
 
         {/* About Section comes after HeroSection */}
         <AboutUS />
-        {/* <ServicesCard /> */}
+        <ServicesCard />
         <SmoothScrolling />
         <PortfolioSection />
         <CTA />
         <CaseStudy />
+        <PricingPlans />
+        <TestimonialsSection />
+        <ContactForm />
       </main>
     </div>
   );

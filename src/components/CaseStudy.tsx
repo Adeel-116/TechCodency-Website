@@ -17,7 +17,7 @@ const CaseStudy = () => {
     const [rightHover, setRightHover] = useState(false)
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isTransitioning, setIsTransitioning] = useState(false)
-    
+
     const isDragging = useRef(false);
     const startX = useRef(0);
     const currentX = useRef(0);
@@ -56,23 +56,28 @@ const CaseStudy = () => {
             id: 6,
             src: "/images/project-6.webp",
             alt: "Business Growth"
+        },
+         {
+            id: 7,
+            src: "/images/project-6.webp",
+            alt: "Business Growth"
         }
     ]
 
-    const slideWidth = 820; // width + gap
+    const slideWidth = 820;
 
     const goToSlide = (index: number) => {
         if (isTransitioning || index < 0 || index >= caseStudyImages.length) return;
-        
+
         setIsTransitioning(true);
         setCurrentIndex(index);
-        
+
         const slider = sliderRef.current;
         if (!slider) return;
 
         gsap.to(slider, {
             x: -index * slideWidth,
-            duration: 0.8,
+            duration: 1.5,
             ease: 'power2.out',
             onComplete: () => setIsTransitioning(false)
         });
@@ -102,11 +107,11 @@ const CaseStudy = () => {
     // Touch/Mouse drag handlers
     const handleStart = (clientX: number) => {
         if (isTransitioning) return;
-        
+
         isDragging.current = true;
         startX.current = clientX;
         currentX.current = clientX;
-        
+
         const container = containerRef.current;
         if (container) {
             container.style.cursor = 'grabbing';
@@ -115,10 +120,10 @@ const CaseStudy = () => {
 
     const handleMove = (clientX: number) => {
         if (!isDragging.current) return;
-        
+
         currentX.current = clientX;
         const diff = currentX.current - startX.current;
-        
+
         const slider = sliderRef.current;
         if (!slider) return;
 
@@ -130,7 +135,7 @@ const CaseStudy = () => {
 
     const handleEnd = () => {
         if (!isDragging.current) return;
-        
+
         isDragging.current = false;
         const container = containerRef.current;
         if (container) {
@@ -138,7 +143,7 @@ const CaseStudy = () => {
         }
 
         const diff = currentX.current - startX.current;
-        
+
         // Determine slide direction based on drag distance
         if (Math.abs(diff) > dragThreshold) {
             if (diff > 0) {
@@ -201,9 +206,8 @@ const CaseStudy = () => {
                         Lets transform your vision into reality. Partner with us to create exceptional digital experiences that drive results and exceed expectations.
                     </p>
 
-                    {/* Buttons Container */}
                     <div className='flex items-center gap-4'>
-                        {/* Left Arrow Button */}
+
                         <div
                             onMouseEnter={() => setLeftHover(true)}
                             onMouseLeave={() => setLeftHover(false)}
@@ -248,20 +252,19 @@ const CaseStudy = () => {
                             <button
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                    index === currentIndex 
-                                        ? 'bg-[#9BEC19] scale-125' 
-                                        : 'bg-[#939393] hover:bg-[#9BEC19] hover:scale-110'
-                                }`}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                                    ? 'bg-[#9BEC19] scale-125'
+                                    : 'bg-[#939393] hover:bg-[#9BEC19] hover:scale-110'
+                                    }`}
                             />
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* Carousel Container */}
-            <div 
-                className='w-full h-[70vh] overflow-hidden relative cursor-grab select-none'
+
+            <div
+                className='w-fit h-[60vh] overflow-hidden relative cursor-grab select-none px-5 bg-blue-300'
                 ref={containerRef}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
@@ -271,12 +274,12 @@ const CaseStudy = () => {
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
             >
-                <div 
+                <div
                     ref={sliderRef}
-                    className='flex h-full'
-                    style={{ 
+                    className='flex h-full bg-yellow-300'
+                    style={{
                         width: `${caseStudyImages.length * slideWidth}px`,
-                        transform: `translateX(-${currentIndex * slideWidth}px)` 
+                        transform: `translateX(-${currentIndex * slideWidth}px)`
                     }}
                 >
                     {caseStudyImages.map((image, index) => (
@@ -286,40 +289,20 @@ const CaseStudy = () => {
                             style={{ width: '810px', height: '100%' }}
                         >
                             <Image
-                                src={'/images/project-1.webp'} // Placeholder, replace with image.src
+                                src={'/images/project-1.webp'}
                                 alt={image.alt}
                                 fill
-                                className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 rounded-lg"
-                                priority={index <= 1} // Preload first two images
+                                className="object-cover"
+                                priority={index <= 1}
                             />
-                            
-                            {/* Slide overlay with info */}
-                            <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg'>
-                                <div className='absolute bottom-6 left-6 text-white'>
-                                    <h3 className={`text-2xl font-bold mb-2 ${teko.className}`}>
-                                        {image.alt}
-                                    </h3>
-                                    <p className={`text-sm opacity-90 ${outfit.className}`}>
-                                        Case Study {image.id}
-                                    </p>
-                                </div>
-                            </div>
+
+
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Progress Bar */}
-            <div className='w-[90%] mx-auto mt-8'>
-                <div className='w-full h-1 bg-[#2a2a2a] rounded-full overflow-hidden'>
-                    <div 
-                        className='h-full bg-[#9BEC19] transition-all duration-300 ease-out'
-                        style={{ 
-                            width: `${((currentIndex + 1) / caseStudyImages.length) * 100}%` 
-                        }}
-                    />
-                </div>
-            </div>
+
         </div>
     )
 }
