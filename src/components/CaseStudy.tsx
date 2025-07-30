@@ -1,8 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Outfit, Teko } from 'next/font/google';
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa6";
 import Image from 'next/image';
+import { gsap } from 'gsap';
 
 const teko = Teko({ subsets: ['latin'] });
 
@@ -11,53 +12,182 @@ const outfit = Outfit({
     subsets: ["latin"],
 });
 
-
 const CaseStudy = () => {
     const [leftHover, setLeftHover] = useState(false)
     const [rightHover, setRightHover] = useState(false)
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [isTransitioning, setIsTransitioning] = useState(false)
+    
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const currentX = useRef(0);
+    const dragThreshold = 100;
 
+    const containerRef = useRef<HTMLDivElement>(null);
+    const sliderRef = useRef<HTMLDivElement>(null);
 
     const caseStudyImages = [
         {
             id: 1,
-            src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=800&fit=crop&crop=entropy&q=80",
+            src: "/images/project-1.webp",
             alt: "Digital Analytics Dashboard"
         },
         {
             id: 2,
-            src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=800&fit=crop&crop=entropy&q=80",
+            src: "/images/project-2.webp",
             alt: "Data Visualization"
         },
         {
             id: 3,
-            src: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=800&fit=crop&crop=entropy&q=80",
+            src: "/images/project-3.webp",
             alt: "Team Collaboration"
         },
         {
             id: 4,
-            src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&h=800&fit=crop&crop=entropy&q=80",
+            src: "/images/project-4.webp",
             alt: "Product Design"
         },
         {
             id: 5,
-            src: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=800&fit=crop&crop=entropy&q=80",
+            src: "/images/project-5.webp",
             alt: "Digital Strategy"
         },
         {
             id: 6,
-            src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=800&fit=crop&crop=entropy&q=80",
+            src: "/images/project-6.webp",
             alt: "Business Growth"
         }
     ]
 
+    const slideWidth = 820; // width + gap
 
+    const goToSlide = (index: number) => {
+        if (isTransitioning || index < 0 || index >= caseStudyImages.length) return;
+        
+        setIsTransitioning(true);
+        setCurrentIndex(index);
+        
+        const slider = sliderRef.current;
+        if (!slider) return;
+
+        gsap.to(slider, {
+            x: -index * slideWidth,
+            duration: 0.8,
+            ease: 'power2.out',
+            onComplete: () => setIsTransitioning(false)
+        });
+    };
+
+    const nextSlide = () => {
+        const nextIndex = currentIndex === caseStudyImages.length - 1 ? 0 : currentIndex + 1;
+        goToSlide(nextIndex);
+    };
+
+    const prevSlide = () => {
+        const prevIndex = currentIndex === 0 ? caseStudyImages.length - 1 : currentIndex - 1;
+        goToSlide(prevIndex);
+    };
+
+    // Auto-play functionality
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!isDragging.current && !isTransitioning) {
+                nextSlide();
+            }
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, [currentIndex, isTransitioning]);
+
+    // Touch/Mouse drag handlers
+    const handleStart = (clientX: number) => {
+        if (isTransitioning) return;
+        
+        isDragging.current = true;
+        startX.current = clientX;
+        currentX.current = clientX;
+        
+        const container = containerRef.current;
+        if (container) {
+            container.style.cursor = 'grabbing';
+        }
+    };
+
+    const handleMove = (clientX: number) => {
+        if (!isDragging.current) return;
+        
+        currentX.current = clientX;
+        const diff = currentX.current - startX.current;
+        
+        const slider = sliderRef.current;
+        if (!slider) return;
+
+        // Real-time drag feedback
+        gsap.set(slider, {
+            x: -currentIndex * slideWidth + diff * 0.3
+        });
+    };
+
+    const handleEnd = () => {
+        if (!isDragging.current) return;
+        
+        isDragging.current = false;
+        const container = containerRef.current;
+        if (container) {
+            container.style.cursor = 'grab';
+        }
+
+        const diff = currentX.current - startX.current;
+        
+        // Determine slide direction based on drag distance
+        if (Math.abs(diff) > dragThreshold) {
+            if (diff > 0) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        } else {
+            // Snap back to current slide
+            goToSlide(currentIndex);
+        }
+    };
+
+    // Mouse events
+    const handleMouseDown = (e: React.MouseEvent) => {
+        e.preventDefault();
+        handleStart(e.clientX);
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        handleMove(e.clientX);
+    };
+
+    const handleMouseUp = () => {
+        handleEnd();
+    };
+
+    const handleMouseLeave = () => {
+        handleEnd();
+    };
+
+    // Touch events
+    const handleTouchStart = (e: React.TouchEvent) => {
+        handleStart(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        handleMove(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        handleEnd();
+    };
 
     return (
         <div className='w-full h-auto py-50'>
             <div className='w-[90%] mx-auto flex justify-between items-center py-5'>
-
                 {/* Left side - Heading */}
-                <div className='flex-1 ' >
+                <div className='flex-1'>
                     <div
                         className={`text-[5rem] justify-center items-center font-bold leading-20 text-[#E6F620] ${teko.className}`}
                     >
@@ -77,6 +207,7 @@ const CaseStudy = () => {
                         <div
                             onMouseEnter={() => setLeftHover(true)}
                             onMouseLeave={() => setLeftHover(false)}
+                            onClick={prevSlide}
                             className='w-[65px] h-[65px] rounded-full border-[1px] border-[#939393] flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out'
                             style={leftHover ? {
                                 backgroundColor: '#9BEC19',
@@ -95,6 +226,7 @@ const CaseStudy = () => {
                         <div
                             onMouseEnter={() => setRightHover(true)}
                             onMouseLeave={() => setRightHover(false)}
+                            onClick={nextSlide}
                             className='w-[65px] h-[65px] rounded-full border-[1px] border-[#939393] flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out'
                             style={rightHover ? {
                                 backgroundColor: '#9BEC19',
@@ -109,30 +241,85 @@ const CaseStudy = () => {
                             <FaArrowRight size={25} color={rightHover ? 'black' : '#939393'} />
                         </div>
                     </div>
+
+                    {/* Dots Indicator */}
+                    <div className='flex items-center gap-2 mt-6'>
+                        {caseStudyImages.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => goToSlide(index)}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                    index === currentIndex 
+                                        ? 'bg-[#9BEC19] scale-125' 
+                                        : 'bg-[#939393] hover:bg-[#9BEC19] hover:scale-110'
+                                }`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
 
+            {/* Carousel Container */}
+            <div 
+                className='w-full h-[70vh] overflow-hidden relative cursor-grab select-none'
+                ref={containerRef}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseLeave}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+            >
+                <div 
+                    ref={sliderRef}
+                    className='flex h-full'
+                    style={{ 
+                        width: `${caseStudyImages.length * slideWidth}px`,
+                        transform: `translateX(-${currentIndex * slideWidth}px)` 
+                    }}
+                >
+                    {caseStudyImages.map((image, index) => (
+                        <div
+                            key={image.id}
+                            className='relative group cursor-pointer flex-shrink-0 mr-10'
+                            style={{ width: '810px', height: '100%' }}
+                        >
+                            <Image
+                                src={'/images/project-1.webp'} // Placeholder, replace with image.src
+                                alt={image.alt}
+                                fill
+                                className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 rounded-lg"
+                                priority={index <= 1} // Preload first two images
+                            />
+                            
+                            {/* Slide overlay with info */}
+                            <div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg'>
+                                <div className='absolute bottom-6 left-6 text-white'>
+                                    <h3 className={`text-2xl font-bold mb-2 ${teko.className}`}>
+                                        {image.alt}
+                                    </h3>
+                                    <p className={`text-sm opacity-90 ${outfit.className}`}>
+                                        Case Study {image.id}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-
-            <div className='w-full h-[70vh] overflow-x-auto relative'>
-  <div className='flex h-full gap-x-10'>
-    {caseStudyImages.map((image) => (
-      <div
-        key={image.id}
-        className='relative group cursor-pointer min-w-[800px] h-full flex-shrink-0'
-      >
-        <Image
-          src={"/images/project-1.webp"}
-          alt={image.alt}
-          fill
-          className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-103"
-        />
-
-      </div>
-    ))}
-  </div>
-</div>
-
+            {/* Progress Bar */}
+            <div className='w-[90%] mx-auto mt-8'>
+                <div className='w-full h-1 bg-[#2a2a2a] rounded-full overflow-hidden'>
+                    <div 
+                        className='h-full bg-[#9BEC19] transition-all duration-300 ease-out'
+                        style={{ 
+                            width: `${((currentIndex + 1) / caseStudyImages.length) * 100}%` 
+                        }}
+                    />
+                </div>
+            </div>
         </div>
     )
 }
