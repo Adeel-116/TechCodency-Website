@@ -7,7 +7,7 @@ import ServicesCard from '@/components/Services';
 import SmoothScrolling from '@/components/SmoothScrolling';
 import PortfolioSection from '@/components/PortfolioSection';
 import CTA from '@/components/CTA';
-
+import CaseStudy from '@/components/CaseStudy';
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -89,10 +89,11 @@ export default function Home() {
 
         {/* About Section comes after HeroSection */}
         <AboutUS />
-        <ServicesCard />
+        {/* <ServicesCard /> */}
         <SmoothScrolling />
         <PortfolioSection />
         <CTA />
+        <CaseStudy />
       </main>
     </div>
   );
