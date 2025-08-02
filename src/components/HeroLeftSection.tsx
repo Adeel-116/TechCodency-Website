@@ -16,7 +16,7 @@ export default function HeroLeftSection() {
     return (
         <div className="w-1/2">
             <h1
-                className={`w-full text-[14rem] text-text-primary font-bold ${teko.className}`}
+                className={`w-full fluid-text-6xl text-text-primary font-bold ${teko.className}`}
             >
                 DIGITAL
             </h1>
@@ -27,7 +27,7 @@ export default function HeroLeftSection() {
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
                 <h1
-                    className={`absolute left-[45%] z-[50] w-fit text-[14rem] text-primary font-bold ${teko.className}`}
+                    className={`absolute left-[45%] z-[50] w-fit fluid-text-6xl text-primary font-bold ${teko.className}`}
                 >
                     AGENCY
                 </h1>

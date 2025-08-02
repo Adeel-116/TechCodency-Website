@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-auto bg-black relative overflow-hidden">
+    <div className="w-full h-auto bg-bg relative overflow-hidden">
 
       {/* Header */}
       <header className="w-full absolute top-0 left-0 z-100" ref={headerRef}>
