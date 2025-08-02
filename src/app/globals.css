@@ -2,33 +2,23 @@
 
 
 @theme {
-  --color-primary: #ffffff;
+    --color-bg: #000000;
+    --color-primary: #ecf51e;
+    --color-primary-support: #d0e426;
+    --color-secondary: #9feb1d;
+    --color-secondary-support: #a4dc3c;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #8F8F8D;
+    --color-text-black: #000000;
+    --color-text-lightBlack: #1D1D1D;
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 html {
   scroll-behavior: auto;
 }
 body {
   overflow-x: hidden;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {

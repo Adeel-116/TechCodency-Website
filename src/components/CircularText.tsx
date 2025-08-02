@@ -12,7 +12,7 @@ const outfit = Outfit({
 export default function CircularText() {
   return (
     <div className="w-full h-auto py-10 flex items-center justify-center relative z-[50]">
-      <div className="w-[190px] h-[190px] bg-black rounded-full flex items-center justify-center relative">
+      <div className="w-[190px] h-[190px] bg-bg rounded-full flex items-center justify-center relative">
         <svg
           className="w-[170px] h-[170px]"
           viewBox="0 0 180 180"
@@ -49,7 +49,7 @@ export default function CircularText() {
               repeatCount="indefinite"
             />
             <text
-              className={`${outfit.className} text-[#B1B1AF] fill-[#B1B1AF]`}
+              className={`${outfit.className} text-text-secondary fill-text-primary`}
               fontSize="22"
               wordSpacing={10}
               letterSpacing={2}

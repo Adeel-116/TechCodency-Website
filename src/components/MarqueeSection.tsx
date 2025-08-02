@@ -81,7 +81,7 @@ export default function MarqueeSection() {
         </div>
 
         {/* Left to Right */}
-        <div className="w-full h-auto py-6 bg-[#1D1D1D] relative z-[50] flex items-center justify-center overflow-hidden">
+        <div className="w-full h-auto py-6 bg-text-lightBlack relative z-[50] flex items-center justify-center overflow-hidden">
           <div className="animate-marquee-ltr whitespace-nowrap">
             <div className="marquee-content">
               {[...marqueeItems, ...marqueeItems].map((item, index) => (
@@ -90,7 +90,7 @@ export default function MarqueeSection() {
                   className="flex items-center justify-center px-6 flex-shrink-0"
                 >
                   <span
-                    className={`inline-flex font-bold text-3xl ${teko.className} text-[#E6F620] justify-center items-center px-2`}
+                    className={`inline-flex font-bold text-3xl ${teko.className} text-primary justify-center items-center px-2`}
                   >
                     {item}
                   </span>

@@ -6,7 +6,7 @@ export default function HeroRightSection() {
     return (
         <div className="w-1/2 py-5">
             <div className="w-full py-7 mt-8 flex items-center justify-between px-8">
-                <p className="w-[40%] py-2 text-[#939493] text-base leading-relaxed">
+                <p className="w-[40%] py-2 text-text-secondary text-base leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>

@@ -18,8 +18,9 @@ const GetStartedButton = ({buttonTitle}:GetStartedButtonProps) => {
       <button 
         className="py-3 px-6 text-[16px] font-semibold rounded-full flex items-center shadow-md transition-all duration-500 ease-out"
         style={{
-          backgroundColor: hover ? '#000000' : '#C9F31D',
-          color: hover ? '#C9F31D' : '#000000',
+          backgroundColor: hover ? 'var(--color-bg)' : 'var(--color-secondary)',
+          color: hover ? 'var(--color-secondary)' : 'var(--color-bg)',
+          border: hover ? '1px solid var(--color-secondary)' : '',
         }}
       >
         {buttonTitle}
@@ -28,9 +29,9 @@ const GetStartedButton = ({buttonTitle}:GetStartedButtonProps) => {
       <span
         className="relative z-[10] -left-[12px] w-12 h-12 rounded-full border-[2px] flex items-center justify-center text-xl transition-all duration-500 ease-out"
         style={{
-          backgroundColor: hover ? '#000000' : '#C9F31D',
-          color: hover ? '#C9F31D' : '#000000',
-          borderColor: hover ? '#C9F31D' : '#000000',
+          backgroundColor: hover ? 'var(--color-bg)' : 'var(--color-secondary)',
+          color: hover ? 'var(--color-secondary)' : 'var(--color-bg)',
+          borderColor: hover ? 'var(--color-secondary)' : 'var(--color-bg)',
         }}
       >
         <MdArrowOutward />
