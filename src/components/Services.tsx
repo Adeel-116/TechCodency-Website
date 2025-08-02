@@ -153,13 +153,11 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
         pin: '.scroll-pin-target',
         anticipatePin: 1,
         onUpdate: (self) => {
-          // Optional: Add progress indicator or other updates
           console.log('Scroll progress:', self.progress);
         }
       },
     });
 
-    // Refresh ScrollTrigger
     ScrollTrigger.refresh();
 
     // Cleanup function

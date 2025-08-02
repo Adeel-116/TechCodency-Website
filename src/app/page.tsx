@@ -91,7 +91,7 @@ export default function Home() {
         </section>
 
         {/* About Section comes after HeroSection */}
-        <AboutUS />
+        {/* <AboutUS />
         <ServicesCard />
         <SmoothScrolling />
         <PortfolioSection />
@@ -99,7 +99,7 @@ export default function Home() {
         <CaseStudy />
         <PricingPlans />
         <TestimonialsSection />
-        <ContactForm />
+        <ContactForm /> */}
       </main>
     </div>
   );
