@@ -54,7 +54,7 @@ export default function MarqueeSection() {
 
       <div className="marquee-container">
         {/* Right to Left */}
-        <div className="w-full h-auto py-6 bg-[#E6F620] relative z-[50] flex items-center justify-center overflow-hidden">
+        <div className="w-full h-auto sm:py-6 py-3 bg-[#E6F620] relative z-[50] flex items-center justify-center overflow-hidden">
           <div className="animate-marquee-rtl whitespace-nowrap">
             <div className="marquee-content">
               {[...marqueeItems, ...marqueeItems].map((item, index) => (
@@ -63,7 +63,7 @@ export default function MarqueeSection() {
                   className="flex items-center justify-center px-6 flex-shrink-0"
                 >
                   <span
-                    className={`inline-flex font-bold text-3xl ${teko.className} text-[#1D1D1D] justify-center items-center px-2`}
+                    className={`inline-flex font-bold text-2xl sm:text-3xl ${teko.className} text-[#1D1D1D] justify-center items-center sm:px-2`}
                   >
                     {item}
                   </span>
@@ -72,7 +72,7 @@ export default function MarqueeSection() {
                     alt="Icon"
                     width={24}
                     height={24}
-                    className="ml-3 w-6 h-6"
+                    className="sm:ml-3 ml-2 w-6 h-6"
                   />
                 </div>
               ))}
@@ -81,7 +81,7 @@ export default function MarqueeSection() {
         </div>
 
         {/* Left to Right */}
-        <div className="w-full h-auto py-6 bg-text-lightBlack relative z-[50] flex items-center justify-center overflow-hidden">
+        <div className="w-full h-auto sm:py-6 py-3 bg-text-lightBlack relative z-[50] flex items-center justify-center overflow-hidden">
           <div className="animate-marquee-ltr whitespace-nowrap">
             <div className="marquee-content">
               {[...marqueeItems, ...marqueeItems].map((item, index) => (
@@ -90,7 +90,7 @@ export default function MarqueeSection() {
                   className="flex items-center justify-center px-6 flex-shrink-0"
                 >
                   <span
-                    className={`inline-flex font-bold text-3xl ${teko.className} text-primary justify-center items-center px-2`}
+                    className={`inline-flex font-bold text-2xl sm:text-3xl ${teko.className} text-primary justify-center items-center px-2`}
                   >
                     {item}
                   </span>
@@ -99,7 +99,7 @@ export default function MarqueeSection() {
                     alt="Icon"
                     width={24}
                     height={24}
-                    className="ml-3 w-6 h-6"
+                    className="sm:ml-3 ml-2 w-6 h-6"
                   />
                 </div>
               ))}

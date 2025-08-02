@@ -13,25 +13,34 @@ export default function Header() {
   return (
     <header className={`w-[90%] mx-auto py-4 ${outfit.className}`}>
       <div className="flex items-center justify-between">
-        
-        <div className="flex items-center relative group">
-          <Image
-            src="/images/logo.png"
-            alt="Logo"
-            width={56}
-            height={56}
-            className="w-14 h-auto group-hover:scale-110 transition-transform duration-300"
-          />
-          <span
-            className="text-2xl font-black tracking-wide text-white bg-clip-text group-hover:from-[#8BB33F] group-hover:via-white group-hover:to-[#8BB33F] transition-all duration-500"
-            style={{
-              textShadow: '0 0 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.3)',
-            }}
-          >
-            TECH
-            <span className="ml-1 text-[#DAF220]">CODENCY</span>
-          </span>
-        </div>
+
+   <div className="flex items-center relative group">
+  {/* Logo */}
+  <div className="relative w-16 h-16 sm:w-24 sm:h-28 md:w-28 md:h-20">
+    <Image
+      src="/images/logo.png"
+      alt="Logo"
+      fill
+      className="object-contain group-hover:scale-110 transition-transform duration-300"
+    />
+  </div>
+
+  {/* Branding Text: Column on mobile, row on sm+ */}
+  <div className="flex flex-col sm:flex-row sm:ml-3">
+    <span
+      className="text-xl sm:text-2xl font-black text-left tracking-wide text-white bg-clip-text group-hover:from-[#8BB33F] group-hover:via-white group-hover:to-[#8BB33F] transition-all duration-500"
+      style={{
+        textShadow: '0 0 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.3)',
+      }}
+    >
+      TECH
+    </span>
+    <span className="text-xl sm:text-2xl font-black text-[#DAF220] text-center sm:text-left">
+      CODENCY
+    </span>
+  </div>
+</div>
+
 
         {/* Navigation */}
         <nav className="hidden md:flex space-x-10 text-white">
@@ -42,7 +51,7 @@ export default function Header() {
         </nav>
 
         {/* Get Started Button */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 sm:block hidden">
           <GetStartedButton buttonTitle='GET STARTED' />
         </div>
       </div>

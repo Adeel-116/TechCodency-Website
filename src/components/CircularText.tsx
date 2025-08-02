@@ -11,10 +11,10 @@ const outfit = Outfit({
 
 export default function CircularText() {
   return (
-    <div className="w-full h-auto py-10 flex items-center justify-center relative z-[50]">
-      <div className="w-[190px] h-[190px] bg-bg rounded-full flex items-center justify-center relative">
+    <div className="w-full h-auto sm:py-10 flex items-center justify-center relative z-[50]">
+      <div className="w-[190px] h-[190px] sm:bg-bg rounded-full flex items-center justify-center relative">
         <svg
-          className="w-[170px] h-[170px]"
+          className="sm:w-[170px] sm:h-[170px] w-[130px] h-[130px]"
           viewBox="0 0 180 180"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

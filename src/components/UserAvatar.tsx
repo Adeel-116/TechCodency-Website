@@ -8,8 +8,8 @@ export default function UserAvatar() {
             <div className="relative w-fit z-10 float-x-rotate-x">
                 <div className="white-border-glow"></div>
 
-                <div className="w-fit flex items-center px-3 py-2 border border-text-secondary rounded-full relative z-10">
-                    <div className="w-12 h-12 rounded-full overflow-hidden relative">
+                <div className="w-fit flex items-center sm:px-3 sm:py-2 px-2 py-1 border border-text-secondary rounded-full relative z-10">
+                    <div className="sm:w-12 sm:h-12 w-8 h-8 rounded-full overflow-hidden relative">
                         <Image
                             src="/images/man.jpg"
                             alt="User 1"
@@ -18,7 +18,7 @@ export default function UserAvatar() {
                             className="object-cover rounded-full"
                         />
                     </div>
-                    <div className="w-12 h-12 rounded-full overflow-hidden -ml-3 relative">
+                    <div className="sm:w-12 sm:h-12 w-8 h-8 rounded-full overflow-hidden -ml-3 relative">
                         <Image
                             src="/images/female.jpg"
                             alt="User 2"
@@ -27,7 +27,7 @@ export default function UserAvatar() {
                             className="object-cover rounded-full"
                         />
                     </div>
-                    <div className="w-12 h-12 rounded-full overflow-hidden -ml-3 relative">
+                    <div className="sm:w-12 sm:h-12 w-8 h-8 rounded-full overflow-hidden -ml-3 relative">
                         <Image
                             src="/images/female3.jpg"
                             alt="User 3"
@@ -36,13 +36,13 @@ export default function UserAvatar() {
                             className="object-cover rounded-full"
                         />
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-text-black font-bold text-[16px] -ml-2.5">
+                    <div className="sm:w-12 sm:h-12 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-text-black font-bold sm:text-[16px] text-[10px] sm:-ml-2.5 -ml-1.5 ">
                         20+
                     </div>
                 </div>
             </div>
 
-            <p className="mt-1.5 mx-auto text-primary relative z-[50]">Excellent Reviews</p>
+            <p className="sm:mt-1.5 sm:text-[16px] text-[14px] mx-auto text-primary relative z-[50]">Excellent Reviews</p>
         </div>
     );
 }
