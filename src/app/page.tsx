@@ -30,7 +30,7 @@ export default function Home() {
       </header>
 
       {/* Main content with dynamic margin top */}
-      <main className="w-full h-auto z-50 relative" style={{ marginTop: `${headerHeight}px` }}>
+      <main className="w-full h-auto z-50 relative">
 
         {/* Hero Section with background glows */}
         <section className="relative w-full h-auto">

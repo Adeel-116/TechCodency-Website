@@ -16,7 +16,7 @@ const GetStartedButton = ({buttonTitle}:GetStartedButtonProps) => {
       onMouseLeave={() => setHover(false)}
     >
       <button 
-        className="sm:py-3 sm:px-6 px-4 py-3 text-[14px] sm:text-[16px] font-semibold rounded-full flex items-center shadow-md transition-all duration-500 ease-out"
+        className=" px-5 py-3 font-semibold rounded-full flex items-center shadow-md transition-all duration-500 ease-out"
         style={{
           backgroundColor: hover ? 'var(--color-bg)' : 'var(--color-secondary)',
           color: hover ? 'var(--color-secondary)' : 'var(--color-bg)',

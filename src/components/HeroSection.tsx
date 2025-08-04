@@ -12,14 +12,14 @@ const outfit = Outfit({
 
 export default function HeroSection() {
     return (
-        <div className="w-full h-auto">
-            <div className={`w-[90%] sm:py-5 mx-auto sm:flex ${outfit.className}`}>
+        <div className="w-full h-screen flex items-center">
+            <div className={`xl:w-[90%] sm:py-5 mx-auto sm:flex ${outfit.className}`}>
                 <HeroLeftSection />
                 <HeroRightSection />
             </div>
 
             <CircularText />
-            <MarqueeSection />
+            {/* <MarqueeSection /> */}
         </div>
     );
 }

@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 export default function HeroRightSection() {
     return (
-        <div className="sm:w-1/2 w-full sm:py-5">
-            <div className="w-full sm:py-7 sm:mt-8 flex items-center justify-between sm:px-8">
-                <p className="sm:w-[40%] w-full py-2 text-text-secondary text-base leading-relaxed">
+        <div className="xl:w-1/2 w-full xl:py-5 px-15">
+            <div className="w-full flex items-center justify-between xl:px-8">
+                <p className="2xl:w-[40%] w-full relative z-[50] py-2 text-text-secondary text-base leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>
@@ -14,8 +14,8 @@ export default function HeroRightSection() {
             </div>
 
             <div className="w-full relative">
-                {/* Shape Image (Background-like) */}
-                <div className="relative w-full h-[100px] sm:h-[400px] -mt-5">
+                
+                <div className="relative w-full xl:h-[200px] xl:mt-5">
                     <Image
                         src="/images/h1-shape2.png"
                         alt="Shape"
@@ -24,8 +24,8 @@ export default function HeroRightSection() {
                     />
                 </div>
 
-                {/* Banner Image (Positioned Above) */}
-                <div className="absolute sm:top-[20%] -top-[10%] left-1/2 -translate-x-1/2 w-[400px] sm:w-[400px] md:w-[500px] aspect-square">
+             
+                <div className="absolute xl:top-[25%] -top-[10%] left-1/2 -translate-x-1/2 lg:w-full h-auto aspect-square">
                     <Image
                         src="/images/banner1-img.jpg"
                         alt="Banner"
