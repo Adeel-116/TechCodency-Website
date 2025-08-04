@@ -12,7 +12,7 @@ const outfit = Outfit({
 export default function CircularText() {
   return (
     <div className="absolute left-[50%] bottom-0 transform -translate-x-1/2">
-      <div className=" w-[190px] h-[190px] sm:bg-bg rounded-full flex items-center justify-center relative">
+      <div className="lg:w-[190px] lg:h-[190px] w-[120px] h-[120px] sm:bg-bg rounded-full flex items-center justify-center relative">
         <svg
           className="sm:w-[170px] sm:h-[170px] w-[130px] h-[130px]"
           viewBox="0 0 180 180"

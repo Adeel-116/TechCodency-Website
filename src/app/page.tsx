@@ -2,15 +2,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import AboutUS from '@/components/AboutUS';
-import ServicesCard from '@/components/Services';
-import SmoothScrolling from '@/components/SmoothScrolling';
-import PortfolioSection from '@/components/PortfolioSection';
-import CTA from '@/components/CTA';
-import CaseStudy from '@/components/CaseStudy';
-import PricingPlans from '@/components/PricingPlans';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import ContactForm from '@/components/ContactForm';
+// import AboutUS from '@/components/AboutUS';
+// import ServicesCard from '@/components/Services';
+// import SmoothScrolling from '@/components/SmoothScrolling';
+// import PortfolioSection from '@/components/PortfolioSection';
+// import CTA from '@/components/CTA';
+// import CaseStudy from '@/components/CaseStudy';
+// import PricingPlans from '@/components/PricingPlans';
+// import TestimonialsSection from '@/components/TestimonialsSection';
+// import ContactForm from '@/components/ContactForm';
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -99,8 +99,8 @@ export default function Home() {
         <CaseStudy />
         <PricingPlans />
         <TestimonialsSection />
-        <ContactForm /> */}
-      </main>
+        <ContactForm />  */}
+      </main> 
     </div>
   );
 }

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Outfit } from 'next/font/google';
 import Image from 'next/image';
 import GetStartedButton from './GetStartedButton';
-import { HiMenu, HiX } from 'react-icons/hi';
+import { HiMenu } from 'react-icons/hi';
 const outfit = Outfit({
   weight: ['100', '300', '400', '700', '900'],
   subsets: ['latin'],
@@ -18,18 +18,10 @@ export default function Header() {
     setIsMobileServicesOpen(false);
   };
 
-  const serviceItems = [
-    'Web Development',
-    'Mobile App Development',
-    'UI/UX Design',
-    'Digital Marketing',
-    'SEO Services',
-    'Brand Identity'
-  ];
 
   return (
     <>
-      <header className={`xl:w-[90%] w-full px-8 mx-auto py-4 relative z-50 ${outfit.className}`}>
+      <header className={`xl:w-[90%] w-full sm:px-8 px-2 mx-auto py-4 relative z-50 ${outfit.className}`}>
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center relative group">
