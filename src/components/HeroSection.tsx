@@ -18,7 +18,7 @@ export default function HeroSection() {
             </div>
 
             <CircularText />
-            {/* <MarqueeSection /> */}
+           
         </div>
     );
 }

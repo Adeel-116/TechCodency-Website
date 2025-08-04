@@ -90,16 +90,7 @@ export default function Home() {
 
         </section>
 
-        {/* About Section comes after HeroSection */}
-        {/* <AboutUS />
-        <ServicesCard />
-        <SmoothScrolling />
-        <PortfolioSection />
-        <CTA />
-        <CaseStudy />
-        <PricingPlans />
-        <TestimonialsSection />
-        <ContactForm />  */}
+       
       </main> 
     </div>
   );
