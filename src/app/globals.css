@@ -14,7 +14,7 @@
 }
 
 h1 {
-  @apply text-[2rem] sm:text-3xl md:text-4xl lg:text-[8rem] xl:text-[10rem];
+  @apply text-[2rem] sm:text-3xl md:text-[8rem] lg:text-[8rem] xl:text-[10rem];
 }
 
 

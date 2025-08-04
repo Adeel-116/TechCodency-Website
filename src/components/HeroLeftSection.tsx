@@ -14,9 +14,9 @@ const teko = Teko({
 
 export default function HeroLeftSection() {
     return (
-        <div className="xl:w-1/2 w-fit px-8 relative z-[50]  2xl:py-0 py-20">
+        <div className="xl:w-1/2 w-fit px-8 relative z-[50] 2xl:py-0">
             <h1
-                className={`w-full text-text-primary relative z-[50] sm:z-[0] font-bold ${teko.className}`}
+                className={`w-fit text-text-primary relative z-[50] sm:z-[0] font-bold ${teko.className}`}
             >
                 DIGITAL
             </h1>
@@ -33,7 +33,7 @@ export default function HeroLeftSection() {
                 </h1>
             </div>
             
-               <p className=" sm:hidden block mt-8 mb-2 relative z-[50] text-text-secondary">
+               <p className="block lg:mt-8 lg:w-full md:w-[80%] lg:mb-2 mb-4 relative z-[50] text-text-secondary">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </p>

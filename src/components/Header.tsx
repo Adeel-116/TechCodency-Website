@@ -101,7 +101,7 @@ export default function Header() {
           <div className='flex items-center space-x-3'>
 
 
-            <div className="hidden lg:flex flex-shrink-0">
+            <div className="hidden md:flex flex-shrink-0">
               <GetStartedButton buttonTitle='GET STARTED' />
             </div>
 
