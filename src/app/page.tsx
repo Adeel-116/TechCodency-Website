@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import AboutUS from '@/components/AboutUS';
 // import AboutUS from '@/components/AboutUS';
 // import ServicesCard from '@/components/Services';
 // import SmoothScrolling from '@/components/SmoothScrolling';
@@ -92,9 +93,7 @@ export default function Home() {
 
        
       </main> 
-      <div>
-        
-      </div>
+      <AboutUS />
     </div>
   );
 }
