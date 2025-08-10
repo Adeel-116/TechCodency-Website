@@ -3,9 +3,9 @@
 
 @theme {
     --color-bg: #000000;
-    --color-primary: #ecf51e;
+    --color-primary: #5ACB00;
     --color-primary-support: #d0e426;
-    --color-secondary: #9feb1d;
+    --color-secondary: #5ACB00;
     --color-secondary-support: #a4dc3c;
     --color-text-primary: #ffffff;
     --color-text-secondary: #8F8F8D;
@@ -17,10 +17,6 @@ h1 {
   @apply text-[6rem] sm:text-[8rem] md:text-[8rem] lg:text-[8rem] xl:text-[10rem];
 }
 
-/* h2 {
-  @apply text-[6rem] sm:text-[8rem] md:text-[8rem] lg:text-[8rem] xl:text-[5rem] 2xl:text-[60px];
-}
- */
 
 html {
   scroll-behavior: auto;

@@ -9,16 +9,22 @@ const outfit = Outfit({
     subsets: ["latin"],
 });
 
-export default function HeroSection() {
+export default function HeroSection({ getHeaderHeight }: { getHeaderHeight: number }) {
+    console.log(getHeaderHeight);
+
     return (
-        <div className="w-full lg:h-screen md:flex-auto flex lg:items-center">
-            <div className={`xl:w-[90%] w-full xl:py-5 py-30 mx-auto flex lg:flex-row flex-col ${outfit.className}`}>
+        <div
+            className="w-full flex justify-center py-20"
+            style={{
+                height: `calc(100dvh - ${getHeaderHeight}px)`,
+            }}
+        >
+            <div className="max-w-[min(95%,1600px)] mx-auto flex">
                 <HeroLeftSection />
-                <HeroRightSection />
+                <HeroRightSection/>
             </div>
 
-            <CircularText />
-           
+            
         </div>
     );
 }
