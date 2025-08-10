@@ -41,8 +41,6 @@ export default function UserAvatar() {
                     </div>
                 </div>
             </div>
-
-            <p className="sm:mt-1.5 sm:text-[16px] text-[14px] mx-auto text-primary relative z-[50]">Excellent Reviews</p>
         </div>
     );
 }

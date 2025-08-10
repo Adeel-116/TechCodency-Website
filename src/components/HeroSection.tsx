@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import HeroLeftSection from "./HeroLeftSection";
 import HeroRightSection from './HeroRightSection';
 import CircularText from './CircularText';
+import MarqueeSection from "./MarqueeSection";
 
 const outfit = Outfit({
     weight: ["100", "300", "400", "700", "900"],
@@ -13,6 +14,7 @@ export default function HeroSection({ getHeaderHeight }: { getHeaderHeight: numb
     console.log(getHeaderHeight);
 
     return (
+        <>
         <div
             className="w-full flex justify-center py-20"
             style={{
@@ -23,8 +25,10 @@ export default function HeroSection({ getHeaderHeight }: { getHeaderHeight: numb
                 <HeroLeftSection />
                 <HeroRightSection/>
             </div>
-
-            
         </div>
+             <div className="w-full h-auto bg-pink-400">
+                <MarqueeSection />
+            </div>
+        </>
     );
 }

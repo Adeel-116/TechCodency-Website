@@ -2,6 +2,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import Cube from '@/components/Cube';
+import AboutUS from '@/components/AboutUS';
+import Services from '@/components/Services';
+import PortfolioSection from '@/components/PortfolioSection';
 export default function Home() {
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -32,6 +36,9 @@ export default function Home() {
      </header>
 
       <HeroSection getHeaderHeight={headerHeight}/>
+      <AboutUS />
+      <Services />
+      <PortfolioSection />
     
     </div>
   );

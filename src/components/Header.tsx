@@ -51,7 +51,7 @@ export default function Header() {
             </span>
           </div>
         </div>
-        <nav className="xl:flex hidden 2xl:space-x-6 xl:space-x-6 text-[15px] text-black font-semibold">
+        <nav className="xl:flex hidden 2xl:space-x-6 xl:space-x-6 text-black font-semibold">
           {[
             'HOME',
             'ABOUT US',
@@ -66,7 +66,7 @@ export default function Header() {
               href="#"
               className="relative group py-2 transition-all duration-300"
             >
-              <span className="relative 2xl:text-[16px] xl:text-[15px] z-10 hover:text-primary transition-colors duration-300">
+              <span className="relative 2xl:text-[22px] xl:text-[20px] z-10 hover:text-primary transition-colors duration-300">
                 {item}
               </span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></div>

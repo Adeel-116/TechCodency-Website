@@ -193,7 +193,7 @@ const PortfolioSection = () => {
   }
 
   return (
-    <section className="w-full bg-[#0A090F] py-20 px-6">
+    <section className="w-full bg-white py-20 px-6">
       <div className="w-[90%]  mx-auto">
         
         {/* Portfolio Header */}

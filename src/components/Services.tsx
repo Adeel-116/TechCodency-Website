@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Outfit, Teko } from 'next/font/google';
 import ServiceCard from './ServiceCard';
 import { gsap } from 'gsap';
@@ -18,6 +18,9 @@ const teko = Teko({
 });
 
 const Services = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+
   const services = [
     {
       icon: (
@@ -94,7 +97,7 @@ const Services = () => {
     {
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-          <path d="M13 7H11V11H7V13H11V17H13V13H17V11H13V7ZM12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20Z" />
+          <path d="M13 7H11V11H7V13H11V17H13V7ZM12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20Z" />
         </svg>
       ),
       title: 'Consulting Services',
@@ -117,8 +120,8 @@ const Services = () => {
     },
   ];
 
- const containerRef = useRef<HTMLDivElement | null>(null);
-const scrollRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -127,18 +130,16 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
     if (!container || !scrollEl) return;
 
     // Calculate proper dimensions
-    const cardWidth = 350; // Width of each card
-    const cardGap = 40; // Gap between cards (space-x-10 = 2.5rem = 40px)
-    const containerPadding = 80; // px-10 = 2.5rem = 40px on each side = 80px total
-    const extraBuffer = 210; // Extra space to ensure the last card is fully visible
+    const cardWidth = 350;
+    const cardGap = 40;
+    const containerPadding = 80;
+    const extraBuffer = 210;
     
-    // Total scroll width calculation
     const totalContentWidth = (services.length * cardWidth) + ((services.length - 1) * cardGap) + containerPadding + extraBuffer;
     const viewportWidth = window.innerWidth;
     const scrollDistance = totalContentWidth - viewportWidth;
     
-    // Set container height based on scroll distance for smooth scrolling
-    const scrollMultiplier = 3.5; // Increased multiplier for more scroll distance
+    const scrollMultiplier = 3.5; 
     container.style.height = `${scrollDistance * scrollMultiplier}px`;
 
     // Create the scroll animation
@@ -153,14 +154,20 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
         pin: '.scroll-pin-target',
         anticipatePin: 1,
         onUpdate: (self) => {
-          console.log('Scroll progress:', self.progress);
+          // Update progress bar
+          setScrollProgress(self.progress * 100);
+          
+          // Calculate active card based on scroll progress
+          const progress = self.progress;
+          const cardIndex = Math.floor(progress * services.length);
+          const clampedIndex = Math.min(Math.max(cardIndex, 0), services.length - 1);
+          setActiveCardIndex(clampedIndex);
         }
       },
     });
 
     ScrollTrigger.refresh();
 
-    // Cleanup function
     return () => {
       scrollTween.kill();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -168,26 +175,52 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
   }, [services.length]);
 
   return (
-    <div className={`w-full  px-4 ${outfit.className}`}>
-      <div className="w-[90%] mx-auto">
-        {/* Heading */}
-        <div className="text-center">
-          <div className="flex items-center justify-center">
-              <div className="w-10 h-2 bg-[#C9F31D] rounded-2xl"></div>
-              <div
-                className={`text-[5rem] font-bold text-[#E6F620] ml-4 ${teko.className}`}
-              >
-                Services We Offer
-              </div>
+    <div className={`w-full py-10 px-4 ${outfit.className} relative`}>
+      {/* Progress Bar */}
+      <div className="fixed top-0 left-0 w-full h-1 bg-black/20 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-[#E6F620] to-[#9FEC1C] transition-all duration-300 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
+      {/* Service Counter */}
+      <div className="fixed top-6 right-6 z-50 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full border border-[#E6F620]/20">
+        <span className="text-[#E6F620] font-bold">{activeCardIndex + 1}</span>
+        <span className="text-white/60"> / {services.length}</span>
+      </div>
+
+      <div className="max-w-[min(95%,1600px)] mx-auto">
+        {/* Enhanced Heading */}
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center mb-6">
+            <div className="w-16 h-2 bg-gradient-to-r from-[#E6F620] to-[#9FEC1C] rounded-full"></div>
+            <div
+              className={`text-[5rem] font-bold text-black ml-6 ${teko.className} relative`}
+              style={{lineHeight: '1'}}
+            >
+              Services We Offer
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#E6F620]/30 to-transparent rounded-full"></div>
             </div>
-          <p className="text-white text-xl max-w-2xl mx-auto">
+          </div>
+          <p className="text-black text-xl max-w-2xl mx-auto opacity-80"
+                style={{lineHeight: '1.4'}}
+          >
             Discover our comprehensive range of digital solutions designed to elevate your business
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#E6F620] to-neutral-400 mx-auto mt-8 rounded-full"></div>
         </div>
 
-        {/* Horizontal Scroll Section */}
+        {/* Enhanced Horizontal Scroll Section */}
         <div ref={containerRef} className="relative w-full">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="w-full h-full" style={{
+              backgroundImage: `radial-gradient(circle at 25% 25%, #E6F620 2px, transparent 2px),
+                               radial-gradient(circle at 75% 75%, #9FEC1C 1px, transparent 1px)`,
+              backgroundSize: '60px 60px'
+            }}></div>
+          </div>
+
           <div className="scroll-pin-target sticky top-0 h-screen overflow-hidden">
             <div
               ref={scrollRef}
@@ -196,16 +229,16 @@ const scrollRef = useRef<HTMLDivElement | null>(null);
             >
               {services.map((service, index) => (
                 <div key={index} className="flex-shrink-0 w-[350px]">
-                  <ServiceCard service={service} index={index} />
+                  <ServiceCard 
+                    service={service} 
+                    index={index} 
+                    isActive={index === activeCardIndex}
+                  />
                 </div>
               ))}
             </div>
-
-             
           </div>
-        
         </div>
-  
       </div>
     </div>
   );
