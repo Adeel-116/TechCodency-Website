@@ -66,7 +66,7 @@ const CaseStudy = () => {
 
     const slideWidth = 820;
 
-    const goToSlide = (index: number) => {
+    const goToSlide = React.useCallback((index: number) => {
         if (isTransitioning || index < 0 || index >= caseStudyImages.length) return;
 
         setIsTransitioning(true);
@@ -81,12 +81,12 @@ const CaseStudy = () => {
             ease: 'power2.out',
             onComplete: () => setIsTransitioning(false)
         });
-    };
+    }, [isTransitioning, caseStudyImages.length, slideWidth]);
 
-    const nextSlide = () => {
+    const nextSlide = React.useCallback(() => {
         const nextIndex = currentIndex === caseStudyImages.length - 1 ? 0 : currentIndex + 1;
         goToSlide(nextIndex);
-    };
+    }, [currentIndex, caseStudyImages.length, goToSlide]);
 
     const prevSlide = () => {
         const prevIndex = currentIndex === 0 ? caseStudyImages.length - 1 : currentIndex - 1;
@@ -102,7 +102,7 @@ const CaseStudy = () => {
         }, 4000);
 
         return () => clearInterval(interval);
-    }, [currentIndex, isTransitioning]);
+    }, [currentIndex, isTransitioning, nextSlide]);
 
     // Touch/Mouse drag handlers
     const handleStart = (clientX: number) => {

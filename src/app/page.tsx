@@ -2,33 +2,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import Cube from "@/components/Cube";
-import AboutUS from "@/components/AboutUS";
-import Services from "@/components/Services";
-import PortfolioSection from "@/components/PortfolioSection";
-import CTA from "@/components/CTA";
-import PricingPlans from "@/components/PricingPlans";
 import MarqueeSection from "@/components/MarqueeSection";
 export default function Home() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  console.log(menuOpen);
-  useEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight);
-    }
-
-    const handleResize = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -52,9 +28,9 @@ export default function Home() {
           transition: "all 0.5s ease-in-out",
         }}
       >
-        <header className="w-full h-auto" ref={headerRef}>
+        <header className="w-full h-auto">
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-         </header>
+        </header>
 
         <HeroSection getHeaderHeight={0} />
         <MarqueeSection />
@@ -62,7 +38,7 @@ export default function Home() {
 
       {/* Mobile Overlay */}
       <div className="fixed top-0 left-0 -z-[100] w-full h-full bg-[#1D1D1D] flex items-center justify-center">
-        
+
       </div>
     </>
   );

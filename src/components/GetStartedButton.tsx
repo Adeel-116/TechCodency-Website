@@ -2,15 +2,10 @@
 
 import React, { useState } from 'react';
 import { MdArrowOutward } from "react-icons/md";
-import { Outfit, Teko, Poppins } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 interface GetStartedButtonProps {
   buttonTitle?: string;
 }
-
-const outfit = Outfit({
-  weight: ['100', '300', '400', '700', '900'],
-  subsets: ['latin'],
-});
 
 const poppins = Poppins({
     weight: ["400", "500", "600", "700"],
