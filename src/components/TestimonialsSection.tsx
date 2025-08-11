@@ -16,7 +16,7 @@ const TestimonialsSection = () => {
   const headerRef = useRef(null);
   const cardsRef = useRef([]);
   const navRef = useRef(null);
-  const autoScrollRef = useRef(null);
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
   const testimonials = [
     {
@@ -167,7 +167,7 @@ const TestimonialsSection = () => {
     };
   }, [maxIndex]);
 
-  const scrollToIndex = (index) => {
+  const scrollToIndex = (index: number) => {
     const targetX = -index * cardWidth;
     gsap.to(trackRef.current, {
       x: targetX,
@@ -187,11 +187,11 @@ const TestimonialsSection = () => {
     scrollToIndex(newIndex);
   };
 
-  const handleDotClick = (index) => {
+  const handleDotClick = (index: number) => {
     scrollToIndex(index * visibleCards);
   };
 
-  const handleCardHover = (index, isEntering) => {
+  const handleCardHover = (index: number, isEntering: boolean) => {
     const card = cardsRef.current[index];
     if (card) {
       gsap.to(card, {
@@ -230,8 +230,8 @@ const TestimonialsSection = () => {
               Client Success Stories
             </h2>
           </div>
-          <p className="text-white text-xl max-w-4xl mx-auto leading-relaxed text-[#BBBBB9]">
-            Discover how we've transformed businesses with our innovative solutions. 
+          <p className="text-xl max-w-4xl mx-auto leading-relaxed text-[#BBBBB9]">
+            Discover how we ve transformed businesses with our innovative solutions. 
             Read what our valued clients have to say about their journey with us.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-[#C9F31D] to-[#BBBBB9] mx-auto mt-8 rounded-full" />
@@ -247,7 +247,7 @@ const TestimonialsSection = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                ref={el => cardsRef.current[index] = el}
+                ref={el => { (cardsRef.current as HTMLDivElement[])[index] = el!; }}
                 className="min-w-[400px] bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm border border-white/10 rounded-3xl p-10 relative cursor-pointer transition-all duration-400 hover:border-[#C9F31D]/30 hover:shadow-2xl hover:shadow-[#C9F31D]/10"
                 onMouseEnter={() => handleCardHover(index, true)}
                 onMouseLeave={() => handleCardHover(index, false)}
@@ -257,7 +257,7 @@ const TestimonialsSection = () => {
                 
                 {/* Quote Icon */}
                 <div className="absolute -top-4 right-8 w-16 h-16 bg-gradient-to-br from-[#C9F31D] to-[#9FEC1C] rounded-full flex items-center justify-center text-2xl font-bold text-black shadow-lg shadow-[#C9F31D]/30">
-                  "
+              
                 </div>
 
                 <div className="relative z-10">

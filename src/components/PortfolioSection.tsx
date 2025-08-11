@@ -111,17 +111,6 @@ const portfolioData = [
   }
 ]
 
-type GetStartedButtonProps = {
-  buttonTitle: string;
-}
-const GetStartedButton = ({ buttonTitle }:GetStartedButtonProps) => {
-  return (
-    <button className="px-8 py-4 bg-[#C9F31D] text-black font-bold rounded-full hover:bg-[#9FEC1C] transition-all duration-300 hover:scale-105">
-      {buttonTitle}
-    </button>
-  )
-}
-
 // Portfolio Card Component
 const PortfolioCard = ({ project }: { project: portfolioDataType }) => {
   const [isHovered, setIsHovered] = useState(false)

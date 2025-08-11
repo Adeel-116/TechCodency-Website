@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 
-const GetStartedButton = ({ buttonTitle, onClick, disabled }) => (
+type GetStartedButtonProps = {
+  buttonTitle: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+};
+
+const GetStartedButton: React.FC<GetStartedButtonProps> = ({ buttonTitle, onClick, disabled }) => (
   <button 
+    type="submit"
     onClick={onClick}
     disabled={disabled}
     className="group relative overflow-hidden bg-gradient-to-r from-[#C9F31D] to-[#9FEC1C] text-black font-bold py-4 px-8 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
@@ -18,11 +25,11 @@ const NewsletterForm = () => {
   const [error, setError] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     return /\S+@\S+\.\S+/.test(email);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!email.trim()) {
@@ -46,7 +53,7 @@ const NewsletterForm = () => {
     }, 2000);
   };
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     if (error) setError('');
   };
@@ -78,7 +85,7 @@ const NewsletterForm = () => {
 
       <div className="space-y-4">
         <div>
-          <label className="block text-[#C9F31D] font-semibold mb-2 flex items-center gap-2">
+          <label className=" text-[#C9F31D] font-semibold mb-2 flex items-center gap-2">
             <FaEnvelope className="text-[#9FEC1C]" />
             Email Address
           </label>
@@ -95,22 +102,24 @@ const NewsletterForm = () => {
           />
           {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
         </div>
-
-        <div className="flex justify-center">
-          <div className="flex-shrink-0">
-            <GetStartedButton 
-              buttonTitle={isSubmitting ? "SUBSCRIBING..." : "SUBSCRIBE"} 
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-            />
+        <form onSubmit={handleSubmit}>
+          <div className="flex justify-center">
+            <div className="flex-shrink-0">
+              <GetStartedButton 
+                buttonTitle={isSubmitting ? "SUBSCRIBING..." : "SUBSCRIBE"} 
+                onClick={() => {}} // No-op, form handles submit
+                disabled={isSubmitting}
+              />
+            </div>
           </div>
+        </form>
         </div>
 
         <p className="text-center text-[#BBBBB9] text-xs">
           No spam. Unsubscribe anytime.
         </p>
       </div>
-    </div>
+
   );
 };
 

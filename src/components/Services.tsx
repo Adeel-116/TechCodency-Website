@@ -5,7 +5,6 @@ import { Outfit, Teko } from 'next/font/google';
 import ServiceCard from './ServiceCard';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import CTA from './CTA';
 gsap.registerPlugin(ScrollTrigger);
 
 const outfit = Outfit({
