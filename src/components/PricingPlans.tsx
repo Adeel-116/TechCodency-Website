@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import { FaStar, FaRocket, FaCrown, FaBuilding, FaGem, FaTrophy } from 'react-icons/fa';
 import { IoCheckmarkCircle } from 'react-icons/io5';
 import { BsArrowRight } from 'react-icons/bs';
-
+import { Teko, Outfit } from 'next/font/google';
 const GetStartedButton = ({ buttonTitle }) => (
   <button className="group relative overflow-hidden bg-gradient-to-r from-[#C9F31D] to-[#9FEC1C] text-black font-bold py-4 px-8 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center gap-2">
     <span>{buttonTitle}</span>
     <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
   </button>
 );
+
+
+  const outfit = Outfit({
+      weight: ["100", "300", "400", "700", "900"],
+      subsets: ["latin"],
+  });
+  
+  const teko = Teko({
+      weight: ["400", "500", "600", "700"],
+      subsets: ["latin"],
+  });
 
 const PricingPlans = () => {
   const [hoveredPlan, setHoveredPlan] = useState(null);
@@ -170,17 +181,17 @@ const PricingPlans = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black py-20 px-4">
+    <div className="min-h-screen py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
             <div className="w-10 h-2 bg-[#C9F31D] rounded-2xl"></div>
-            <div className="text-5xl font-bold text-[#C9F31D] ml-4 font-mono">
+            <div className={`text-5xl font-bold text-black ml-4 ${teko.className}`}>
               Packages And Pricing Plans!
             </div>
           </div>
-          <p className="text-white text-xl max-w-4xl mx-auto leading-relaxed">
+          <p className ={`text-black text-xl max-w-4xl mx-auto leading-relaxed ${outfit.className}`}>
             Explore our range of budget-friendly packages and pricing plans designed to suit your specific needs and requirements. Choose the perfect plan that fits your budget and unlocks the full potential of our services. Get started on your journey to success with our competitive pricing options.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-[#C9F31D] to-[#BBBBB9] mx-auto mt-8 rounded-full"></div>

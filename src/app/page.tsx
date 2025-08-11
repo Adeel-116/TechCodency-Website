@@ -6,6 +6,8 @@ import Cube from '@/components/Cube';
 import AboutUS from '@/components/AboutUS';
 import Services from '@/components/Services';
 import PortfolioSection from '@/components/PortfolioSection';
+import CTA from '@/components/CTA';
+import PricingPlans from '@/components/PricingPlans';
 export default function Home() {
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -35,10 +37,12 @@ export default function Home() {
         <Header />
      </header>
 
-      <HeroSection getHeaderHeight={headerHeight}/>
-      <AboutUS />
-      <Services />
+      <HeroSection />
+      {/* <AboutUS />
+     <Services />
       <PortfolioSection />
+      <CTA />
+      <PricingPlans /> */}
     
     </div>
   );

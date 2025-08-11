@@ -10,7 +10,7 @@ const outfit = Outfit({
     subsets: ["latin"],
 });
 
-export default function HeroSection({ getHeaderHeight }: { getHeaderHeight: number }) {
+export default function HeroSection({ getHeaderHeight = 0 }: { getHeaderHeight: number }) {
     console.log(getHeaderHeight);
 
     return (

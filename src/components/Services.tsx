@@ -118,6 +118,19 @@ const Services = () => {
       features: ['iOS & Android Apps', 'Cross-Platform Solutions', 'API Development', 'App Store Optimization'],
       cta: 'Build App',
     },
+
+     {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M12 2L2 7L12 12L22 7L12 2ZM2 17L12 22L22 17M2 12L12 17L22 12" />
+        </svg>
+      ),
+      title: 'Custom Solution',
+      description:
+        'Create powerful mobile and web applications that deliver exceptional user experiences across all platforms.',
+      features: ['iOS & Android Apps', 'Cross-Platform Solutions', 'API Development', 'App Store Optimization'],
+      cta: 'Build App',
+    },
   ];
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -126,21 +139,25 @@ const Services = () => {
   useEffect(() => {
     const container = containerRef.current;
     const scrollEl = scrollRef.current;
-    
+
     if (!container || !scrollEl) return;
 
     // Calculate proper dimensions
     const cardWidth = 350;
     const cardGap = 40;
-    const containerPadding = 80;
-    const extraBuffer = 210;
-    
-    const totalContentWidth = (services.length * cardWidth) + ((services.length - 1) * cardGap) + containerPadding + extraBuffer;
+    const containerPadding = 160; // 80px on each side
     const viewportWidth = window.innerWidth;
-    const scrollDistance = totalContentWidth - viewportWidth;
+
+    // Calculate total width needed to show all cards
+    const totalCardsWidth = (services.length * cardWidth) + ((services.length - 1) * cardGap);
+    const totalContentWidth = totalCardsWidth + containerPadding;
     
-    const scrollMultiplier = 3.5; 
-    container.style.height = `${scrollDistance * scrollMultiplier}px`;
+    // Calculate how much we need to scroll to show the last card properly
+    const scrollDistance = Math.max(0, totalContentWidth - viewportWidth + 100); // Added 100px buffer for last card
+
+    // Adjust multiplier for smoother scrolling
+    const scrollMultiplier = 2.5;
+    container.style.height = `${Math.max(scrollDistance * scrollMultiplier, window.innerHeight)}px`;
 
     // Create the scroll animation
     const scrollTween = gsap.to(scrollEl, {
@@ -156,10 +173,19 @@ const Services = () => {
         onUpdate: (self) => {
           // Update progress bar
           setScrollProgress(self.progress * 100);
-          
-          // Calculate active card based on scroll progress
+
+          // Calculate active card based on scroll progress with better distribution
           const progress = self.progress;
-          const cardIndex = Math.floor(progress * services.length);
+          let cardIndex;
+          
+          if (progress >= 0.95) {
+            // Ensure last card is active at the end
+            cardIndex = services.length - 1;
+          } else {
+            // Distribute other cards evenly across the scroll progress
+            cardIndex = Math.floor(progress * (services.length - 1));
+          }
+          
           const clampedIndex = Math.min(Math.max(cardIndex, 0), services.length - 1);
           setActiveCardIndex(clampedIndex);
         }
@@ -176,35 +202,20 @@ const Services = () => {
 
   return (
     <div className={`w-full py-10 px-4 ${outfit.className} relative`}>
-      {/* Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-black/20 z-50">
-        <div 
-          className="h-full bg-gradient-to-r from-[#E6F620] to-[#9FEC1C] transition-all duration-300 ease-out"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
-      {/* Service Counter */}
-      <div className="fixed top-6 right-6 z-50 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full border border-[#E6F620]/20">
-        <span className="text-[#E6F620] font-bold">{activeCardIndex + 1}</span>
-        <span className="text-white/60"> / {services.length}</span>
-      </div>
-
       <div className="max-w-[min(95%,1600px)] mx-auto">
-        {/* Enhanced Heading */}
+  
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-2 bg-gradient-to-r from-[#E6F620] to-[#9FEC1C] rounded-full"></div>
+            <div className="w-16 h-2 bg-gradient-to-r from-primary to-[#9FEC1C] rounded-full"></div>
             <div
               className={`text-[5rem] font-bold text-black ml-6 ${teko.className} relative`}
-              style={{lineHeight: '1'}}
+              style={{ lineHeight: '1' }}
             >
               Services We Offer
-              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#E6F620]/30 to-transparent rounded-full"></div>
             </div>
           </div>
           <p className="text-black text-xl max-w-2xl mx-auto opacity-80"
-                style={{lineHeight: '1.4'}}
+            style={{ lineHeight: '1.4' }}
           >
             Discover our comprehensive range of digital solutions designed to elevate your business
           </p>
@@ -221,21 +232,34 @@ const Services = () => {
             }}></div>
           </div>
 
-          <div className="scroll-pin-target sticky top-0 h-screen overflow-hidden">
-            <div
-              ref={scrollRef}
-              className="flex items-center h-full px-10 space-x-10"
-              style={{ width: 'max-content' }}
-            >
-              {services.map((service, index) => (
-                <div key={index} className="flex-shrink-0 w-[350px]">
-                  <ServiceCard 
-                    service={service} 
-                    index={index} 
-                    isActive={index === activeCardIndex}
-                  />
-                </div>
-              ))}
+          <div className="scroll-pin-target sticky top-0 h-screen overflow-hidden flex flex-col">
+            {/* Main content area */}
+            <div className="flex-1 flex items-center">
+              <div
+                ref={scrollRef}
+                className="flex items-center h-full px-20 space-x-10"
+                style={{ width: 'max-content', minWidth: '100%' }}
+              >
+                {services.map((service, index) => (
+                  <div key={index} className="flex-shrink-0 w-[350px] h-full flex items-center">
+                    <ServiceCard
+                      service={service}
+                      index={index}
+                      isActive={index === activeCardIndex}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="w-full px-10 pb-8">
+              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-primary to-[#9FEC1C] rounded-full transition-all duration-300 ease-out"
+                  style={{ width: `${scrollProgress}%` }}
+                ></div>
+              </div>
+              <div className="flex justify-between mt-4">
+              </div>
             </div>
           </div>
         </div>

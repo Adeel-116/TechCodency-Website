@@ -1,9 +1,13 @@
 'use client'
 import React, { useState } from 'react'
-import { Teko } from 'next/font/google'
+import { Teko, Outfit } from 'next/font/google'
 import Image from 'next/image'
 
 const teko = Teko({ subsets: ['latin'] })
+const outfit = Outfit({
+    weight: ["100", "300", "400", "700", "900"],
+    subsets: ["latin"],
+});
 
 // Portfolio data
 type typeFilterCategory = {
@@ -189,7 +193,7 @@ const PortfolioSection = () => {
 
   const handleFilterChange = (filterType:filterType) => {
     setActiveFilter(filterType)
-    setVisibleItems(6) // Reset visible items when filter changes
+    setVisibleItems(6) 
   }
 
   return (
@@ -199,15 +203,16 @@ const PortfolioSection = () => {
         {/* Portfolio Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center">
-            <div className="w-10 h-2 bg-[#C9F31D] rounded-2xl"></div>
-            <div className={`text-[5rem] font-bold text-[#E6F620] ml-4 ${teko.className}`}>
+            <div className="w-14 h-2 bg-[#C9F31D] rounded-2xl"></div>
+            <div className={`text-[5rem] font-bold text-black ml-4 ${teko.className}`}
+            style={{lineHeight:'1'}}
+            >
               Our Portfolio
             </div>
           </div>
-          <p className="text-white text-xl max-w-2xl mx-auto mt-6">
+          <p className={`text-black text-xl max-w-2xl mx-auto mt-6 ${outfit.className}`}>
             Explore our creative works and successful projects that showcase our expertise across various digital domains
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#E6F620] to-neutral-400 mx-auto mt-8 rounded-full"></div>
         </div>
 
         {/* Portfolio Filters */}
@@ -218,8 +223,8 @@ const PortfolioSection = () => {
               onClick={() => handleFilterChange(category.id as filterType)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
                 activeFilter === category.id
-                  ? 'bg-[#C9F31D] text-black'
-                  : 'bg-transparent border-2 border-[#BBBBB9] text-[#BBBBB9] hover:border-[#C9F31D] hover:text-[#C9F31D]'
+                  ? 'bg-[#C9F31D] text-black border-black border-2'
+                  : 'bg-transparent border-2 border-black text-black hover:border-[#C9F31D] hover:text-[#C9F31D]'
               }`}
             >
               {category.label}
