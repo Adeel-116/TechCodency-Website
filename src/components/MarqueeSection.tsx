@@ -52,7 +52,7 @@ export default function MarqueeSection() {
         }
       `}</style>
 
-      <div className="marquee-container">
+      <div className="marquee-container ">
         {/* Right to Left */}
         <div className="w-full h-auto sm:py-6 py-3 bg-primary relative z-[50] flex items-center justify-center overflow-hidden">
           <div className="animate-marquee-rtl whitespace-nowrap">

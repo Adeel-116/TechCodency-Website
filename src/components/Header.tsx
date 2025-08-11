@@ -14,7 +14,7 @@ const teko = Teko({
   subsets: ["latin"],
 });
 
-export default function Header({menuOpen, setMenuOpen}) {
+export default function Header({menuOpen, setMenuOpen}:{menuOpen:boolean, setMenuOpen: (open: boolean) => void}) {
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function Header({menuOpen, setMenuOpen}) {
               <span
                 className="font-black text-left tracking-wide text-bg bg-clip-text"
                 style={{
-                  fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
+                  fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
                   lineHeight: '1.5',
                   marginBottom: '-0.25rem',
                 }}
@@ -47,7 +47,7 @@ export default function Header({menuOpen, setMenuOpen}) {
               <span
                 className="font-black text-primary text-left leading-none"
                 style={{
-                  fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
+                  fontSize: 'clamp(1.2rem, 2.5vw, 1.5rem)',
                 }}
               >
                 CODENCY
@@ -79,13 +79,13 @@ export default function Header({menuOpen, setMenuOpen}) {
 
           <div className='w-fit flex items-center gap-x-3'>
 
-            <div className="flex items-center">
+            <div className="flex items-center sm:flex hidden">
               <GetStartedButton buttonTitle="GET STARTED" />
             </div>
 
             {/* menu Icon */}
             <div className='xl:hidden flex'>
-              <RiMenu3Line color='#000000' className='font-bold' size={40} onClick={() => setMenuOpen(!menuOpen)} />
+              <RiMenu3Line color='#000000' className='font-bold' size={35} onClick={() => setMenuOpen(!menuOpen)} />
             </div>
           </div>
 

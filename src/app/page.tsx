@@ -8,6 +8,7 @@ import Services from "@/components/Services";
 import PortfolioSection from "@/components/PortfolioSection";
 import CTA from "@/components/CTA";
 import PricingPlans from "@/components/PricingPlans";
+import MarqueeSection from "@/components/MarqueeSection";
 export default function Home() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -53,9 +54,10 @@ export default function Home() {
       >
         <header className="w-full h-auto" ref={headerRef}>
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        </header>
+         </header>
 
         <HeroSection getHeaderHeight={0} />
+        <MarqueeSection />
       </div>
 
       {/* Mobile Overlay */}

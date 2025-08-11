@@ -30,8 +30,8 @@ const GetStartedButton = ({ buttonTitle }: GetStartedButtonProps) => {
       <button
         className="font-semibold rounded-full flex items-center shadow-md transition-all duration-500 ease-out"
         style={{
-          padding: 'clamp(0.4rem, 1vw, 0.7rem) clamp(0.7rem, 2vw, 1.4rem)',
-          fontSize: 'clamp(0.85rem, 2vw, 1rem)', 
+          padding: 'clamp(0.6rem, 1vw, 0.7rem) clamp(0.9rem, 2vw, 1.4rem)',
+          fontSize: 'clamp(0.9rem, 2vw, 1rem)', 
           backgroundColor: hover ? 'var(--color-bg)' : 'var(--color-secondary)',
           color: hover ? 'var(--color-secondary)' : 'var(--color-bg)',
           border: hover ? '1px solid var(--color-secondary)' : '',

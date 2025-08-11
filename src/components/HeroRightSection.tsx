@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import UserAvatar from "./UserAvatar";
 
 export default function HeroRightSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,7 +10,7 @@ export default function HeroRightSection() {
     setIsVisible(true);
   }, []);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
       x: (e.clientX - rect.left) / rect.width,
@@ -18,10 +19,10 @@ export default function HeroRightSection() {
   };
 
   return (
-    <div className="w-full relative h-auto bg-amber-300 flex justify-center items-center">
+    <div className="w-full relative h-auto flex justify-center items-center">
 
       <div
-        className={`relative w-full 2xl:h-[600px] h-[500px]  overflow-hidden transition-all duration-1000 ease-out ${
+        className={`relative w-full 2xl:h-[600px] md:h-[500px] h-[450px] overflow-hidden transition-all duration-1000 ease-out ${
           isVisible
             ? "opacity-100 translate-y-0 scale-100"
             : "opacity-0 translate-y-8 scale-95"
@@ -50,62 +51,19 @@ export default function HeroRightSection() {
             src="/images/service.jpg"
             alt="Masked Image"
             fill
-            className="object-cover bg-red-900 transition-all duration-500 hover:brightness-110"
+            className="object-contain transition-all duration-500 hover:brightness-110"
           />
         </div>
-      </div>
 
-      {/* Overlay Image ABOVE the mask */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-          <Image
-            src="/images/overlay.png" // Replace with your overlay image path
-            alt="Overlay Image"
-            fill
-            className="object-contain"
-            style={{ mixBlendMode: "screen" }}
-          />
-        </div> */}
-
-      {/* Overlay gradient */}
-      {/* <div
-          className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 pointer-events-none transition-opacity duration-300"
-          style={{
-            opacity: 0.3 + mousePosition.x * 0.2,
-          }}
-        />
-
-        <div
-          className="absolute w-32 h-32 rounded-full pointer-events-none transition-all duration-500 ease-out"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)",
-            left: `${mousePosition.x * 100}%`,
-            top: `${mousePosition.y * 100}%`,
-            transform: "translate(-50%, -50%)",
-            filter: "blur(20px)",
-          }}
-        /> */}
-
-      {/* Animated border glow */}
-      {/* <div className="absolute inset-0 rounded-lg animate-pulse-border" />
-
-        <style jsx>{`
-          @keyframes pulse-border {
-            0%,
-            100% {
-              box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
-            }
-            50% {
-              box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2);
-            }
-          }
-          .animate-pulse-border {
-            animation: pulse-border 4s ease-in-out infinite;
-          }
-        `}</style>
+        {/* <div className="absolute top-2 right-10 w-fit h-fit z-[50] rotate-45">
+        <UserAvatar />
       </div> */}
 
-      {/* </div> */}
+
+      </div>
+
+     
+
     </div>
   );
 }
