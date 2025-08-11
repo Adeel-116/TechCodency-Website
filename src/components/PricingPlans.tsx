@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import { FaStar, FaRocket, FaCrown, FaBuilding, FaGem, FaTrophy } from 'react-icons/fa';
 import { IoCheckmarkCircle } from 'react-icons/io5';
-import { BsArrowRight } from 'react-icons/bs';
 import { Teko, Outfit } from 'next/font/google';
-const GetStartedButton = ({ buttonTitle }) => (
-  <button className="group relative overflow-hidden bg-gradient-to-r from-[#C9F31D] to-[#9FEC1C] text-black font-bold py-4 px-8 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center gap-2">
-    <span>{buttonTitle}</span>
-    <BsArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
-  </button>
-);
+import GetStartedButton from './GetStartedButton';
 
 
   const outfit = Outfit({
@@ -22,7 +16,7 @@ const GetStartedButton = ({ buttonTitle }) => (
   });
 
 const PricingPlans = () => {
-  const [hoveredPlan, setHoveredPlan] = useState(null);
+  const [hoveredPlan, setHoveredPlan] = useState<number | null>(null);
 
   const plans = [
     {
@@ -227,7 +221,23 @@ const PricingPlans = () => {
   );
 };
 
-const PlanCard = ({ plan, isHovered, onHover, onLeave }) => {
+type Plan = {
+  name: string;
+  price: number;
+  icon: React.ReactNode;
+  popular: boolean;
+  description: string;
+  features: string[];
+};
+
+type PlanCardProps = {
+  plan: Plan;
+  isHovered: boolean;
+  onHover: () => void;
+  onLeave: () => void;
+};
+
+const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }) => {
   return (
     <div
       className={`relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:scale-105 ${
