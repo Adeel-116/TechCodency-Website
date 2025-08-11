@@ -25,12 +25,14 @@ const ContactForm = () => {
     'Other'
   ];
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
     alert('Form submitted! (Check console)');
@@ -108,7 +110,6 @@ const ContactForm = () => {
           <div className="text-center pt-4">
             <GetStartedButton
               buttonTitle="GET MY FREE QUOTE"
-              onClick={handleSubmit}
             />
           </div>
         </form>
