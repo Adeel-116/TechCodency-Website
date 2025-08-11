@@ -14,14 +14,13 @@ const teko = Teko({
   subsets: ["latin"],
 });
 
-export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false)
+export default function Header({menuOpen, setMenuOpen}) {
 
   return (
     <>
-      <header className={`w-full bg-blue-300 relative ${teko.className}`}>
+      <header className={`w-full  relative ${teko.className}`}>
 
-        <div className="max-w-[min(95%,1600px)] bg-red-300 mx-auto py-5 flex items-center justify-between">
+        <div className="max-w-[min(95%,1600px)] mx-auto py-5 flex items-center justify-between">
 
           {/* Logo */}
           <div className="flex items-center relative group">
@@ -86,7 +85,7 @@ export default function Header() {
 
             {/* menu Icon */}
             <div className='xl:hidden flex'>
-              <RiMenu3Line color='#000000' className='font-bold' size={40} onClick={() => setMenuOpen(true)} />
+              <RiMenu3Line color='#000000' className='font-bold' size={40} onClick={() => setMenuOpen(!menuOpen)} />
             </div>
           </div>
 

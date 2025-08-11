@@ -16,32 +16,32 @@ const teko = Teko({
 
 export default function HeroLeftSection() {
     return (
-        <div className="max-w-[70%] relative z-[50] flex flex-col gap-y-6 justify-center">
+        <div className="w-fit relative z-[50] flex flex-col xl:gap-y-6 gap-y-0 lg:py-0 py-30 bg-pink-200 justify-center items-center" >
 
             <div className='w-full h-auto'>
                 <div className="flex items-center">
-                    <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} text-[clamp(6rem,8vw,8rem)]`}>
-                       Creative <span>Digital</span> 
+                    <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} text-[clamp(6rem,10vw,8rem)]`}>
+                        Creative <span>Digital</span>
                     </h1>
                 </div>
 
                 <div className='flex items-center'>
-                <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} text-[clamp(6rem,8vw,8rem)]`}>
-                    Solutions
-                </h1>
-                <div>
-                   <TextWrapper />
-                </div>
+                    <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} text-[clamp(6rem,10vw,8rem)]`}>
+                        Solutions
+                    </h1>
+                    <div className='xl:block lg:hidden block'>
+                        <TextWrapper />
+                    </div>
                 </div>
             </div>
 
             <div className='w-full h-auto'>
-                <p className={`text-text-secondary w-[80%] ${outfit.className}`}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A excepturi esse ducimus nisi blanditiis qui, maiores necessitatibus iure culpa dolor. Eligendi voluptatum, repudiandae distinctio animi quidem quam similique odio architecto ipsum inventore atque rem quisquam quibusdam minus optio nulla velit, laboriosam dicta. Quam magnam facere impedit corporis, mollitia animi veniam?</p>
+                <p className={`text-text-secondary xl:w-[80%] w-full ${outfit.className}`}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A excepturi esse ducimus nisi blanditiis qui, maiores necessitatibus iure culpa dolor. Eligendi voluptatum, repudiandae distinctio animi quidem quam similique odio architecto ipsum inventore atque rem quisquam quibusdam minus optio nulla velit, laboriosam dicta. Quam magnam facere impedit corporis, mollitia animi veniam?</p>
             </div>
 
-            <div className="w-fit">
-                <GetStartedButton buttonTitle='GET STARTED'/>
-            </div>
+            {/* <div className="w-fit flex justify-start">
+                <GetStartedButton buttonTitle='GET STARTED' />
+            </div> */}
 
         </div>
     );

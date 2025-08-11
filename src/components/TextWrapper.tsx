@@ -41,11 +41,12 @@ const services = [
 function TextWrapper() {
     return (
         <div
-            className="w-[350px] h-[90px] ml-4 px-2 rounded-[50px] flex items-center justify-center overflow-hidden relative transform-gpu"
+            className=" h-auto ml-4 px-2 2xl:py-4.5 py-4 rounded-[50px] flex items-center justify-center overflow-hidden relative transform-gpu"
             style={{
                 background: 'linear-gradient(90deg, var(--color-primary), var(--color-primary-support))', 
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 15px rgba(0, 0, 0, 0.2)', 
                 transform: 'translateZ(0)', 
+                width: "clamp(10rem, 30vw, 18rem)",
             }}
         >
             {/* Animated slider container */}

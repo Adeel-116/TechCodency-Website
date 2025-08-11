@@ -16,12 +16,12 @@ export default function HeroSection({ getHeaderHeight = 0 }: { getHeaderHeight: 
     return (
         <>
         <div
-            className="w-full flex justify-center py-20"
+            className="w-full flex justify-center bg-red-300"
             style={{
                 height: `calc(100dvh - ${getHeaderHeight}px)`,
             }}
         >
-            <div className="max-w-[min(95%,1600px)] mx-auto flex">
+            <div className="max-w-[min(95%,1600px)] mx-auto flex lg:flex-row flex-col">
                 <HeroLeftSection />
                 <HeroRightSection/>
             </div>
