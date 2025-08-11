@@ -58,7 +58,7 @@ const NewsletterForm = () => {
           <FaEnvelope className="text-xl text-black" />
         </div>
         <h3 className="text-[#C9F31D] font-bold text-lg mb-2">Thank You!</h3>
-        <p className="text-white text-sm">You've successfully subscribed to our newsletter.</p>
+        <p className="text-white text-sm">You ve successfully subscribed to our newsletter.</p>
         <button 
           onClick={() => setIsSubscribed(false)}
           className="text-[#C9F31D] hover:text-[#9FEC1C] transition-colors duration-300 text-sm mt-3"

@@ -1,14 +1,11 @@
 'use client';
-import React, { useState } from 'react';
-import { Outfit, Teko } from 'next/font/google';
+import React from 'react';
+import { Teko } from 'next/font/google';
 import Image from 'next/image';
 import GetStartedButton from './GetStartedButton';
 import { RiMenu3Line } from "react-icons/ri";
 
-const outfit = Outfit({
-  weight: ['100', '300', '400', '700', '900'],
-  subsets: ['latin'],
-});
+
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],

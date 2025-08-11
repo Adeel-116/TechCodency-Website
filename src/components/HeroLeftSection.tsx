@@ -1,7 +1,6 @@
 import React from 'react';
 import GetStartedButton from "./GetStartedButton";
 import { Outfit, Teko } from "next/font/google";
-import Cube from './Cube';
 import TextWrapper from './TextWrapper';
 
 const outfit = Outfit({

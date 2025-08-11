@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import UserAvatar from "./UserAvatar";
 
 export default function HeroRightSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,9 +54,6 @@ export default function HeroRightSection() {
           />
         </div>
 
-        {/* <div className="absolute top-2 right-10 w-fit h-fit z-[50] rotate-45">
-        <UserAvatar />
-      </div> */}
 
 
       </div>
