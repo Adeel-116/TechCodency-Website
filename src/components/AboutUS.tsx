@@ -65,7 +65,7 @@ export default function AboutUS() {
               }}
             >
               We are a passionate creative digital agency specializing in
-              innovative solutions that propel brands to new heights in today's
+              innovative solutions that propel brands to new heights in todays
               competitive landscape. Our expertise spans across cutting-edge
               website development, strategic branding, and comprehensive digital
               marketing solutions.
