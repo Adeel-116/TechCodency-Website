@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { Outfit, Teko } from 'next/font/google';
 import ServiceCard from './ServiceCard';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
 
 const outfit = Outfit({
   weight: ['100', '300', '400', '700', '900'],
@@ -17,9 +14,6 @@ const teko = Teko({
 });
 
 const Services = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
-
   const services = [
     {
       icon: (
@@ -117,92 +111,12 @@ const Services = () => {
       features: ['iOS & Android Apps', 'Cross-Platform Solutions', 'API Development', 'App Store Optimization'],
       cta: 'Build App',
     },
-
-     {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-          <path d="M12 2L2 7L12 12L22 7L12 2ZM2 17L12 22L22 17M2 12L12 17L22 12" />
-        </svg>
-      ),
-      title: 'Custom Solution',
-      description:
-        'Create powerful mobile and web applications that deliver exceptional user experiences across all platforms.',
-      features: ['iOS & Android Apps', 'Cross-Platform Solutions', 'API Development', 'App Store Optimization'],
-      cta: 'Build App',
-    },
   ];
-
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const scrollEl = scrollRef.current;
-
-    if (!container || !scrollEl) return;
-
-    // Calculate proper dimensions
-    const cardWidth = 350;
-    const cardGap = 40;
-    const containerPadding = 160; // 80px on each side
-    const viewportWidth = window.innerWidth;
-
-    // Calculate total width needed to show all cards
-    const totalCardsWidth = (services.length * cardWidth) + ((services.length - 1) * cardGap);
-    const totalContentWidth = totalCardsWidth + containerPadding;
-    
-    // Calculate how much we need to scroll to show the last card properly
-    const scrollDistance = Math.max(0, totalContentWidth - viewportWidth + 100); // Added 100px buffer for last card
-
-    // Adjust multiplier for smoother scrolling
-    const scrollMultiplier = 2.5;
-    container.style.height = `${Math.max(scrollDistance * scrollMultiplier, window.innerHeight)}px`;
-
-    // Create the scroll animation
-    const scrollTween = gsap.to(scrollEl, {
-      x: -scrollDistance,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: container,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1,
-        pin: '.scroll-pin-target',
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          // Update progress bar
-          setScrollProgress(self.progress * 100);
-
-          // Calculate active card based on scroll progress with better distribution
-          const progress = self.progress;
-          let cardIndex;
-          
-          if (progress >= 0.95) {
-            // Ensure last card is active at the end
-            cardIndex = services.length - 1;
-          } else {
-            // Distribute other cards evenly across the scroll progress
-            cardIndex = Math.floor(progress * (services.length - 1));
-          }
-          
-          const clampedIndex = Math.min(Math.max(cardIndex, 0), services.length - 1);
-          setActiveCardIndex(clampedIndex);
-        }
-      },
-    });
-
-    ScrollTrigger.refresh();
-
-    return () => {
-      scrollTween.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [services.length]);
 
   return (
     <div className={`w-full py-10 px-4 ${outfit.className} relative`}>
       <div className="max-w-[min(95%,1600px)] mx-auto">
-  
+        {/* Heading */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
             <div className="w-16 h-2 bg-gradient-to-r from-primary to-[#9FEC1C] rounded-full"></div>
@@ -213,54 +127,16 @@ const Services = () => {
               Services We Offer
             </div>
           </div>
-          <p className="text-black text-xl max-w-2xl mx-auto opacity-80"
-            style={{ lineHeight: '1.4' }}
-          >
+          <p className="text-black text-xl max-w-2xl mx-auto opacity-80" style={{ lineHeight: '1.4' }}>
             Discover our comprehensive range of digital solutions designed to elevate your business
           </p>
         </div>
 
-        {/* Enhanced Horizontal Scroll Section */}
-        <div ref={containerRef} className="relative w-full">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="w-full h-full" style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, #E6F620 2px, transparent 2px),
-                               radial-gradient(circle at 75% 75%, #9FEC1C 1px, transparent 1px)`,
-              backgroundSize: '60px 60px'
-            }}></div>
-          </div>
-
-          <div className="scroll-pin-target sticky top-0 h-screen overflow-hidden flex flex-col">
-            {/* Main content area */}
-            <div className="flex-1 flex items-center">
-              <div
-                ref={scrollRef}
-                className="flex items-center h-full px-20 space-x-10"
-                style={{ width: 'max-content', minWidth: '100%' }}
-              >
-                {services.map((service, index) => (
-                  <div key={index} className="flex-shrink-0 w-[350px] h-full flex items-center">
-                    <ServiceCard
-                      service={service}
-                      index={index}
-                      isActive={index === activeCardIndex}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="w-full px-10 pb-8">
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-primary to-[#9FEC1C] rounded-full transition-all duration-300 ease-out"
-                  style={{ width: `${scrollProgress}%` }}
-                ></div>
-              </div>
-              <div className="flex justify-between mt-4">
-              </div>
-            </div>
-          </div>
+        {/* Simple Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {services.map((service, index) => (
+            <ServiceCard key={index} service={service} index={index} isActive={false} />
+          ))}
         </div>
       </div>
     </div>

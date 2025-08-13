@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
+import AboutUS from "@/components/AboutUS";
+import Services from "@/components/Services";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -34,6 +36,8 @@ export default function Home() {
 
         <HeroSection getHeaderHeight={0} />
         <MarqueeSection />
+        <AboutUS/> 
+        <Services />
       </div>
 
       {/* Mobile Overlay */}

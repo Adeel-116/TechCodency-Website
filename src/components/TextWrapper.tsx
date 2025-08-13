@@ -1,15 +1,4 @@
 import React from 'react';
-import { Outfit, Teko } from "next/font/google";
-import Image from 'next/image';
-const outfit = Outfit({
-    weight: ["100", "300", "400", "700", "900"],
-    subsets: ["latin"],
-});
-
-const teko = Teko({
-    weight: ["400", "500", "600", "700"],
-    subsets: ["latin"],
-});
 
 const services = [
     {

@@ -18,10 +18,9 @@ export default function HeroRightSection() {
   };
 
   return (
-    <div className="w-full relative h-auto flex justify-center items-center">
-
+    <div className="w-full relative h-auto flex lg:justify-end justify-center items-center">
       <div
-        className={`relative w-full 2xl:h-[600px] md:h-[500px] h-[450px] overflow-hidden transition-all duration-1000 ease-out ${
+        className={`relative 2xl:w-[600px] lg:w-[500px] w-[450px] 2xl:h-[600px] sm:h-[500px] h-[370px] overflow-hidden transition-all duration-1000 ease-out ${
           isVisible
             ? "opacity-100 translate-y-0 scale-100"
             : "opacity-0 translate-y-8 scale-95"
@@ -53,13 +52,7 @@ export default function HeroRightSection() {
             className="object-contain transition-all duration-500 hover:brightness-110"
           />
         </div>
-
-
-
       </div>
-
-     
-
     </div>
   );
 }
