@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import AboutUS from "@/components/AboutUS";
 import Services from "@/components/Services";
+import SmoothScrolling from "@/components/SmoothScrolling";
+import PortfolioSection from "@/components/PortfolioSection";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -33,13 +35,13 @@ export default function Home() {
         <header className="w-full h-auto">
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         </header>
-
+   
         <HeroSection getHeaderHeight={0} />
         <MarqueeSection />
         <AboutUS/> 
         <Services />
+        {/* <PortfolioSection /> */}
       </div>
-
       {/* Mobile Overlay */}
       <div className="fixed top-0 left-0 -z-[100] w-full h-full bg-[#1D1D1D] flex items-center justify-center">
 
