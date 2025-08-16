@@ -1,7 +1,7 @@
-import React from 'react'
-import { Outfit, Teko } from 'next/font/google';
-import GetStartedButton from './GetStartedButton';
-import Image from 'next/image';
+import React from "react";
+import { Outfit, Teko } from "next/font/google";
+import GetStartedButton from "./GetStartedButton";
+import Image from "next/image";
 
 const outfit = Outfit({
   weight: ["100", "300", "400", "700", "900"],
@@ -30,22 +30,23 @@ function ServiceItem({
   buttonText,
   imageSrc,
   imageAlt,
-  tags = []
+  tags = [],
 }: ServiceItemProps) {
   return (
-    <div className="w-full h-auto" style={{ borderTop: '1px dashed gray' }}>
+    <div className="w-full h-auto" style={{ borderTop: "1px dashed gray" }}>
       <div className="max-w-[min(95%,1600px)] mx-auto h-auto">
         <div
           className="w-full grid gap-1 lg:[grid-template-columns:0.9fr_1.9fr_1.3fr] md:[grid-template-columns:0.4fr_1.9fr_1fr] sm:grid-cols-1"
           style={{
-            paddingTop: 'max(4%, 1.9rem)',
-            paddingBottom: 'max(3.5%, 1.4rem)',
+            paddingTop: "max(3.5%, 1.4rem)",
+            paddingBottom: "max(3.5%, 1.4rem)",
           }}
         >
           {/* Number Section */}
           <div>
             <p
-              className={`font-medium text-[clamp(2.2rem,5vw,3.5rem)] md:text-center ${teko.className}`} style={{ lineHeight: '1' }}
+              className={`font-medium text-[clamp(2.2rem,5vw,3.5rem)] md:text-center ${teko.className}`}
+              style={{ lineHeight: "1" }}
             >
               {number}.
             </p>
@@ -55,11 +56,11 @@ function ServiceItem({
           <div>
             <div
               className="w-full h-auto flex-col"
-              style={{ paddingBottom: 'max(5%, 1.5rem)' }}
+              style={{ paddingBottom: "max(5%, 1.5rem)" }}
             >
               <h1
                 className={`font-medium text-[clamp(3.2rem,5vw,4rem)] ${teko.className}`}
-                style={{ lineHeight: '1' }}
+                style={{ lineHeight: "1" }}
               >
                 {title}
               </h1>
@@ -70,9 +71,7 @@ function ServiceItem({
                 {description}
               </p>
 
-              <div
-                className="w-full h-auto xl:py-15 md:py-10 sm:py-5 py-4"
-              >
+              <div className="w-full h-auto xl:py-15 md:py-10 sm:py-5 py-4">
                 <GetStartedButton buttonTitle={buttonText} />
               </div>
 
@@ -90,20 +89,18 @@ function ServiceItem({
             </div>
           </div>
 
-          {/* Image Section */}
-       <div className="relative w-full" style={{ height: 'clamp(250px, 80vw, 500px)' }}>
-  <Image
-    src={imageSrc}
-    alt={imageAlt}
-    fill
-    sizes="100vw"
-    className="object-cover"
-    priority
-  />
-</div>
-        </div >
-      </div >
-    </div >
+          <div className="relative bg-red-400 w-full xl:h-[450px] h-[370px] sm:h-[500px] lg:h-[400px] md:h-[310px]">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              priority
+             />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

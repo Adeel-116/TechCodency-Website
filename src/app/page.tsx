@@ -5,8 +5,6 @@ import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import AboutUS from "@/components/AboutUS";
 import Services from "@/components/Services";
-import SmoothScrolling from "@/components/SmoothScrolling";
-import PortfolioSection from "@/components/PortfolioSection";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -40,6 +38,7 @@ export default function Home() {
         <MarqueeSection />
         <AboutUS/> 
         <Services />
+
         {/* <PortfolioSection /> */}
       </div>
       {/* Mobile Overlay */}
