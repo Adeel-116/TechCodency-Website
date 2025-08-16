@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import AboutUS from "@/components/AboutUS";
 import Services from "@/components/Services";
+import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -12,21 +14,21 @@ export default function Home() {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     }
   }, [menuOpen]);
 
   return (
-    <>
+    <SmoothScrollWrapper>
       <div
         className={`w-full relative h-auto bg-white`}
         style={{
           transform: menuOpen
             ? "translateX(-30%) scale(0.7) rotateY(15deg)"
             : "translateX(0) scale(1) rotateY(0)",
-          height: menuOpen ? "100dvh" : "100dvh",
+          height: menuOpen ? "100dvh" : "auto",
           top: menuOpen ? "0" : "0",
-          overflow: menuOpen ? "hidden" : "auto",
+          overflow: menuOpen ? "hidden" : "visible",
           transition: "all 0.5s ease-in-out",
         }}
       >
@@ -34,17 +36,20 @@ export default function Home() {
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         </header>
    
-        <HeroSection getHeaderHeight={0} />
-        <MarqueeSection />
-        <AboutUS/> 
-        <Services />
+  
+          <HeroSection getHeaderHeight={0} />
+      
+          <MarqueeSection />
 
-        {/* <PortfolioSection /> */}
+          <AboutUS/> 
+       
+      
+          <Services />
+    
       </div>
-      {/* Mobile Overlay */}
+      
       <div className="fixed top-0 left-0 -z-[100] w-full h-full bg-[#1D1D1D] flex items-center justify-center">
-
       </div>
-    </>
+    </SmoothScrollWrapper>
   );
 }
