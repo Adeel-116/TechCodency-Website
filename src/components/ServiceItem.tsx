@@ -14,7 +14,7 @@ const teko = Teko({
 });
 
 type ServiceItemProps = {
-  number: number;
+  number: string;
   title: string;
   description: string;
   buttonText: string;
@@ -33,13 +33,13 @@ function ServiceItem({
   tags = [],
 }: ServiceItemProps) {
   return (
-    <div className="w-full h-auto" style={{ borderTop: "1px dashed gray" }}>
+    <div className="w-full h-auto bg-white" style={{ borderTop: "1px dashed gray" }}>
       <div className="max-w-[min(95%,1600px)] mx-auto h-auto">
         <div
           className="w-full grid gap-1 lg:[grid-template-columns:0.9fr_1.9fr_1.3fr] md:[grid-template-columns:0.4fr_1.9fr_1fr] sm:grid-cols-1"
           style={{
-            paddingTop: "max(3.5%, 1.4rem)",
-            paddingBottom: "max(3.5%, 1.4rem)",
+            paddingTop: "max(3%, 1rem)",
+            paddingBottom: "max(3%, 1rem)",
           }}
         >
           {/* Number Section */}
@@ -59,8 +59,8 @@ function ServiceItem({
               style={{ paddingBottom: "max(5%, 1.5rem)" }}
             >
               <h1
-                className={`font-medium text-[clamp(3.2rem,5vw,4rem)] ${teko.className}`}
-                style={{ lineHeight: "1" }}
+                className={`font-medium text-[clamp(3.2rem,5vw,4.2rem)] ${teko.className}`}
+                style={{ lineHeight: "0.7" }}
               >
                 {title}
               </h1>

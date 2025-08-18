@@ -16,26 +16,26 @@
 
 html {
   scroll-behavior: auto !important;
-  height: 500%;
 }
 
-/* Hide scrollbar if needed */
-::-webkit-scrollbar {
-  width: 8px;
+html.lenis {
+  height: auto;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
+html.lenis body {
+  height: auto;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+
+* {
+  scroll-behavior: auto !important;
 }
+
+
 
 @keyframes whiteGlow {
 

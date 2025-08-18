@@ -276,7 +276,7 @@ const CaseStudy = () => {
             >
                 <div
                     ref={sliderRef}
-                    className='flex h-full bg-yellow-300'
+                    className='flex h-full bg-yellow-300 '
                     style={{
                         width: `${caseStudyImages.length * slideWidth}px`,
                         transform: `translateX(-${currentIndex * slideWidth}px)`

@@ -5,7 +5,10 @@ import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import AboutUS from "@/components/AboutUS";
 import Services from "@/components/Services";
-import SmoothScrollWrapper from "@/components/SmoothScrollWrapper";
+import LenisWrapper from "@/components/LenisWrapper";
+import Practice from "@/components/Practice";
+import PortfolioSection from "@/components/PortfolioSection";
+import CaseStudy from "@/components/CaseStudy";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +22,8 @@ export default function Home() {
   }, [menuOpen]);
 
   return (
-    <SmoothScrollWrapper>
+    <>
+    <LenisWrapper>
       <div
         className={`w-full relative h-auto bg-white`}
         style={{
@@ -35,21 +39,33 @@ export default function Home() {
         <header className="w-full h-auto">
           <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         </header>
-   
   
           <HeroSection getHeaderHeight={0} />
       
           <MarqueeSection />
-
-          <AboutUS/> 
-       
       
+          <AboutUS/> 
+          
           <Services />
-    
+          <PortfolioSection />
+
+       
+          {/* <CaseStudy /> */}
+      
+       
+        
+       
       </div>
       
       <div className="fixed top-0 left-0 -z-[100] w-full h-full bg-[#1D1D1D] flex items-center justify-center">
       </div>
-    </SmoothScrollWrapper>
+    </LenisWrapper>
+
+
+      {/* <Practice /> */}
+       
+       
+    </>
+
   );
 }
