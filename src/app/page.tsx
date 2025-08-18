@@ -9,6 +9,7 @@ import LenisWrapper from "@/components/LenisWrapper";
 import Practice from "@/components/Practice";
 import PortfolioSection from "@/components/PortfolioSection";
 import CaseStudy from "@/components/CaseStudy";
+import PricingPlans from "@/components/PricingPlans";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,6 +49,7 @@ export default function Home() {
           
           <Services />
           <PortfolioSection />
+          <PricingPlans />
 
        
           {/* <CaseStudy /> */}
