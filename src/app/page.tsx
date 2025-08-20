@@ -33,17 +33,18 @@ export default function Home() {
     <>
       <LenisWrapper>
         <div
-          className={`w-full relative h-auto bg-bg-white`}
-          style={{
-            transform: menuOpen
-              ? "translateX(-30%) scale(0.7) rotateY(15deg)"
-              : "translateX(0) rotateY(0deg)",
-            height: menuOpen ? "100dvh" : "auto",
-            top: menuOpen ? "0" : "0",
-            overflow: menuOpen ? "hidden" : "visible",
-            transition: "all 0.5s ease-in-out",
-          }}
-        >
+  className={`w-full relative bg-bg-white`}
+  style={{
+    transform: menuOpen
+      ? "translateX(-30%) scale(0.7) rotateY(15deg)"
+      : "translateX(0) scale(1) rotateY(0deg)",
+    height: "100dvh", // 👈 always fixed height
+    top: 0,
+    overflow: menuOpen ? "hidden" : "auto",
+    transition: "all 0.5s ease-in-out",
+    transformOrigin: "left center", // 👈 ensures smooth pivot
+  }}
+>
           <header className="w-full h-auto">
             <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </header>
