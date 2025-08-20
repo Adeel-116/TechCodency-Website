@@ -59,28 +59,15 @@ export default function Header({ menuOpen, setMenuOpen }: { menuOpen: boolean, s
             </div>
 
 
-
-            {/* Mobile Menu Button */}
             <div className="lg:hidden flex">
-
-
-
               <div className="lg:hidden flex">
                 <button
-                  onClick={() => setMenuOpen(!menuOpen)}
+                  onClick={() => setMenuOpen(true)}
                   className="p-1.5 rounded-full bg-primary-orange"
                 >
                   <RiMenu3Line size={23} color={"white"} />
                 </button>
               </div>
-
-
-
-
-
-
-
-
 
             </div>
 
