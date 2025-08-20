@@ -11,12 +11,12 @@ const teko = Teko({
   subsets: ["latin"],
 });
 
-export default function Header({ menuOpen, setMenuOpen }: { menuOpen: boolean, setMenuOpen: (open: boolean) => void }) {
+export default function Header({ setMenuOpen }: { setMenuOpen: (open: boolean) => void }) {
 
   return (
     <>
-      <header className={`w-full  relative ${teko.className}`}>
-        <div className="max-w-[min(95%,1600px)] mx-auto py-1 flex items-center justify-between">
+      <header className={`w-full lg:absolute top-0 bg-bg-white z-[100] ${teko.className}`}>
+        <div className="xl:max-w-[min(90%,1600px)] max-w-[min(92%,1600px)]  mx-auto py-1 flex items-center justify-between">
 
           {/* Logo */}
           <div className="flex items-center relative group ">

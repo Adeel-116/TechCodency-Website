@@ -63,11 +63,11 @@ export default function Home() {
           </header>
 
           <HeroSection getHeaderHeight={0} />
-          <MarqueeSection />
-          <AboutUS />
-          <Services />
-          <PortfolioSection />
-          <PricingPlans />
+          {/* <MarqueeSection /> */}
+          {/* <AboutUS /> */}
+          {/* <Services /> */}
+          {/* <PortfolioSection /> */}
+          {/* <PricingPlans /> */}
         </div>
 
 
@@ -96,7 +96,7 @@ export default function Home() {
 </div>
 
           <div className="absolute top-1/2 right-0 -translate-y-1/2 w-fit md:pr-50 sm:pr-30 pr-25 pl-3 flex justify-center items-center">
-            <nav className={`flex flex-col fixed z-[100] text-white font-semibold space-y-1 ${teko.className}  sm:text-[26px] text-[23px]`}>
+            <nav className={`flex flex-col fixed z-[100] text-white font-semibold space-y-1 ${teko.className}  sm:text-[26px] text-[26px]`}>
               {menuItems.map((item) =>
                 item === "SERVICE" ? (
                   <div key={item} className="relative sm:min-w-[220px] min-w-[190px] " >
@@ -116,7 +116,7 @@ export default function Home() {
                       }
                     >
                       <div
-                        className={`ml-2 flex flex-col space-y-1 border-l-1 border-bg-white sm:text-xl text-[18px] pl-2 `}
+                        className={`ml-2 flex flex-col space-y-1 border-l-1 border-bg-white sm:text-xl text-[21px] pl-2 `}
                     >
                       {services.map((srv, index) => (
                         <a

@@ -11,8 +11,7 @@ const outfit = Outfit({
 
 export default function CircularText() {
   return (
-    <div className="absolute left-[50%] bottom-0 transform -translate-x-1/2">
-      <div className="lg:w-[190px] lg:h-[190px] w-[120px] h-[120px] sm:bg-bg rounded-full flex items-center justify-center relative">
+      <div className="2xl:w-[150px] 2xl:h-[150px] w-[130px] h-[130px] sm:bg-bg rounded-full flex items-center justify-center relative">
         <svg
           className="sm:w-[170px] sm:h-[170px] w-[130px] h-[130px]"
           viewBox="0 0 180 180"
@@ -60,24 +59,14 @@ export default function CircularText() {
             </text>
           </g>
 
-          <circle cx="90" cy="90" r="40" fill="#1D1D1D" />
-          <circle cx="90" cy="90" r="30" fill="#E6F620" />
+          <circle cx="90" cy="90" r="40" fill="#000000" />
+          <circle cx="90" cy="90" r="30" fill="#DB4619" />
         </svg>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-bg-white">
           <FaArrowDownLong size={24} />
         </div>
       </div>
 
-      <div className="2xl:absolute 2xl:flex hidden top-0 -left-[500px] w-full h-full items-center justify-center">
-        <Image
-          src="/images/h1-shape1.png"
-          alt="shape"
-          width={300}
-          height={300}
-          className="moveAnimation"
-        />
-      </div>
-    </div>
   );
 }

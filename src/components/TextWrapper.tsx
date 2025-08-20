@@ -32,7 +32,7 @@ function TextWrapper() {
         <div
             className=" h-auto ml-4 px-2 2xl:py-4.5 lg:py-4 py-2 rounded-[50px] flex items-center justify-center overflow-hidden relative transform-gpu"
             style={{
-                background: 'linear-gradient(90deg, var(--color-primary), var(--color-primary-support))', 
+                background: 'linear-gradient(90deg, var(--color-primary-orange), var(--color-primary-orange-support))', 
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 15px rgba(0, 0, 0, 0.2)', 
                 transform: 'translateZ(0)', 
                 width: "clamp(10rem, 30vw, 18rem)",

@@ -28,9 +28,9 @@ const GetStartedButton = ({ buttonTitle }: GetStartedButtonProps) => {
         style={{
           padding: 'clamp(0.6rem, 1vw, 0.7rem) clamp(0.9rem, 2vw, 1.4rem)',
           fontSize: 'clamp(0.8rem, 2vw, 0.9rem)', 
-          backgroundColor: hover ? 'var(--color-secondary-darkblue-support)' : 'var(--color-primary-orange-support)',
-          color: hover ? 'white' : '#000000',
-          border: hover ? '1px solid var(--color-secondary)' : '1px solid transparent',
+          backgroundColor: hover ? 'var(--color-secondary-darkblue-support)' : 'var(--color-primary-orange)',
+          color:  'white',
+          border: hover ? '1px solid var(--color-secondary-darkblue-support)' : '1px solid transparent',
         }}
       >
         {/* Animated background overlay */}
@@ -75,8 +75,8 @@ const GetStartedButton = ({ buttonTitle }: GetStartedButtonProps) => {
           height: 'clamp(2.2rem, 3vw, 3rem)',
           fontSize: 'clamp(1rem, 2vw, 1.5rem)', 
           left: 'clamp(-0.75rem, -1vw, -1rem)', 
-          backgroundColor: hover ? 'var(--color-secondary-darkblue-support)' : 'var(--color-primary-orange-support)',
-          color: hover ? 'white' : 'black',
+          backgroundColor: hover ? 'var(--color-secondary-darkblue-support)' : 'var(--color-primary-orange)',
+          color: 'white',
           borderColor: hover ? 'white' : 'white',
           boxShadow: hover ? '0 8px 25px rgba(0,0,0,0.15)' : '0 4px 15px rgba(0,0,0,0.1)',
         }}
@@ -86,7 +86,7 @@ const GetStartedButton = ({ buttonTitle }: GetStartedButtonProps) => {
           className="absolute inset-0 rounded-full transition-all duration-700"
           style={{
             background: hover 
-              ? 'radial-gradient(circle, var(--color-secondary-darkblue-support) 0%, var(--color-secondary) 100%)'
+              ? 'radial-gradient(circle, var(--color-secondary-darkblue-support) 0%, var(--color-secondary-darkblue) 100%)'
               : 'radial-gradient(circle, var(--color-primary-orange-support) 0%, var(--color-accent) 100%)',
             transform: hover ? 'scale(1.1)' : 'scale(1)',
             opacity: hover ? 0.8 : 0.6,
