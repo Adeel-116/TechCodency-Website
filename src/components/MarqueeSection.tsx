@@ -1,6 +1,5 @@
 import React from "react";
 import { Teko } from "next/font/google";
-import Image from "next/image";
 
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
@@ -16,6 +15,23 @@ export default function MarqueeSection() {
     "Digital Marketing",
     "Brand Strategy",
   ];
+
+  // Simple diamond SVG icon
+  const SeparatorIcon = () => (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="sm:ml-3 ml-2 flex-shrink-0"
+    >
+      <path
+        d="M12 2L22 12L12 22L2 12L12 2Z"
+        fill="#DB4619"
+      />
+    </svg>
+  );
 
   return (
     <>
@@ -52,9 +68,9 @@ export default function MarqueeSection() {
         }
       `}</style>
 
-      <div className="marquee-container ">
+      <div className="marquee-container">
         {/* Right to Left */}
-        <div className="w-full h-auto sm:py-6 py-3 bg-primary relative z-[50] flex items-center justify-center overflow-hidden">
+        <div className="w-full h-auto sm:py-6 py-3 bg-secondary-darkblue relative z-[50] flex items-center justify-center overflow-hidden">
           <div className="animate-marquee-rtl whitespace-nowrap">
             <div className="marquee-content">
               {[...marqueeItems, ...marqueeItems].map((item, index) => (
@@ -63,44 +79,11 @@ export default function MarqueeSection() {
                   className="flex items-center justify-center px-6 flex-shrink-0"
                 >
                   <span
-                    className={`inline-flex font-bold text-2xl sm:text-3xl ${teko.className} text-[#1D1D1D] justify-center items-center sm:px-2`}
+                    className={`inline-flex font-bold text-2xl sm:text-3xl ${teko.className} text-white justify-center items-center sm:px-2`}
                   >
                     {item}
                   </span>
-                  <Image
-                    src="/images/icon1.png"
-                    alt="Icon"
-                    width={24}
-                    height={24}
-                    className="sm:ml-3 ml-2 w-6 h-6"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Left to Right */}
-        <div className="w-full h-auto sm:py-6 py-3 bg-text-lightBlack relative z-[50] flex items-center justify-center overflow-hidden">
-          <div className="animate-marquee-ltr whitespace-nowrap">
-            <div className="marquee-content">
-              {[...marqueeItems, ...marqueeItems].map((item, index) => (
-                <div
-                  key={`ltr-${index}`}
-                  className="flex items-center justify-center px-6 flex-shrink-0"
-                >
-                  <span
-                    className={`inline-flex font-bold text-2xl sm:text-3xl ${teko.className} text-primary justify-center items-center px-2`}
-                  >
-                    {item}
-                  </span>
-                  <Image
-                    src="/images/icon2.png"
-                    alt="Icon"
-                    width={24}
-                    height={24}
-                    className="sm:ml-3 ml-2 w-6 h-6"
-                  />
+                  <SeparatorIcon />
                 </div>
               ))}
             </div>

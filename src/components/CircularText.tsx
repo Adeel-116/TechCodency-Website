@@ -11,7 +11,7 @@ const outfit = Outfit({
 
 export default function CircularText() {
   return (
-      <div className="2xl:w-[150px] 2xl:h-[150px] w-[130px] h-[130px] sm:bg-bg rounded-full flex items-center justify-center relative">
+      <div className="2xl:w-[150px] 2xl:h-[150px] sm:w-[130px] sm:h-[130px] w-[100px] h-[100px] sm:bg-bg rounded-full flex items-center justify-center relative">
         <svg
           className="sm:w-[170px] sm:h-[170px] w-[130px] h-[130px]"
           viewBox="0 0 180 180"
@@ -34,9 +34,9 @@ export default function CircularText() {
             cx="90"
             cy="90"
             r="85"
-            stroke="#1D1D1D"
+            stroke="#072E62"
             strokeWidth="10"
-            fill="#1D1D1D"
+            fill="#072E62"
           />
 
           <g>

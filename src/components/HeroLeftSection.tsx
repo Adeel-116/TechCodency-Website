@@ -22,16 +22,16 @@ export default function HeroLeftSection() {
 
                     <div className='w-full h-auto'>
                         <div className="flex items-center">
-                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(5.5rem,10vw,6.5rem)]  lg:text-[5rem] text-[clamp(5.5rem,10vw,6.5rem)]`}>
+                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(5.5rem,10vw,6.5rem)]  lg:text-[5rem] text-[clamp(3.5rem,8vw,6.5rem)]`}>
                                 Beyond <span className='text-secondary-darkblue'>Digital</span>
                             </h1>
                         </div>
 
                         <div className='flex items-center'>
-                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(5.5rem,10vw,6.5rem)] lg:text-[5rem] text-[clamp(5.5rem,10vw,6.5rem)]`}>
+                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(5.5rem,10vw,6.5rem)] lg:text-[5rem] text-[clamp(3.5rem,8vw,6.5rem)]`}>
                                 Strategies
                             </h1>
-                            <div className='ml-5'>
+                            <div className='sm:ml-5 ml-2'>
                                 <Cube />
                             </div>
                         </div>

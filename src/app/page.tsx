@@ -63,7 +63,7 @@ export default function Home() {
           </header>
 
           <HeroSection getHeaderHeight={0} />
-          {/* <MarqueeSection /> */}
+          <MarqueeSection />
           {/* <AboutUS /> */}
           {/* <Services /> */}
           {/* <PortfolioSection /> */}
