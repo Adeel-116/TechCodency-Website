@@ -13,6 +13,24 @@
 }
 
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;              /* width of scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1); /* track color */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #f97316;    
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;   
+}
+
 html {
   scroll-behavior: auto !important;
 }

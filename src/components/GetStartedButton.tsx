@@ -27,7 +27,7 @@ const GetStartedButton = ({ buttonTitle }: GetStartedButtonProps) => {
         className="font-semibold rounded-full flex items-center shadow-md transition-all duration-700 ease-out transform group-hover:scale-[1.02] group-hover:shadow-xl relative overflow-hidden"
         style={{
           padding: 'clamp(0.6rem, 1vw, 0.7rem) clamp(0.9rem, 2vw, 1.4rem)',
-          fontSize: 'clamp(0.9rem, 2vw, 1rem)', 
+          fontSize: 'clamp(0.8rem, 2vw, 0.9rem)', 
           backgroundColor: hover ? 'var(--color-secondary-darkblue-support)' : 'var(--color-primary-orange-support)',
           color: hover ? 'white' : '#000000',
           border: hover ? '1px solid var(--color-secondary)' : '1px solid transparent',
