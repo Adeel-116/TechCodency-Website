@@ -10,6 +10,7 @@ import PortfolioSection from "@/components/PortfolioSection";
 import PricingPlans from "@/components/PricingPlans";
 import { Teko } from "next/font/google";
 import { RiCloseLine } from "react-icons/ri";
+import StickyCardsStack from "@/components/StickyCardsStack";
 
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
@@ -50,7 +51,7 @@ export default function Home() {
 
   return (
     <>
-      <LenisWrapper>
+ 
         <div
           className={`w-full relative bg-bg-white h-[100dvh] top-0 transition-all duration-500 ease-in-out origin-left ${menuOpen
             ? "sm:translate-x-[-15%] translate-x-[-42%] scale-75 rotate-y-15"
@@ -59,13 +60,14 @@ export default function Home() {
           style={{ zIndex: menuOpen ? 10 : 'auto' }}
         >
           <header className="w-full h-auto">
-            <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+            <Header setMenuOpen={setMenuOpen} />
           </header>
 
           <HeroSection getHeaderHeight={0} />
           <MarqueeSection />
-          {/* <AboutUS /> */}
+          <AboutUS />
           {/* <Services /> */}
+          <StickyCardsStack />
           {/* <PortfolioSection /> */}
           {/* <PricingPlans /> */}
         </div>
@@ -147,7 +149,7 @@ export default function Home() {
       </div>
 
     </div >
-      </LenisWrapper >
+   
     </>
   );
 }

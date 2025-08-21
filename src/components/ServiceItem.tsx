@@ -33,7 +33,7 @@ function ServiceItem({
   tags = [],
 }: ServiceItemProps) {
   return (
-    <div className="w-full h-auto bg-white" style={{ borderTop: "1px dashed gray" }}>
+    <div className="w-full h-auto bg-bg-white" style={{ borderTop: "1px dashed gray" }}>
       <div className="max-w-[min(95%,1600px)] mx-auto h-auto">
         <div
           className="w-full grid gap-1 lg:[grid-template-columns:0.9fr_1.9fr_1.3fr] md:[grid-template-columns:0.4fr_1.9fr_1fr] sm:grid-cols-1"

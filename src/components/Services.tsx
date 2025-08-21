@@ -3,8 +3,19 @@ import React, { useEffect, useRef } from "react"
 import ServiceItem from "./ServiceItem"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-
+import { Outfit, Teko} from "next/font/google"
 gsap.registerPlugin(ScrollTrigger)
+
+
+const outfit = Outfit({
+    weight: ["100", "300", "400", "700", "900"],
+    subsets: ["latin"],
+});
+
+const teko = Teko({
+    weight: ["400", "500", "600", "700"],
+    subsets: ["latin"],
+});
 
 const servicesData = [
   {
@@ -113,18 +124,78 @@ function Services() {
   }
 
   return (
+
+    <>
+    <div className="max-w-[min(92%,1500px)] mx-auto h-auto flex flex-col justify-center items-center text-center">
+            <div
+            className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
+          >
+            {/* Left Line */}
+            <div
+              className="w-16 h-[3px] rounded-full relative"
+              style={{
+                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              }}
+            >
+            </div>
+
+            {/* Text with gradient */}
+            <span
+              className="font-black text-base uppercase tracking-[0.2em] relative sm:px-4 py-2"
+              style={{
+                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              OUR SERVICES
+            </span>
+
+            {/* Right Line */}
+            <div
+              className="w-16 h-[3px] rounded-full relative"
+              style={{
+                background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
+              }}
+            >
+            </div>
+          </div>
+
+            <h1
+            className={`font-black leading-[0.9] w-[80%] mb-8 ${teko.className}`}
+            style={{
+              fontSize: "clamp(4rem, 11vw, 5rem)",
+              color: "#000000",
+              textShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              fontWeight: 800,
+            }}
+          >
+            Our approach to <span className="text-secondary-darkblue">your brand!</span>
+          </h1>
+
+
+          <p className="leading-relaxed sm:text-center text-start text-gray-700 xl:w-[70%] sm:w-[90%] w-[96%] mb-5"
+              style={{
+                fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+                fontWeight: 400,
+              }}>We don’t just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
+
+    </div>
     <div className="w-full h-auto">
       <div ref={containerRef} className="w-full relative">
         {servicesData.map((service, index) => (
           <div
             key={index}
-            className="w-full h-auto relative"
+            className="w-full bg-red-400 h-auto relative"
             style={{
               position: "sticky",
               top: "10vh",
             }}
           >
             <div
+             className="w-full h-auto bg-"
               ref={(el) => addToRefs(el, index)}
               style={{
                 zIndex: servicesData.length - index,
@@ -145,6 +216,7 @@ function Services() {
       </div>
       
     </div>
+       </>
   )
 }
 
