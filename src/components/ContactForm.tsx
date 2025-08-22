@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { FaUser, FaEnvelope, FaPhone, FaServicestack, FaComment } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaPhone, FaComment } from 'react-icons/fa';
 import GetStartedButton from '@/components/GetStartedButton';
 
 const ContactForm = () => {

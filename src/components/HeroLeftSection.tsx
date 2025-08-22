@@ -1,7 +1,6 @@
 import React from 'react';
 import GetStartedButton from "./GetStartedButton";
 import { Outfit, Teko } from "next/font/google";
-import TextWrapper from './TextWrapper';
 import Cube from './Cube';
 
 const outfit = Outfit({
@@ -38,7 +37,7 @@ export default function HeroLeftSection() {
                     </div>
 
                     <div className='w-full h-auto'>
-                        <p className={`text-text-secondary lg:w-[80%] md:w-[90%] xl:text-[15px] text-[14px] mb-2 ${outfit.className}`}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A excepturi esse ducimus nisi blanditiis qui, maiores necessitatibus iure culpa dolor. Eligendi voluptatum, repudiandae distinctio animi quidem quam similique odio architecto ipsum inventore atque rem quisquam quibusdam minus optio nulla velit, laboriosam dicta. Quam magnam facere impedit corporis, mollitia animi veniam?</p>
+                        <p className={`text-text-primary lg:w-[80%] md:w-[90%] xl:text-[18px] text-[15px] mb-2 ${outfit.className}`}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A excepturi esse ducimus nisi blanditiis qui, maiores necessitatibus iure culpa dolor. Eligendi voluptatum, repudiandae distinctio animi quidem quam similique odio architecto ipsum inventore atque rem quisquam quibusdam minus optio nulla velit, laboriosam dicta. Quam magnam facere impedit corporis, mollitia animi veniam?</p>
                     </div>
 
                     <div className="w-full">

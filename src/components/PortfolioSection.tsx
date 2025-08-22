@@ -151,7 +151,7 @@ const PortfolioCard: React.FC<{ project: PortfolioDataType }> = ({ project }) =>
         <div className="absolute inset-0 flex items-center justify-center p-6">
           <div className={`text-center transform transition-all duration-500 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <h3 className="text-white text-2xl font-bold mb-3 transform transition-all duration-300">{project.title}</h3>
-            <p className="text-[#BBBBB9] text-sm mb-6 opacity-90 leading-relaxed">{project.description}</p>
+            <p className="text-text-primary text-sm mb-6 opacity-90 leading-relaxed">{project.description}</p>
             <span className="inline-block px-6 py-3 bg-secondary-darkblue-support text-white text-sm font-bold rounded-full transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
               VIEW PROJECT
             </span>
@@ -279,7 +279,7 @@ const PortfolioSection: React.FC = () => {
         </h1>
 
 
-        <p className="leading-relaxed text-gray-700 xl:w-[70%] sm:w-[90%] w-[95%]  text-center mb-5"
+        <p className="leading-relaxed text-text-primary xl:w-[70%] sm:w-[90%] w-[95%]  text-center mb-5"
           style={{
             fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
             fontWeight: 400,
@@ -297,9 +297,9 @@ const PortfolioSection: React.FC = () => {
           >
             <style jsx>{`
             .custom-scrollbar {
-  overflow-x: auto;       /* horizontal scroll enable */
-  overflow-y: hidden;     /* vertical scroll hide */
-  padding-bottom: 14px;   /* niche shift */
+  overflow-x: auto;     
+  overflow-y: hidden;   
+  padding-bottom: 14px;   
   scrollbar-width: thin;  
   scrollbar-color: var(--color-primary-orange-support) var(--color-primary-orange);
 }

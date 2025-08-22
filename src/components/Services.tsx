@@ -1,11 +1,8 @@
 "use client"
-import React, { useEffect, useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import React from "react"
 import { Outfit, Teko } from "next/font/google"
 import PortfolioSection from "./PortfolioSection"
 import ServiceCard from "./ServiceCard"
-gsap.registerPlugin(ScrollTrigger)
 
 
 const outfit = Outfit({
@@ -130,7 +127,7 @@ function Services() {
           style={{
             fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
             fontWeight: 400,
-          }}>We dont just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
+          }}>We don,t just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
 
       </div>
       

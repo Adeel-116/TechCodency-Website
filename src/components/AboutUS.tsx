@@ -105,7 +105,7 @@ export default function AboutUS() {
           {/* Paragraphs */}
           <div className={`space-y-8 xl:w-[80%] lg:w-[90%] sm:w-[97%] w-full sm:text-center text-start ${outfit.className}`}>
             <p
-              className="leading-relaxed text-gray-700"
+              className="leading-relaxed text-text-primary"
               style={{
                 fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
                 fontWeight: 400,
@@ -119,7 +119,7 @@ export default function AboutUS() {
             </p>
 
             <p
-              className="leading-relaxed text-gray-700"
+              className="leading-relaxed text-text-primary"
               style={{
                 fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
                 fontWeight: 400,

@@ -5,12 +5,9 @@ import HeroSection from "@/components/HeroSection";
 import MarqueeSection from "@/components/MarqueeSection";
 import AboutUS from "@/components/AboutUS";
 import Services from "@/components/Services";
-import LenisWrapper from "@/components/LenisWrapper";
-import PortfolioSection from "@/components/PortfolioSection";
 import PricingPlans from "@/components/PricingPlans";
 import {Teko } from "next/font/google";
 import { RiCloseLine } from "react-icons/ri";
-import Sticky from "@/components/Sticky";
 import CaseStudy from "@/components/CaseStudy";
 const teko = Teko({
   weight: ["400", "500", "600", "700"],

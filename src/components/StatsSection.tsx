@@ -12,13 +12,34 @@ const teko = Teko({
   subsets: ["latin"],
 });
 
-const useCounter = (end, duration = 2000, delay = 0) => {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+// Type definitions
+interface UseCounterReturn {
+  count: number;
+  startAnimation: () => void;
+}
+
+interface StatData {
+  number: number;
+  suffix: string;
+  label: string;
+  gradient: string;
+}
+
+interface StatCardProps {
+  number: number;
+  suffix: string;
+  label: string;
+  delay: number;
+  gradient: string;
+}
+
+const useCounter = (end: number, duration: number = 2000, delay: number = 0): UseCounterReturn => {
+  const [count, setCount] = useState<number>(0);
+  const [hasAnimated, setHasAnimated] = useState<boolean>(false);
 
   useEffect(() => {
     if (!hasAnimated) return;
-    
+
     const timer = setTimeout(() => {
       let start = 0;
       const increment = end / (duration / 16);
@@ -38,7 +59,7 @@ const useCounter = (end, duration = 2000, delay = 0) => {
     return () => clearTimeout(timer);
   }, [end, duration, delay, hasAnimated]);
 
-  const startAnimation = () => {
+  const startAnimation = (): void => {
     if (!hasAnimated) {
       setHasAnimated(true);
     }
@@ -48,9 +69,10 @@ const useCounter = (end, duration = 2000, delay = 0) => {
 };
 
 // Individual Stat Card Component
-const StatCard = ({ number, suffix, label, delay, gradient }) => {
+const StatCard: React.FC<StatCardProps> = ({ number, suffix, label, delay, gradient }) => {
   const { count, startAnimation } = useCounter(number, 2000, delay);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -60,46 +82,61 @@ const StatCard = ({ number, suffix, label, delay, gradient }) => {
     return () => clearTimeout(timer);
   }, [startAnimation]);
 
+  // Determine if gradient contains orange for ring color
+  const isOrangeGradient = gradient.includes('orange');
+
   return (
-    <div 
-      className={`relative group transition-all duration-700 ease-out transform ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`}
+    <div
+      className={`relative group transition-all duration-700 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Card Container */}
-      <div className="relative  rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden group-hover:scale-105 group-hover:-translate-y-2">
-        
+      <div
+        className={`relative bg-white rounded-2xl p-8 shadow-lg transition-all duration-500 border border-gray-100 overflow-hidden cursor-pointer ${isHovered ? 'shadow-2xl scale-105 -translate-y-2' : ''
+          }`}
+        style={{
+          boxShadow: isHovered
+            ? '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+            : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+        }}
+      >
+
         {/* Gradient Background Effect */}
-        <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-all duration-700 rounded-2xl transform group-hover:rotate-1"
+        <div
+          className={`absolute inset-0 rounded-2xl transition-all duration-700 transform ${isHovered ? 'opacity-15 rotate-1' : 'opacity-0'
+            }`}
           style={{
             background: gradient,
           }}
         />
-        
+
         {/* Content */}
         <div className="relative z-10">
           {/* Number */}
-          <div className="mb-3 transform group-hover:scale-110 transition-transform duration-500">
-            <span 
-              className={`text-6xl font-black leading-none group-hover:drop-shadow-lg transition-all duration-500 ${teko.className}`}
+          <div className={`mb-3 transition-transform duration-500 ${isHovered ? 'scale-110' : ''
+            }`}>
+            <span
+              className={`font-black leading-none transition-all duration-500 block ${teko.className} ${isHovered ? 'drop-shadow-lg' : ''
+                }`}
               style={{
                 background: gradient,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                color: 'transparent',
                 fontSize: 'clamp(3rem, 5vw, 4rem)',
               }}
             >
               {count}{suffix}
             </span>
           </div>
-          
+
           {/* Label */}
-          <p 
-            className={`text-gray-700 font-medium tracking-wide uppercase transform group-hover:translate-x-2 transition-all duration-500 group-hover:text-gray-900 ${outfit.className}`}
+          <p
+            className={`text-gray-700 font-medium tracking-wide uppercase transition-all duration-500 ${outfit.className} ${isHovered ? 'translate-x-2 text-gray-900' : ''
+              }`}
             style={{
               fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)',
               letterSpacing: '0.1em',
@@ -110,27 +147,25 @@ const StatCard = ({ number, suffix, label, delay, gradient }) => {
         </div>
 
         {/* Hover Effect Line */}
-        <div 
-          className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-700 rounded-full"
+        <div
+          className={`absolute bottom-0 left-0 h-1 rounded-full transition-all duration-700 ${isHovered ? 'w-full' : 'w-0'
+            }`}
           style={{ background: gradient }}
         />
-        
-        {/* Additional Hover Effects */}
+
+        {/* Ring Effect */}
         <div
-          className={`absolute inset-0 rounded-2xl ring-0 group-hover:ring-2 transition-all duration-500 ${
-            gradient.includes('orange')
-              ? 'group-hover:ring-[var(--color-primary-orange)]'
-              : 'group-hover:ring-[var(--color-secondary-darkblue)]'
-          }`}
-          
-        />
+          className={`absolute inset-0 rounded-2xl transition-all duration-500 ring-offset-2
+    ${isHovered ? 'ring-2' : 'ring-0'} 
+    ${isHovered ? (isOrangeGradient ? 'ring-[var(--color-primary-orange)]' : 'ring-[var(--color-secondary-darkblue)]') : ''}`}
+        ></div>
       </div>
     </div>
   );
 };
 
-export default function StatsSection() {
-  const stats = [
+const StatsSection: React.FC = () => {
+  const stats: StatData[] = [
     {
       number: 150,
       suffix: '+',
@@ -158,12 +193,12 @@ export default function StatsSection() {
   ];
 
   return (
-    <div className="w-full" style={{ 
+    <div className="w-full" style={{
       paddingTop: 'clamp(3rem, 8vw, 5rem)',
       paddingBottom: 'clamp(2rem, 6vw, 4rem)'
     }}>
       <div className="max-w-[min(92%,1400px)] mx-auto">
-        
+
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className={`inline-flex items-center gap-4 w-fit mb-6 relative ${outfit.className}`}>
@@ -183,7 +218,6 @@ export default function StatsSection() {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                color: 'transparent',
               }}
             >
               OUR ACHIEVEMENTS
@@ -211,7 +245,7 @@ export default function StatsSection() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
+          {stats.map((stat: StatData, index: number) => (
             <StatCard
               key={index}
               number={stat.number}
@@ -225,4 +259,6 @@ export default function StatsSection() {
       </div>
     </div>
   );
-}
+};
+
+export default StatsSection;

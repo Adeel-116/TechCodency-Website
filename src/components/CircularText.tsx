@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { Outfit } from "next/font/google";
 import { FaArrowDownLong } from "react-icons/fa6";
 
@@ -48,7 +47,7 @@ export default function CircularText() {
               repeatCount="indefinite"
             />
             <text
-              className={`${outfit.className} text-text-secondary fill-text-primary`}
+              className={`${outfit.className} fill-white`}
               fontSize="22"
               wordSpacing={10}
               letterSpacing={2}

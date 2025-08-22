@@ -14,7 +14,17 @@ const teko = Teko({
   subsets: ["latin"],
 })
 
-function ServiceCard({ number, title, description, buttonText, imageSrc, imageAlt, tags }) {
+interface ServiceCardProps {
+  number: number | string;
+  title: string;
+  description: string;
+  buttonText: string;
+  imageSrc: string;
+  imageAlt: string;
+  tags: string[];
+}
+
+function ServiceCard({ number, title, description, buttonText, imageSrc, imageAlt, tags }: ServiceCardProps) {
   return (
     <div className="w-full h-auto" >
       <div className="max-w-[min(95%,1600px)] mx-auto h-auto">
@@ -28,7 +38,7 @@ function ServiceCard({ number, title, description, buttonText, imageSrc, imageAl
           {/* Number Section */}
           <div>
             <p
-              className={`font-medium text-[clamp(2.2rem,5vw,3.5rem)] md:text-center ${teko.className}`}
+              className={`font-medium text-[clamp(2.2rem,5vw,3.5rem)] md:text-center text-bg-black ${teko.className}`}
               style={{ lineHeight: "1" }}
             >
               {number}
@@ -49,7 +59,7 @@ function ServiceCard({ number, title, description, buttonText, imageSrc, imageAl
               </h1>
 
               <p
-                className={`2xl:w-[90%] sm:w-[95%] w-full text-[clamp(0.9rem,1.4vw,1.1rem)] md:mt-5 mt-0 ${outfit.className} text-[#7f807f]`}
+                className={`2xl:w-[90%] sm:w-[95%] w-full text-[clamp(0.9rem,1.4vw,1.1rem)] md:mt-5 mt-0 ${outfit.className} text-text-primary`}
               >
                 {description}
               </p>
@@ -63,7 +73,7 @@ function ServiceCard({ number, title, description, buttonText, imageSrc, imageAl
                 {tags.map((tag, index) => (
                   <div
                     key={index}
-                    className={`text-[clamp(0.875rem,1.2vw,1rem)] text-black px-6 py-1.5 border-[0.2px] border-[#7F807Fa2] rounded-full text-center ${outfit.className}`}
+                    className={`text-[clamp(0.875rem,1.2vw,1rem)] text-black px-6 py-1.5 border-[0.2px] border-text-primary rounded-full text-center ${outfit.className}`}
                   >
                     {tag}
                   </div>
@@ -71,7 +81,7 @@ function ServiceCard({ number, title, description, buttonText, imageSrc, imageAl
               </div>
             </div>
           </div>
-          <div className="relative bg-red-400 w-full xl:h-[450px] h-[370px] sm:h-[500px] lg:h-[400px] md:h-[310px]">
+          <div className="relative w-full xl:h-[450px] h-[370px] sm:h-[500px] lg:h-[400px] md:h-[310px]">
             <Image
               src={imageSrc}
               alt={imageAlt}
