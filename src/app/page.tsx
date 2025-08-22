@@ -8,10 +8,10 @@ import Services from "@/components/Services";
 import LenisWrapper from "@/components/LenisWrapper";
 import PortfolioSection from "@/components/PortfolioSection";
 import PricingPlans from "@/components/PricingPlans";
-import { Teko } from "next/font/google";
+import {Teko } from "next/font/google";
 import { RiCloseLine } from "react-icons/ri";
-import StickyCardsStack from "@/components/StickyCardsStack";
-
+import Sticky from "@/components/Sticky";
+import CaseStudy from "@/components/CaseStudy";
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -66,10 +66,14 @@ export default function Home() {
           <HeroSection getHeaderHeight={0} />
           <MarqueeSection />
           <AboutUS />
-          {/* <Services /> */}
-          <StickyCardsStack />
-          {/* <PortfolioSection /> */}
-          {/* <PricingPlans /> */}
+          <Services />
+          <PricingPlans />
+          <CaseStudy />
+       
+         
+  
+          {/* <Sticky /> */}
+  
         </div>
 
 

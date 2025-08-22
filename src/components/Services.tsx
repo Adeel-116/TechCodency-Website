@@ -1,20 +1,21 @@
 "use client"
 import React, { useEffect, useRef } from "react"
-import ServiceItem from "./ServiceItem"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Outfit, Teko} from "next/font/google"
+import { Outfit, Teko } from "next/font/google"
+import PortfolioSection from "./PortfolioSection"
+import ServiceCard from "./ServiceCard"
 gsap.registerPlugin(ScrollTrigger)
 
 
 const outfit = Outfit({
-    weight: ["100", "300", "400", "700", "900"],
-    subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  subsets: ["latin"],
 });
 
 const teko = Teko({
-    weight: ["400", "500", "600", "700"],
-    subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
 });
 
 const servicesData = [
@@ -27,6 +28,8 @@ const servicesData = [
     imageSrc: "/images/service-1.webp",
     imageAlt: "Web Design Service",
     tags: ["UI/UX", "Website Design", "E-commerce", "Motion Graphics"],
+    top: 10,
+    
   },
   {
     number: "02",
@@ -37,6 +40,7 @@ const servicesData = [
     imageSrc: "/images/service-1.webp",
     imageAlt: "Development Service",
     tags: ["Frontend", "Backend", "Mobile Apps", "API Integration"],
+     top: 10,
   },
   {
     number: "03",
@@ -47,6 +51,7 @@ const servicesData = [
     imageSrc: "/images/service-1.webp",
     imageAlt: "Marketing Service",
     tags: ["SEO", "Social Media", "Content Marketing", "PPC Advertising"],
+     top: 10,
   },
   {
     number: "04",
@@ -62,146 +67,86 @@ const servicesData = [
       "Process Optimization",
       "Technology Audit",
     ],
+     top: 10,
   },
 ]
 
 function Services() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const cardsRef = useRef<HTMLDivElement[]>([])
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const cards = cardsRef.current
-    const container = containerRef.current
-
-    cards.forEach((card, index) => {
-      if (card) {
-        gsap.set(card, {
-          zIndex: cards.length - index,
-          position: "sticky",
-          top: "10vh",
-        })
-      }
-    })
-
-    cards.forEach((card, index) => {
-      if (index === 0 || !card) return
-
-
-      ScrollTrigger.create({
-        trigger: card,
-        start: "top bottom-=100",
-        end: "bottom center",
-        scrub: 1,
-        onUpdate: (self) => {
-          const progress = self.progress
-
-          gsap.to(card, {
-            y: -(progress * 50),
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        },
-        onLeave: () => {
-          gsap.set(card, { y: -50 })
-        },
-        onEnterBack: () => {
-          gsap.set(card, { y: 0 })
-        }
-      })
-    })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [])
-
-  const addToRefs = (el: HTMLDivElement | null, index: number) => {
-    if (el && !cardsRef.current[index]) {
-      cardsRef.current[index] = el
-    }
-  }
 
   return (
 
     <>
-    <div className="max-w-[min(92%,1500px)] mx-auto h-auto flex flex-col justify-center items-center text-center">
-            <div
-            className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
+      <div className="w-full h-auto flex flex-col justify-center items-center text-center">
+        <div
+          className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
+        >
+          {/* Left Line */}
+          <div
+            className="w-16 h-[3px] rounded-full relative"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+            }}
           >
-            {/* Left Line */}
-            <div
-              className="w-16 h-[3px] rounded-full relative"
-              style={{
-                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
-              }}
-            >
-            </div>
-
-            {/* Text with gradient */}
-            <span
-              className="font-black text-base uppercase tracking-[0.2em] relative sm:px-4 py-2"
-              style={{
-                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              OUR SERVICES
-            </span>
-
-            {/* Right Line */}
-            <div
-              className="w-16 h-[3px] rounded-full relative"
-              style={{
-                background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
-              }}
-            >
-            </div>
           </div>
 
-            <h1
-            className={`font-black leading-[0.9] w-[80%] mb-8 ${teko.className}`}
+          {/* Text with gradient */}
+          <span
+            className="font-black text-base uppercase tracking-[0.2em] relative px-4 py-2"
             style={{
-              fontSize: "clamp(4rem, 11vw, 5rem)",
-              color: "#000000",
-              textShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              fontWeight: 800,
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
             }}
           >
-            Our approach to <span className="text-secondary-darkblue">your brand!</span>
-          </h1>
+            OUR SERVICES
+          </span>
 
-
-          <p className="leading-relaxed sm:text-center text-start text-gray-700 xl:w-[70%] sm:w-[90%] w-[96%] mb-5"
-              style={{
-                fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
-                fontWeight: 400,
-              }}>We don’t just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
-
-    </div>
-    <div className="w-full h-auto">
-      <div ref={containerRef} className="w-full relative">
-        {servicesData.map((service, index) => (
+          {/* Right Line */}
           <div
-            key={index}
-            className="w-full bg-red-400 h-auto relative"
+            className="w-16 h-[3px] rounded-full relative"
             style={{
-              position: "sticky",
-              top: "10vh",
+              background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
             }}
           >
+          </div>
+        </div>
+
+        <h1
+          className={`font-black leading-[0.9] w-[80%] mb-8 ${teko.className}`}
+          style={{
+            fontSize: "clamp(4rem, 11vw, 5rem)",
+            color: "#000000",
+            textShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            fontWeight: 800,
+          }}
+        >
+          Our approach to <span className="text-secondary-darkblue">your brand!</span>
+        </h1>
+
+
+        <p className="leading-relaxed text-gray-700 xl:w-[70%] sm:w-[90%] w-[95%]  text-center mb-5"
+          style={{
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            fontWeight: 400,
+          }}>We dont just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
+
+      </div>
+      
+      <div className="w-full h-auto">
+        <div className="w-full relative lg:h-[250vh] h-auto py-5">
+          {servicesData.map((service, index) => (
             <div
-             className="w-full h-auto bg-"
-              ref={(el) => addToRefs(el, index)}
+              key={index}
+              className="w-full h-auto bg-bg-white lg:sticky"
               style={{
-                zIndex: servicesData.length - index,
+                top: `${service.top}vh`,
+                borderTop: "1px dashed gray",
+                zIndex: index + 1, 
               }}
             >
-              <ServiceItem
+              <ServiceCard
                 number={service.number}
                 title={service.title}
                 description={service.description}
@@ -211,12 +156,13 @@ function Services() {
                 tags={service.tags}
               />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        
       </div>
       
-    </div>
-       </>
+      <PortfolioSection />
+    </>
   )
 }
 

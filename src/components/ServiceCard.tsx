@@ -1,39 +1,22 @@
-import React from "react";
-import { Outfit, Teko } from "next/font/google";
-import GetStartedButton from "./GetStartedButton";
-import Image from "next/image";
+"use client"
+import React from "react"
+import Image from "next/image"
+import GetStartedButton from "./GetStartedButton"
+import { Outfit, Teko } from "next/font/google"
 
 const outfit = Outfit({
   weight: ["100", "300", "400", "700", "900"],
   subsets: ["latin"],
-});
+})
 
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-});
+})
 
-type ServiceItemProps = {
-  number: string;
-  title: string;
-  description: string;
-  buttonText: string;
-  imageSrc: string;
-  imageAlt: string;
-  tags?: string[];
-};
-
-function ServiceItem({
-  number,
-  title,
-  description,
-  buttonText,
-  imageSrc,
-  imageAlt,
-  tags = [],
-}: ServiceItemProps) {
+function ServiceCard({ number, title, description, buttonText, imageSrc, imageAlt, tags }) {
   return (
-    <div className="w-full h-auto bg-bg-white" style={{ borderTop: "1px dashed gray" }}>
+    <div className="w-full h-auto" >
       <div className="max-w-[min(95%,1600px)] mx-auto h-auto">
         <div
           className="w-full grid gap-1 lg:[grid-template-columns:0.9fr_1.9fr_1.3fr] md:[grid-template-columns:0.4fr_1.9fr_1fr] sm:grid-cols-1"
@@ -48,7 +31,7 @@ function ServiceItem({
               className={`font-medium text-[clamp(2.2rem,5vw,3.5rem)] md:text-center ${teko.className}`}
               style={{ lineHeight: "1" }}
             >
-              {number}.
+              {number}
             </p>
           </div>
 
@@ -88,7 +71,6 @@ function ServiceItem({
               </div>
             </div>
           </div>
-
           <div className="relative bg-red-400 w-full xl:h-[450px] h-[370px] sm:h-[500px] lg:h-[400px] md:h-[310px]">
             <Image
               src={imageSrc}
@@ -96,12 +78,13 @@ function ServiceItem({
               fill
               className="object-cover"
               priority
-             />
+            />
           </div>
         </div>
       </div>
     </div>
-  );
+
+  )
 }
 
-export default ServiceItem;
+export default ServiceCard

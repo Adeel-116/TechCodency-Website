@@ -12,13 +12,13 @@ declare global {
 }
 
 const outfit = Outfit({
-    weight: ["100", "300", "400", "700", "900"],
-    subsets: ["latin"],
+  weight: ["100", "300", "400", "700", "900"],
+  subsets: ["latin"],
 });
 
 const teko = Teko({
-    weight: ["400", "500", "600", "700"],
-    subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
 });
 
 // Portfolio data types
@@ -143,7 +143,7 @@ const PortfolioCard: React.FC<{ project: PortfolioDataType }> = ({ project }) =>
       />
 
       {/* Animated border */}
-      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#C9F31D] transition-all duration-500"></div>
+      <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-secondary-darkblue-support transition-all duration-500"></div>
 
       {/* Overlay */}
       <div className={`absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent transition-all duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'
@@ -152,7 +152,7 @@ const PortfolioCard: React.FC<{ project: PortfolioDataType }> = ({ project }) =>
           <div className={`text-center transform transition-all duration-500 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <h3 className="text-white text-2xl font-bold mb-3 transform transition-all duration-300">{project.title}</h3>
             <p className="text-[#BBBBB9] text-sm mb-6 opacity-90 leading-relaxed">{project.description}</p>
-            <span className="inline-block px-6 py-3 bg-[#C9F31D] text-black text-sm font-bold rounded-full transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
+            <span className="inline-block px-6 py-3 bg-secondary-darkblue-support text-white text-sm font-bold rounded-full transform transition-all duration-300 hover:scale-110 hover:shadow-lg">
               VIEW PROJECT
             </span>
           </div>
@@ -160,7 +160,7 @@ const PortfolioCard: React.FC<{ project: PortfolioDataType }> = ({ project }) =>
       </div>
 
       <div className="absolute top-6 left-6 transform transition-all duration-300 group-hover:scale-110">
-        <span className="px-4 py-2 bg-[#C9F31D] text-black text-xs font-bold rounded-full shadow-lg backdrop-blur-sm">
+        <span className="px-4 py-2 bg-secondary-darkblue-support  text-white text-xs font-bold rounded-full shadow-lg backdrop-blur-sm">
           {project.category.toUpperCase()}
         </span>
       </div>
@@ -229,81 +229,110 @@ const PortfolioSection: React.FC = () => {
   return (
     <section className="h-auto py-20 relative overflow-hidden max-w-[min(95%,1600px)] mx-auto ">
 
-      {/* Desktop Filter - Horizontal Scroll */}
-      <div className="block mb-16">
+      <div className="w-full h-auto flex flex-col justify-center items-center text-center">
+        <div
+          className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
+        >
+          {/* Left Line */}
+          <div
+            className="w-16 h-[3px] rounded-full relative"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+            }}
+          >
+          </div>
+
+          {/* Text with gradient */}
+          <span
+            className="font-black text-base uppercase tracking-[0.2em] relative px-4 py-2"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            OUR PORTFOLIO
+          </span>
+
+          {/* Right Line */}
+          <div
+            className="w-16 h-[3px] rounded-full relative"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
+            }}
+          >
+          </div>
+        </div>
+
+        <h1
+          className={`font-black leading-[0.9] w-[80%] mb-8 ${teko.className}`}
+          style={{
+            fontSize: "clamp(4rem, 11vw, 5rem)",
+            color: "#000000",
+            textShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            fontWeight: 800,
+          }}
+        >
+          Showcasing Creativity, Innovation,<span className="text-secondary-darkblue">and Excellence</span>
+        </h1>
+
+
+        <p className="leading-relaxed text-gray-700 xl:w-[70%] sm:w-[90%] w-[95%]  text-center mb-5"
+          style={{
+            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
+            fontWeight: 400,
+          }}>We dont just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
+
+      </div>
+
+
+
+      <div className="block py-15">
         <div className="flex justify-center">
           <div
             ref={scrollRef}
             className={`flex overflow-x-auto gap-2 w-full mx-auto transition-all duration-300 custom-scrollbar ${isScrolling ? 'shadow-inner' : ''}`}
           >
             <style jsx>{`
-    .custom-scrollbar {
-      padding-bottom: 10px;
-    }
-    
-    .custom-scrollbar::-webkit-scrollbar {
-      height: 8px;
-    }
-    
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 10px;
-    }
-    
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #C9F31D;
-      border-radius: 10px;
-      transition: background 0.3s ease;
-    }
-    
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #b8e01a;
-    }
-    
-    /* Firefox scrollbar */
-    .custom-scrollbar {
-      scrollbar-width: thin;
-      scrollbar-color: #C9F31D #f1f1f1;
-    }
-    
-    /* Mobile custom scrollbar */
-    .mobile-custom-scrollbar {
-      padding-bottom: 8px;
-    }
-    
-    .mobile-custom-scrollbar::-webkit-scrollbar {
-      height: 6px;
-    }
-    
-    .mobile-custom-scrollbar::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 8px;
-    }
-    
-    .mobile-custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #C9F31D;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-    }
-    
-    .mobile-custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #b8e01a;
-    }
-    
-    /* Mobile Firefox scrollbar */
-    .mobile-custom-scrollbar {
-      scrollbar-width: thin;
-      scrollbar-color: #C9F31D #f1f1f1;
-    }
+            .custom-scrollbar {
+  overflow-x: auto;       /* horizontal scroll enable */
+  overflow-y: hidden;     /* vertical scroll hide */
+  padding-bottom: 14px;   /* niche shift */
+  scrollbar-width: thin;  
+  scrollbar-color: var(--color-primary-orange-support) var(--color-primary-orange);
+}
+
+/* Chrome, Safari, Edge */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 10px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-primary-orange); /* Dark Orange */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-primary-orange-support); /* Light Orange */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-orange-support);
+}
+
+
   `}</style>
 
             {filterCategories.map((category: TypeFilterCategory, index: number) => (
               <button
                 key={category.id}
                 onClick={() => handleFilterChange(category.id as FilterType)}
-                className={`group relative flex-shrink-0 flex items-center sm:gap-3 gap-1 2xl:px-8 2xl:py-4 lg:px-6 lg:py-3 px-2.5 py-2  font-bold transition-all duration-500 transform hover:scale-110  ${outfit.className}  ${activeFilter === category.id  
-                    ? 'bg-[#C9F31D] text-black  scale-105'
-                    : 'bg-transparent text-black hover:bg-[#C9F31D]/20'
+                className={`group relative flex-shrink-0 flex items-center sm:gap-3 gap-1 2xl:px-6 2xl:py-4 lg:px-5 lg:py-3 px-2.5 py-2  font-bold transition-all duration-500 transform hover:scale-110  ${outfit.className}  ${activeFilter === category.id
+                  ? 'bg-primary-orange text-black  scale-105'
+                  : 'bg-transparent text-black hover:bg-primary-orange/20'
                   }`}
                 style={{
                   animationDelay: `${index * 0.1}s`,
@@ -315,7 +344,7 @@ const PortfolioSection: React.FC = () => {
                 </span>
 
                 {/* Label */}
-                <span className="whitespace-nowrap sm:text-sm text-[12.5px]">
+                <span className={`whitespace-nowrap sm:text-[16px] text-[12.5px]  ${activeFilter === category.id ? 'text-white' : 'text-black'} transition-colors duration-300`}>
                   {category.label}
                 </span>
 
@@ -329,7 +358,7 @@ const PortfolioSection: React.FC = () => {
 
       {/* Portfolio Grid with staggered animation */}
       <div className='max-w-[min(95%,1600px)] mx-auto'>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-5">
           {visibleProjects.map((project: PortfolioDataType, index: number) => (
             <div
               key={project.id}
@@ -361,11 +390,11 @@ const PortfolioSection: React.FC = () => {
             }
           `}</style>
 
-          <div className="text-center">
-            <div className="flex-shrink-0 flex justify-center items-center transform hover:scale-105 transition-transform duration-300">
-              <GetStartedButton buttonTitle='Load More' />
-            </div>
-          
+        <div className="text-center">
+          <div className="flex-shrink-0 flex justify-center items-center transform hover:scale-105 transition-transform duration-300">
+            <GetStartedButton buttonTitle='Load More' />
+          </div>
+
         </div>
       </div>
     </section>

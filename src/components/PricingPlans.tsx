@@ -175,22 +175,59 @@ const PricingPlans = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-10 h-2 bg-[#C9F31D] rounded-2xl"></div>
-            <div className={`text-5xl font-bold text-black ml-4 ${teko.className}`}>
-              Packages And Pricing Plans!
-            </div>
+    <div className="min-h-screen mx-auto py-5" style={{ background: "linear-gradient(135deg, #FAFAFA 0%, #f0f0f0 100%)" }}>
+      {/* Header Section - Centered */}
+      <div className="w-full flex flex-col justify-center items-center text-center mb-2">
+        <div
+          className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
+        >
+          {/* Left Line */}
+          <div
+            className="w-16 h-[3px] rounded-full relative"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+            }}
+          >
           </div>
-          <p className ={`text-black text-xl max-w-4xl mx-auto leading-relaxed ${outfit.className}`}>
-            Explore our range of budget-friendly packages and pricing plans designed to suit your specific needs and requirements. Choose the perfect plan that fits your budget and unlocks the full potential of our services. Get started on your journey to success with our competitive pricing options.
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#C9F31D] to-[#BBBBB9] mx-auto mt-8 rounded-full"></div>
+
+          {/* Text with gradient */}
+          <span
+            className="font-black text-base uppercase tracking-[0.2em] relative px-4 py-2"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            OUR PRICING PLANS
+          </span>
+
+          {/* Right Line */}
+          <div
+            className="w-16 h-[3px] rounded-full relative"
+            style={{
+              background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
+            }}
+          >
+          </div>
         </div>
 
+        <h1
+          className={`font-black leading-[0.9] w-[80%] mb-8 ${teko.className}`}
+          style={{
+            fontSize: "clamp(4rem, 11vw, 5rem)",
+            color: "#000000",
+            textShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            fontWeight: 800,
+          }}
+        >
+          Affordable Plans Tailored <span style={{ color: "var(--color-secondary-darkblue)" }}>For Your Needs</span>
+        </h1>
+      </div>
+
+      <div className="max-w-7xl mx-auto">
         {/* First Row - 3 Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {plans.slice(0, 3).map((plan, index) => (
@@ -240,40 +277,65 @@ type PlanCardProps = {
 const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }) => {
   return (
     <div
-      className={`relative bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm rounded-2xl p-8 border transition-all duration-500 hover:scale-105 ${
+      className={`relative bg-white rounded-2xl p-8 border transition-all duration-500 hover:scale-105 shadow-lg ${outfit.className}  ${
         plan.popular
-          ? 'border-[#C9F31D] shadow-2xl shadow-[#C9F31D]/20 ring-2 ring-[#C9F31D]/30'
-          : 'border-gray-700/50 hover:border-[#9FEC1C]/60'
+          ? 'shadow-2xl ring-2'
+          : 'hover:shadow-xl'
       } ${isHovered ? 'transform -translate-y-2' : ''}`}
+      style={{
+        borderColor: plan.popular ? 'var(--color-primary-orange)' : '#e5e7eb',
+        ringColor: plan.popular ? 'var(--color-primary-orange)' : 'transparent',
+        boxShadow: plan.popular 
+          ? '0 25px 50px -12px rgba(219, 70, 25, 0.25)' 
+          : isHovered 
+            ? '0 20px 25px -5px rgba(0, 0, 0, 0.1)' 
+            : '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+      }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
       {/* Popular Badge */}
       {plan.popular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="bg-gradient-to-r from-[#C9F31D] to-[#9FEC1C] text-black px-6 py-2 rounded-full font-bold text-sm animate-pulse">
+          <div 
+            className="text-white px-6 py-2 rounded-full font-bold text-sm"
+            style={{ 
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))"
+            }}
+          >
             ⭐ MOST POPULAR ⭐
           </div>
         </div>
       )}
 
-      {/* Glowing Border Effect */}
-      <div className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
-        isHovered ? 'opacity-100' : 'opacity-0'
-      } bg-gradient-to-r from-[#C9F31D] to-[#9FEC1C] p-[2px]`}>
-        <div className="w-full h-full bg-gradient-to-br from-gray-900/90 to-black/90 rounded-2xl"></div>
-      </div>
-
       <div className="relative z-10">
         {/* Plan Header */}
         <div className="text-center mb-8">
-          <div className={`inline-flex p-4 rounded-2xl mb-6 bg-gradient-to-r from-[#C9F31D] to-[#9FEC1C] text-black transition-all duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
+          <div 
+            className={`inline-flex p-4 rounded-2xl mb-6 text-white transition-all duration-300 ${isHovered ? 'scale-110' : ''}`}
+            style={{ 
+              background: plan.popular 
+                ? "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))" 
+                : "linear-gradient(to right, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))"
+            }}
+          >
             {plan.icon}
           </div>
-          <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-          <p className="text-[#BBBBB9] text-sm mb-4">{plan.description}</p>
+          <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--color-text-secondary)" }}>
+            {plan.name}
+          </h3>
+          <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
           <div className="flex items-baseline justify-center">
-            <span className="text-[#C9F31D] text-5xl font-bold">${plan.price}</span>
+            <span 
+              className="text-5xl font-bold"
+              style={{ 
+                color: plan.popular 
+                  ? "var(--color-primary-orange)" 
+                  : "var(--color-secondary-darkblue)"
+              }}
+            >
+              ${plan.price}
+            </span>
           </div>
         </div>
 
@@ -284,15 +346,15 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
               width: 6px;
             }
             .space-y-3::-webkit-scrollbar-track {
-              background: rgba(55, 65, 81, 0.3);
+              background: rgba(229, 231, 235, 0.3);
               border-radius: 10px;
             }
             .space-y-3::-webkit-scrollbar-thumb {
-              background: linear-gradient(to bottom, #C9F31D, #9FEC1C);
+              background: linear-gradient(to bottom, var(--color-primary-orange), var(--color-primary-orange-support));
               border-radius: 10px;
             }
             .space-y-3::-webkit-scrollbar-thumb:hover {
-              background: linear-gradient(to bottom, #9FEC1C, #C9F31D);
+              background: linear-gradient(to bottom, var(--color-primary-orange-support), var(--color-primary-orange));
             }
           `}</style>
           {plan.features.map((feature, index) => (
@@ -303,8 +365,15 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
               }`}
               style={{ transitionDelay: `${index * 50}ms` }}
             >
-              <IoCheckmarkCircle className="w-5 h-5 text-[#9FEC1C] mt-0.5 flex-shrink-0" />
-              <span className="text-gray-300 text-sm leading-relaxed hover:text-white transition-colors">
+              <IoCheckmarkCircle 
+                className="w-5 h-5 mt-0.5 flex-shrink-0" 
+                style={{ 
+                  color: plan.popular 
+                    ? "var(--color-primary-orange)" 
+                    : "var(--color-secondary-darkblue)"
+                }}
+              />
+              <span className="text-gray-700 text-sm leading-relaxed hover:text-gray-900 transition-colors">
                 {feature}
               </span>
             </div>
@@ -317,14 +386,15 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
         </div>
       </div>
 
-      {/* Animated Background Particles */}
-      {isHovered && (
-        <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#C9F31D] rounded-full animate-ping opacity-75"></div>
-          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-[#9FEC1C] rounded-full animate-pulse opacity-50"></div>
-          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-white rounded-full animate-bounce opacity-60"></div>
-        </div>
-      )}
+      {/* Subtle gradient overlay */}
+      <div 
+        className="absolute inset-0 rounded-2xl opacity-5 pointer-events-none"
+        style={{
+          background: plan.popular 
+            ? "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))" 
+            : "linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))"
+        }}
+      ></div>
     </div>
   );
 };

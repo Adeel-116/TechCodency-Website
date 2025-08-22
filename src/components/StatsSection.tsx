@@ -68,7 +68,7 @@ const StatCard = ({ number, suffix, label, delay, gradient }) => {
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Card Container */}
-      <div className="relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden group-hover:scale-105 group-hover:-translate-y-2">
+      <div className="relative  rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden group-hover:scale-105 group-hover:-translate-y-2">
         
         {/* Gradient Background Effect */}
         <div 
