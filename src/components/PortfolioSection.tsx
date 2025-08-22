@@ -330,7 +330,7 @@ const PortfolioSection: React.FC = () => {
               <button
                 key={category.id}
                 onClick={() => handleFilterChange(category.id as FilterType)}
-                className={`group relative flex-shrink-0 flex items-center sm:gap-3 gap-1 2xl:px-6 2xl:py-4 lg:px-5 lg:py-3 px-2.5 py-2  font-bold transition-all duration-500 transform hover:scale-110  ${outfit.className}  ${activeFilter === category.id
+                className={`group relative flex-shrink-0 flex items-center sm:gap-3 mx-auto gap-1 2xl:px-6 2xl:py-4 lg:px-5 lg:py-3 px-2.5 py-2  font-bold transition-all duration-500 transform hover:scale-110  ${outfit.className}  ${activeFilter === category.id
                   ? 'bg-primary-orange text-black  scale-105'
                   : 'bg-transparent text-black hover:bg-primary-orange/20'
                   }`}

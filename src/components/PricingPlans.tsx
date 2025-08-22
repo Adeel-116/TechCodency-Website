@@ -277,7 +277,7 @@ type PlanCardProps = {
 const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }) => {
   return (
     <div
-      className={`relative bg-white rounded-2xl p-8 border transition-all duration-500 hover:scale-105 shadow-lg ${outfit.className}  ${
+      className={`relative bg-white rounded-2xl p-8 border transition-all duration-500 hover:scale-105 shadow-lg ${outfit.className} ${
         plan.popular
           ? 'shadow-2xl ring-2'
           : 'hover:shadow-xl'
@@ -298,7 +298,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
       {plan.popular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
           <div 
-            className="text-white px-6 py-2 rounded-full font-bold text-sm"
+            className={`text-white px-6 py-2 rounded-full font-bold text-sm ${outfit.className}`}
             style={{ 
               background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))"
             }}
@@ -321,13 +321,13 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
           >
             {plan.icon}
           </div>
-          <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--color-text-secondary)" }}>
+          <h3 className={`text-2xl font-bold mb-2 ${outfit.className}`} style={{ color: "var(--color-text-secondary)" }}>
             {plan.name}
           </h3>
-          <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
+          <p className={`text-gray-600 text-sm mb-4 ${outfit.className}`}>{plan.description}</p>
           <div className="flex items-baseline justify-center">
             <span 
-              className="text-5xl font-bold"
+              className={`text-5xl font-bold ${outfit.className}`}
               style={{ 
                 color: plan.popular 
                   ? "var(--color-primary-orange)" 
@@ -373,7 +373,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
                     : "var(--color-secondary-darkblue)"
                 }}
               />
-              <span className="text-gray-700 text-sm leading-relaxed hover:text-gray-900 transition-colors">
+              <span className={`text-gray-700 text-sm leading-relaxed hover:text-gray-900 transition-colors ${outfit.className}`}>
                 {feature}
               </span>
             </div>
