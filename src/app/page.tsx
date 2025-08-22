@@ -66,15 +66,10 @@ export default function Home() {
           <Services />
           <PricingPlans />
           <CaseStudy />
-       
-         
-  
-          {/* <Sticky /> */}
+    
   
         </div>
 
-
-        {/* Mobile Menu Bar */}
         <div
           className={`fixed top-0 left-0 w-full h-full bg-primary-orange-support transition-all duration-500 ${menuOpen ? 'z-[5] opacity-100' : 'z-[-100] opacity-0'
             }`}

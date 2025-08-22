@@ -18,6 +18,7 @@ const CaseStudy = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isTransitioning, setIsTransitioning] = useState(false)
     const [slideWidth, setSlideWidth] = useState(820)
+    const [slideMargin, setSlideMargin] = useState(10) // Add state for margin
 
     const isDragging = useRef(false);
     const startX = useRef(0);
@@ -65,17 +66,19 @@ const CaseStudy = () => {
         }
     ]
 
-    // Update slide width based on screen size
     useEffect(() => {
         const updateSlideWidth = () => {
             if (typeof window !== 'undefined') {
                 const screenWidth = window.innerWidth;
                 if (screenWidth >= 1024) {
-                    setSlideWidth(820); 
+                    setSlideWidth(820);
+                    setSlideMargin(10); // Set margin for large screens
                 } else if (screenWidth >= 768) {
-                    setSlideWidth(520); 
+                    setSlideWidth(520);
+                    setSlideMargin(6); // Set margin for medium screens
                 } else {
-                    setSlideWidth(320); 
+                    setSlideWidth(320);
+                    setSlideMargin(4); // Set margin for small screens
                 }
             }
         };
@@ -293,10 +296,10 @@ const CaseStudy = () => {
                                 key={image.id}
                                 className='relative group cursor-pointer flex-shrink-0 lg:mr-10 md:mr-6 mr-4'
                                 style={{ 
-                                    width: `${slideWidth - (window.innerWidth >= 1024 ? 10 : window.innerWidth >= 768 ? 6 : 4)}px`, 
+                                    width: `${slideWidth - slideMargin}px`,// Use slideMargin state instead of window.innerWidth
                                     height: '100%' 
                                 }}
-                            >
+                            > 
                                 <Image
                                     src={"/images/project-1.webp"}
                                     alt={image.alt}
