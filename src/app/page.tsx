@@ -9,6 +9,7 @@ import PricingPlans from "@/components/PricingPlans";
 import {Teko } from "next/font/google";
 import { RiCloseLine } from "react-icons/ri";
 import CaseStudy from "@/components/CaseStudy";
+import TestimonialsSection from "@/components/TestimonialsSection";
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -66,6 +67,7 @@ export default function Home() {
           <Services />
           <PricingPlans />
           <CaseStudy />
+          <TestimonialsSection />
     
   
         </div>
