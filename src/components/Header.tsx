@@ -16,7 +16,7 @@ export default function Header({ setMenuOpen }: { setMenuOpen: (open: boolean) =
   return (
     <>
       <header className={`w-full lg:absolute top-0 bg-bg-white z-[100] ${teko.className}`}>
-        <div className="xl:max-w-[min(90%,1600px)] max-w-[min(92%,1600px)]  mx-auto py-1 flex items-center justify-between">
+        <div className="xl:max-w-[min(95%,1600px)] max-w-[min(92%,1600px)]  mx-auto py-1 flex items-center justify-between">
 
           {/* Logo */}
           <div className="flex items-center relative group ">

@@ -132,7 +132,7 @@ function Services() {
       </div>
       
       <div className="w-full h-auto">
-        <div className="w-full relative lg:h-[250vh] h-auto py-5">
+        <div className="w-full relative 2xl:h-[260vh] xl:h-[290vh] lg:h-[260vh]bg-[#FAFAFA] h-auto py-5">
           {servicesData.map((service, index) => (
             <div
               key={index}

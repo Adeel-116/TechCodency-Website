@@ -20,8 +20,8 @@ export default function AboutUS() {
     <div
       className="w-full relative overflow-hidden"
       style={{
-        paddingTop: "clamp(4rem, 12vw, 8rem)",
-        paddingBottom: "clamp(4rem, 12vw, 8rem)",
+        paddingTop: "clamp(3rem, 10vw, 6rem)",
+        paddingBottom: "clamp(3rem, 10vw, 6rem)",
       }}
     >
       <div className="max-w-[min(92%,1500px)] relative mx-auto">
