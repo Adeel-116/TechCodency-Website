@@ -50,8 +50,8 @@ const PricingPlans: React.FC = () => {
         "Complete Deployment",
         "100% Satisfaction Guarantee",
         "100% Unique Design Guarantee",
-        "100% Money Back Guarantee"
-      ]
+        "100% Money Back Guarantee",
+      ],
     },
     {
       name: "Startup",
@@ -71,8 +71,8 @@ const PricingPlans: React.FC = () => {
         "100% Unique Design Guarantee",
         "100% Money Back Guarantee",
         "Mobile Responsive (+$200)",
-        "CMS (+$250)"
-      ]
+        "CMS (+$250)",
+      ],
     },
     {
       name: "Professional",
@@ -94,8 +94,8 @@ const PricingPlans: React.FC = () => {
         "100% Satisfaction Guarantee",
         "100% Unique Design Guarantee",
         "100% Money Back Guarantee",
-        "Mobile Responsive (+$200)"
-      ]
+        "Mobile Responsive (+$200)",
+      ],
     },
     {
       name: "Elite",
@@ -120,8 +120,8 @@ const PricingPlans: React.FC = () => {
         "3 Unique Banner Design",
         "1 jQuery Slider Banner",
         "Complete W3C Certified HTML",
-        "Complete Deployment"
-      ]
+        "Complete Deployment",
+      ],
     },
     {
       name: "Corporate",
@@ -150,8 +150,8 @@ const PricingPlans: React.FC = () => {
         "FREE 5 Years Domain Name",
         "Free Google Friendly Sitemap",
         "Dedicated Account Manager",
-        "100% Ownership Rights"
-      ]
+        "100% Ownership Rights",
+      ],
     },
     {
       name: "Business",
@@ -184,266 +184,133 @@ const PricingPlans: React.FC = () => {
         "FREE 5 Years Domain Name",
         "Industry Expert Team",
         "Dedicated Account Manager",
-        "100% Ownership Rights"
-      ]
-    }
+        "100% Ownership Rights",
+      ],
+    },
   ];
 
   return (
-    <>
-      {/* Global Custom Scrollbar Styles */}
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(229, 231, 235, 0.2);
-          border-radius: 12px;
-          margin: 2px;
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support));
-          border-radius: 12px;
-          border: 2px solid transparent;
-          background-clip: padding-box;
-          transition: all 0.3s ease;
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(135deg, var(--color-primary-orange-support), var(--color-secondary-darkblue));
-          transform: scale(1.1);
-        }
-        
-        .custom-scrollbar::-webkit-scrollbar-corner {
-          background: transparent;
-        }
-        
-        /* Custom scrollbar for popular cards */
-        .custom-scrollbar-popular::-webkit-scrollbar-thumb {
-          background: linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support));
-        }
-        
-        .custom-scrollbar-popular::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support));
-        }
-        
-        /* Firefox scrollbar */
-        .custom-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: var(--color-primary-orange) rgba(229, 231, 235, 0.2);
-        }
-      `}</style>
-
-      <div className="min-h-screen mx-auto max-w-[min(96%,1400px)] py-5">
-        {/* Header Section - Centered */}
-        <div className="w-full flex flex-col justify-center items-center text-center mb-2">
-          <div
-            className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
-          >
-            {/* Left Line */}
-            <div
-              className="w-16 h-[3px] rounded-full relative"
-              style={{
-                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
-              }}
-            >
-            </div>
-
-            {/* Text with gradient */}
-            <span
-              className="font-black text-base uppercase tracking-[0.2em] relative px-4 py-2"
-              style={{
-                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              OUR PRICING PLANS
-            </span>
-
-            {/* Right Line */}
-            <div
-              className="w-16 h-[3px] rounded-full relative"
-              style={{
-                background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
-              }}
-            >
-            </div>
-          </div>
-
-          <h1
-            className={`font-black leading-[0.9] w-[80%] mb-8 ${teko.className}`}
+    <div className="min-h-screen mx-auto max-w-[1400px] py-10 px-6">
+      {/* Header Section */}
+      <div className="text-center mb-10">
+        <div className={`flex items-center justify-center gap-4 mb-5 ${outfit.className}`}>
+          <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[var(--color-primary-orange)] to-[var(--color-primary-orange-support)]" />
+          <span
+            className="font-black text-base uppercase tracking-[0.2em]"
             style={{
-              fontSize: "clamp(4rem, 11vw, 5rem)",
-              color: "#000000",
-              textShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              fontWeight: 800,
+              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
           >
-            Affordable Plans Tailored <span style={{ color: "var(--color-secondary-darkblue)" }}>For Your Needs</span>
-          </h1>
+            OUR PRICING PLANS
+          </span>
+          <div className="w-16 h-[3px] rounded-full bg-gradient-to-r from-[var(--color-primary-orange-support)] to-[var(--color-primary-orange)]" />
         </div>
 
-        <div className="2xl:max-w-8xl sm:max-w-7xl max-w-[360px] mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 md:gap-8 gap-6">
-            {plans.map((plan, index) => (
-              <PlanCard
-                key={index}
-                plan={plan}
-                isHovered={hoveredPlan === index}
-                onHover={() => setHoveredPlan(index)}
-                onLeave={() => setHoveredPlan(null)}
-              />
-            ))}
-          </div>
-        </div>
+        <h1
+          className={`${teko.className} font-black text-[clamp(2.5rem,6vw,4rem)] leading-tight text-black`}
+        >
+          Affordable Plans Tailored{" "}
+          <span style={{ color: "var(--color-secondary-darkblue)" }}>For Your Needs</span>
+        </h1>
       </div>
-    </>
-  );
-};
 
-const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }) => {
-  return (
-    <div
-      className={`relative rounded-2xl transition-all duration-500 hover:scale-105 shadow-lg cursor-pointer ${outfit.className} ${
-        plan.popular
-          ? 'shadow-2xl ring-2 2xl:p-10 xl:p-0 lg:p-4 sm:p-7 p-4'
-          : 'hover:shadow-xl 2xl:p-8 xl:p-7 lg:p-4 sm:p-6 p-4'
-      } ${isHovered ? 'transform -translate-y-2' : ''}`}
-      style={{
-        borderColor: plan.popular ? 'var(--color-primary-orange)' : '#e5e7eb',
-        boxShadow: plan.popular
-          ? '0 25px 50px -12px rgba(219, 70, 25, 0.25)'
-          : isHovered
-            ? '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
-            : '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-        minHeight: '600px'
-      }}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-    >
-      <div className="relative z-10 h-full flex flex-col">
-        {/* Popular Badge */}
-        {plan.popular && (
-          <div className="absolute -top-13 left-1/2 transform -translate-x-1/2 z-20">
-            <div 
-              className="px-3 py-2 rounded-full text-white text-[12px] font-bold shadow-lg"
-              style={{
-                background: "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))"
-              }}
-            >
-              MOST POPULAR
-            </div>
-          </div>
-        )}
-
-        {/* Plan Header */}
-        <div className="text-center 2xl:mb-7 xl:mb-4 mb-6">
-          <div
-            className={`inline-flex rounded-2xl transition-all duration-300 ${
-              isHovered ? 'scale-110' : ''
-            } 2xl:p-5 xl:p-4 lg:p-2 sm:p-4 p-3 2xl:mb-5 xl:mb-3 lg:mb-3 mb-3`}
-            style={{
-              background: plan.popular
-                ? "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))"
-                : "linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))"
-            }}
-          >
-            <div className="text-white bg-red-300 2xl:text-5xl xl:text-4xl lg:text-3.5xl text-4xl">
-              {plan.icon}
-            </div>
-          </div>
-          
-          <h3 className={`font-bold mb-1 ${outfit.className} 2xl:text-3xl xl:text-2xl text-xl`} 
-              style={{ color: "var(--color-text-secondary)" }}>
-            {plan.name}
-          </h3>
-          
-          <p className={`text-text-primary mb-2 ${outfit.className} 2xl:text-base xl:text-sm text-sm 2xl:leading-relaxed`}>
-            {plan.description}
-          </p>
-          
-          <div className="flex items-baseline justify-center">
-            <span
-              className={`font-bold ${outfit.className} 2xl:text-6xl xl:text-4xl text-3xl`}
-              style={{
-                color: plan.popular
-                  ? "var(--color-primary-orange)"
-                  : "var(--color-secondary-darkblue)"
-              }}
-            >
-              ${plan.price}
-            </span>
-          </div>
-        </div>
-
-        {/* Features List */}
-        <div className={`flex-grow scroll-smooth custom-scrollbar ${
-          plan.popular ? 'custom-scrollbar-popular' : ''
-        } 2xl:space-y-4 xl:space-y-3 lg:space-y-2 space-y-2 2xl:mb-10 xl:mb-8 lg:mb-5 mb-6 
-        2xl:max-h-80 xl:max-h-72 lg:max-h-60 sm:max-h-65 max-h-55 2xl:pr-2 pr-1`}>
-          {plan.features.map((feature, index) => (
-            <div
+      {/* Grid Section */}
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {plans.map((plan, index) => (
+            <PlanCard
               key={index}
-              className={`flex items-start transition-all duration-300 ${
-                isHovered ? 'translate-x-2' : ''
-              } 2xl:space-x-4 xl:space-x-3 space-x-3`}
-              style={{ transitionDelay: `${index * 50}ms` }}
-            >
-              <IoCheckmarkCircle
-                className="flex-shrink-0 2xl:w-6 2xl:h-6 xl:w-5 xl:h-5 w-5 h-5 mt-0.5"
-                style={{
-                  color: plan.popular
-                    ? "var(--color-primary-orange)"
-                    : "var(--color-secondary-darkblue)"
-                }}
-              />
-              <span className={`text-text-primary leading-relaxed hover:text-gray-900 transition-colors ${outfit.className} 
-                2xl:text-base xl:text-sm text-sm`}>
-                {feature}
-              </span>
-            </div>
+              plan={plan}
+              isHovered={hoveredPlan === index}
+              onHover={() => setHoveredPlan(index)}
+              onLeave={() => setHoveredPlan(null)}
+            />
           ))}
         </div>
-
-        {/* CTA Button */}
-        <div className="text-center mt-auto">
-          <GetStartedButton buttonTitle="GET STARTED" />
-        </div>
-      </div>
-
-      {/* Subtle gradient overlay */}
-      <div
-        className="absolute inset-0 rounded-2xl opacity-5 pointer-events-none"
-        style={{
-          background: plan.popular
-            ? "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))"
-            : "linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))"
-        }}
-      ></div>
-
-      {/* Animated border effect on hover */}
-      <div 
-        className={`absolute inset-0 rounded-2xl transition-all duration-500 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{
-          background: plan.popular 
-            ? 'linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))'
-            : 'linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))',
-          padding: '2px',
-          margin: '-1px'
-        }}
-      >
-        <div className="bg-white rounded-2xl w-full h-full"></div>
       </div>
     </div>
   );
 };
+
+const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }) => (
+  <div
+    className={`relative rounded-2xl transition-all duration-500 hover:scale-105 shadow-lg cursor-pointer ${outfit.className} ${
+      plan.popular ? 'shadow-2xl ring-2 p-6' : 'hover:shadow-xl p-5'
+    } ${isHovered ? 'transform -translate-y-2' : ''}`}
+    style={{
+      borderColor: plan.popular ? 'var(--color-primary-orange)' : '#e5e7eb',
+      boxShadow: plan.popular
+        ? '0 20px 40px -10px rgba(219,70,25,0.25)'
+        : isHovered
+          ? '0 12px 24px rgba(0,0,0,0.1)'
+          : '0 6px 12px rgba(0,0,0,0.08)',
+      minHeight: '560px',
+    }}
+    onMouseEnter={onHover}
+    onMouseLeave={onLeave}
+  >
+    <div className="relative z-10 h-full flex flex-col">
+      {/* Header */}
+      <div className="text-center mb-6">
+        <div
+          className={`inline-flex rounded-2xl p-4 mb-4 transition-all duration-300 ${
+            isHovered ? 'scale-110' : ''
+          }`}
+          style={{
+            background: plan.popular
+              ? "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))"
+              : "linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))",
+          }}
+        >
+          <div className="text-white text-4xl">{plan.icon}</div>
+        </div>
+        <h3 className="font-bold text-xl mb-1 text-gray-800">{plan.name}</h3>
+        <p className="text-sm text-gray-600 mb-2">{plan.description}</p>
+        <div className="flex justify-center items-baseline">
+          <span
+            className="font-bold text-4xl"
+            style={{
+              color: plan.popular
+                ? "var(--color-primary-orange)"
+                : "var(--color-secondary-darkblue)",
+            }}
+          >
+            ${plan.price}
+          </span>
+        </div>
+      </div>
+
+      {/* Features */}
+      <div className="flex-grow overflow-x-hidden space-y-2 mb-6 pr-1 max-h-64">
+        {plan.features.map((feature, index) => (
+          <div
+            key={index}
+            className={`flex items-start transition-all duration-300 ${
+              isHovered ? 'translate-x-2' : ''
+            }`}
+            style={{ transitionDelay: `${index * 30}ms` }}
+          >
+            <IoCheckmarkCircle
+              className="flex-shrink-0 w-5 h-5 mt-0.5"
+              style={{
+                color: plan.popular
+                  ? "var(--color-primary-orange)"
+                  : "var(--color-secondary-darkblue)",
+              }}
+            />
+            <span className="text-sm text-gray-700 ml-3 leading-relaxed">{feature}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Button */}
+      <div className="text-center mt-auto">
+        <GetStartedButton buttonTitle="GET STARTED" />
+      </div>
+    </div>
+  </div>
+);
 
 export default PricingPlans;

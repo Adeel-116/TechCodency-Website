@@ -1,334 +1,228 @@
-// 'use client';
+'use client';
 
-// import React, { useEffect, useRef, useState } from 'react';
-// import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useRef, useState } from 'react';
 
-// // Register GSAP plugins
-// if (typeof window !== 'undefined') {
-//   gsap.registerPlugin(ScrollTrigger);
-// }
+const TestimonialsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
-// const TestimonialsSection = () => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const trackRef = useRef(null);
-//   const sectionRef = useRef(null);
-//   const headerRef = useRef(null);
-//   const cardsRef = useRef([]);
-//   const navRef = useRef(null);
-//   const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
+  const testimonials = [
+    {
+      id: 1,
+      name: "Michael Chen",
+      position: "CEO & Founder",
+      company: "TechVision Solutions",
+      avatar: "MC",
+      rating: 5,
+      text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
+    },
+    {
+      id: 2,
+      name: "Sarah Johnson",
+      position: "Marketing Director", 
+      company: "Growth Dynamics",
+      avatar: "SJ",
+      rating: 5,
+      text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
+    },
+    {
+      id: 3,
+      name: "David Rodriguez",
+      position: "Operations Manager",
+      company: "Elite Enterprises", 
+      avatar: "DR",
+      rating: 5,
+      text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
+    },
+    {
+      id: 4,
+      name: "Emily Williams",
+      position: "Business Owner",
+      company: "Innovative Retail Co.",
+      avatar: "EW", 
+      rating: 5,
+      text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
+    },
+    {
+      id: 5,
+      name: "James Thompson",
+      position: "Creative Director",
+      company: "Nexus Media Group",
+      avatar: "JT",
+      rating: 5,
+      text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
+    },
+    {
+      id: 6,
+      name: "Amanda Lee", 
+      position: "VP of Marketing",
+      company: "Summit Solutions",
+      avatar: "AL",
+      rating: 5,
+      text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
+    }
+  ];
 
-//   const testimonials = [
-//     {
-//       id: 1,
-//       name: "Michael Chen",
-//       position: "CEO & Founder",
-//       company: "TechVision Solutions",
-//       avatar: "MC",
-//       rating: 5,
-//       text: "Working with this agency has been transformative for our business. Their innovative approach and attention to detail resulted in a 300% increase in our online engagement. The team's expertise in digital solutions is unmatched."
-//     },
-//     {
-//       id: 2,
-//       name: "Sarah Johnson",
-//       position: "Marketing Director", 
-//       company: "Growth Dynamics",
-//       avatar: "SJ",
-//       rating: 5,
-//       text: "Exceptional service and outstanding results! The team delivered beyond our expectations. Our new website not only looks stunning but has significantly improved our conversion rates. Highly recommended for any business looking to elevate their digital presence."
-//     },
-//     {
-//       id: 3,
-//       name: "David Rodriguez",
-//       position: "Operations Manager",
-//       company: "Elite Enterprises", 
-//       avatar: "DR",
-//       rating: 5,
-//       text: "Professional, creative, and results-driven. The agency transformed our outdated website into a modern, user-friendly platform that perfectly represents our brand. Our customer engagement has increased dramatically since the launch."
-//     },
-//     {
-//       id: 4,
-//       name: "Emily Williams",
-//       position: "Business Owner",
-//       company: "Innovative Retail Co.",
-//       avatar: "EW", 
-//       rating: 5,
-//       text: "From concept to execution, every step was handled with utmost professionalism. The team's ability to understand our vision and translate it into a powerful digital solution was remarkable. Our ROI has doubled since working with them."
-//     },
-//     {
-//       id: 5,
-//       name: "James Thompson",
-//       position: "Creative Director",
-//       company: "Nexus Media Group",
-//       avatar: "JT",
-//       rating: 5,
-//       text: "Outstanding creativity and technical expertise! The agency delivered a comprehensive digital solution that exceeded all our expectations. Their ongoing support and dedication to our success sets them apart from the competition."
-//     },
-//     {
-//       id: 6,
-//       name: "Amanda Lee", 
-//       position: "VP of Marketing",
-//       company: "Summit Solutions",
-//       avatar: "AL",
-//       rating: 5,
-//       text: "The best investment we've made for our business! Their strategic approach and flawless execution resulted in a 250% increase in leads. The team's dedication and expertise are truly impressive. We couldn't be happier with the results."
-//     }
-//   ];
+  const handleScroll = (direction: 'prev' | 'next') => {
+    if (trackRef.current) {
+      const container = trackRef.current;
+      const scrollAmount = container.offsetWidth * 0.9;
+      container.scrollBy({
+        left: direction === 'next' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
-//   const cardWidth = 440;
-//   const visibleCards = typeof window !== 'undefined' ? Math.floor(window.innerWidth / cardWidth) : 3;
-//   const maxIndex = Math.max(0, testimonials.length - visibleCards);
+  return (
+    <section className="py-20 px-4 bg-[var(--color-bg-white)]">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-10 h-[3px] bg-gradient-to-r from-[var(--color-primary-orange)] to-[var(--color-primary-orange-support)] rounded-full" />
+            <span
+              className="font-black text-xs sm:text-sm md:text-base uppercase tracking-[0.25em]"
+              style={{
+                background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Client Success Stories
+            </span>
+            <div className="w-10 h-[3px] bg-gradient-to-r from-[var(--color-primary-orange-support)] to-[var(--color-primary-orange)] rounded-full" />
+          </div>
 
-//   useEffect(() => {
-//     if (typeof window === 'undefined') return;
+          <h1 className="font-black text-[clamp(1.8rem,5vw,3.2rem)] leading-tight text-black">
+            Trusted by Businesses Who{" "}
+            <span style={{ color: "var(--color-secondary-darkblue)" }}>
+              Believe in Our Work
+            </span>
+          </h1>
+        </div>
 
-//     const initAnimations = () => {
-//       // Header animation
-//       gsap.fromTo(headerRef.current, 
-//         { opacity: 0, y: 50 }, 
-//         { 
-//           opacity: 1, 
-//           y: 0, 
-//           duration: 1, 
-//           ease: "power2.out",
-//           scrollTrigger: {
-//             trigger: headerRef.current,
-//             start: 'top 80%',
-//             end: 'bottom 60%',
-//             toggleActions: 'play none none reverse'
-//           }
-//         }
-//       );
+        {/* Testimonials Slider */}
+        <div className="relative">
+          <div
+            ref={trackRef}
+            className="flex gap-6 overflow-x-hidden scroll-smooth snap-x snap-mandatory no-scrollbar pb-6"
+          >
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.id}
+                className="flex-shrink-0 w-[85%] sm:w-[60%] md:w-[45%] lg:w-[400px] snap-start relative transition-all duration-700 ease-out"
+                onMouseEnter={() => setHoveredCard(testimonial.id)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                {/* Card Container */}
+                <div
+                  className={`relative bg-white rounded-2xl p-6 sm:p-8 transition-all duration-500 border border-gray-100 overflow-hidden cursor-pointer ${
+                    hoveredCard === testimonial.id ? 'shadow-2xl scale-105 -translate-y-2' : 'shadow-lg'
+                  }`}
+                  style={{
+                    boxShadow: hoveredCard === testimonial.id
+                      ? '0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 25px -5px rgba(0, 0, 0, 0.1)'
+                      : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+                  }}
+                >
+                  {/* Gradient Background Effect */}
+                  <div
+                    className={`absolute inset-0 rounded-2xl transition-all duration-700 transform ${
+                      hoveredCard === testimonial.id ? 'opacity-10 rotate-1' : 'opacity-0'
+                    }`}
+                    style={{
+                      background: "linear-gradient(135deg, var(--color-primary-orange-support), var(--color-primary-orange))",
+                    }}
+                  />
 
-//       // Cards animation
-//       gsap.fromTo(cardsRef.current, 
-//         { opacity: 0, y: 100, scale: 0.8 }, 
-//         { 
-//           opacity: 1, 
-//           y: 0,
-//           scale: 1,
-//           duration: 0.8, 
-//           ease: "back.out(1.7)",
-//           stagger: 0.2,
-//           scrollTrigger: {
-//             trigger: trackRef.current,
-//             start: 'top 70%',
-//             end: 'bottom 30%',
-//             toggleActions: 'play none none reverse'
-//           }
-//         }
-//       );
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className={`flex gap-1 mb-4 transition-transform duration-500 ${hoveredCard === testimonial.id ? 'scale-110' : ''}`}>
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span 
+                          key={i} 
+                          className="text-lg sm:text-xl transition-all duration-300"
+                          style={{
+                            background: "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            backgroundClip: "text",
+                          }}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
 
-//       // Navigation animation
-//       gsap.fromTo(navRef.current, 
-//         { opacity: 0, y: 30 }, 
-//         { 
-//           opacity: 1, 
-//           y: 0, 
-//           duration: 0.6, 
-//           delay: 0.8,
-//           ease: "power2.out",
-//           scrollTrigger: {
-//             trigger: navRef.current,
-//             start: 'top 90%',
-//             toggleActions: 'play none none reverse'
-//           }
-//         }
-//       );
+                    <p className={`text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed italic mb-6 transition-all duration-500 ${
+                      hoveredCard === testimonial.id ? 'text-gray-900' : ''
+                    }`}>
+                      "{testimonial.text}"
+                    </p>
 
-//       // Floating particles animation
-//       gsap.to('.floating-particle', {
-//         y: -20,
-//         rotation: 360,
-//         duration: 6,
-//         ease: "sine.inOut",
-//         repeat: -1,
-//         yoyo: true,
-//         stagger: 2
-//       });
-//     };
+                    <div className="flex items-center gap-4">
+                      <div 
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-base sm:text-lg font-bold text-white border-4 border-white shadow-md"
+                        style={{
+                          background: "linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))",
+                        }}
+                      >
+                        {testimonial.avatar}
+                      </div>
+                      <div>
+                        <h4 
+                          className="text-base sm:text-lg font-bold mb-1"
+                          style={{ color: "var(--color-secondary-darkblue)" }}
+                        >
+                          {testimonial.name}
+                        </h4>
+                        <div className="text-gray-600 text-xs sm:text-sm font-medium">{testimonial.position}</div>
+                        <div className="text-gray-500 text-xs">{testimonial.company}</div>
+                      </div>
+                    </div>
+                  </div>
 
-//     initAnimations();
+                  {/* Hover Effect Line */}
+                  <div
+                    className={`absolute bottom-0 left-0 h-1 rounded-full transition-all duration-700 ${
+                      hoveredCard === testimonial.id ? 'w-full' : 'w-0'
+                    }`}
+                    style={{ background: "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))" }}
+                  />
 
-//     // Auto-scroll
-//     autoScrollRef.current = setInterval(() => {
-//       setCurrentIndex(prevIndex => {
-//         const newIndex = prevIndex >= maxIndex ? 0 : prevIndex + 1;
-//         scrollToIndex(newIndex);
-//         return newIndex;
-//       });
-//     }, 4000);
+                  {/* Ring Effect */}
+                  <div
+                    className={`absolute inset-0 rounded-2xl transition-all duration-500 ring-offset-2 ${
+                      hoveredCard === testimonial.id ? 'ring-2 ring-[var(--color-primary-orange)]' : 'ring-0'
+                    }`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
 
-//     return () => {
-//       if (autoScrollRef.current) {
-//         clearInterval(autoScrollRef.current);
-//       }
-//       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-//     };
-//   }, [maxIndex]);
+          {/* Navigation Buttons */}
+          <div className="flex justify-center items-center gap-6 mt-8">
+            <button
+              onClick={() => handleScroll('prev')}
+              className="w-12 h-12 sm:w-14 sm:h-14 border-2 border-[var(--color-secondary-darkblue)] bg-transparent rounded-full text-[var(--color-secondary-darkblue)] text-xl sm:text-2xl hover:bg-[var(--color-secondary-darkblue)] hover:text-white transition-all duration-300 hover:scale-110 flex items-center justify-center"
+            >
+              ‹
+            </button>
 
-//   const scrollToIndex = (index: number) => {
-//     const targetX = -index * cardWidth;
-//     gsap.to(trackRef.current, {
-//       x: targetX,
-//       duration: 0.8,
-//       ease: "power2.out"
-//     });
-//     setCurrentIndex(index);
-//   };
+            <button
+              onClick={() => handleScroll('next')}
+              className="w-12 h-12 sm:w-14 sm:h-14 border-2 border-[var(--color-secondary-darkblue)] bg-transparent rounded-full text-[var(--color-secondary-darkblue)] text-xl sm:text-2xl hover:bg-[var(--color-secondary-darkblue)] hover:text-white transition-all duration-300 hover:scale-110 flex items-center justify-center"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-//   const handlePrev = () => {
-//     const newIndex = Math.max(0, currentIndex - 1);
-//     scrollToIndex(newIndex);
-//   };
-
-//   const handleNext = () => {
-//     const newIndex = Math.min(maxIndex, currentIndex + 1);
-//     scrollToIndex(newIndex);
-//   };
-
-//   const handleDotClick = (index: number) => {
-//     scrollToIndex(index * visibleCards);
-//   };
-
-//   const handleCardHover = (index: number, isEntering: boolean) => {
-//     const card = cardsRef.current[index];
-//     if (card) {
-//       gsap.to(card, {
-//         y: isEntering ? -8 : 0,
-//         scale: isEntering ? 1.02 : 1,
-//         duration: 0.3,
-//         ease: "power2.out"
-//       });
-//     }
-//   };
-
-//   return (
-//     <section 
-//       ref={sectionRef}
-//       className="min-h-screen bg-black py-20 px-4 relative overflow-hidden"
-//     >
-//       {/* Background Effects */}
-//       <div 
-//         className="absolute inset-0 pointer-events-none"
-//         style={{
-//           background: "black"
-//         }}
-//       />
-
-//       {/* Floating Particles */}
-//       <div className="floating-particle absolute w-2 h-2 bg-[#C9F31D] rounded-full opacity-60 top-[20%] left-[10%]" />
-//       <div className="floating-particle absolute w-1.5 h-1.5 bg-[#C9F31D] rounded-full opacity-60 top-[60%] right-[15%]" />
-//       <div className="floating-particle absolute w-2.5 h-2.5 bg-[#C9F31D] rounded-full opacity-60 bottom-[30%] left-[20%]" />
-
-//       <div className="max-w-7xl mx-auto relative z-10">
-//         {/* Header */}
-//         <div ref={headerRef} className="text-center mb-20 opacity-0">
-//           <div className="flex items-center justify-center mb-6">
-//             <div className="w-10 h-2 bg-[#C9F31D] rounded-2xl" />
-//             <h2 className="text-5xl lg:text-6xl font-black text-[#C9F31D] ml-4 uppercase tracking-tight">
-//               Client Success Stories
-//             </h2>
-//           </div>
-//           <p className="text-xl max-w-4xl mx-auto leading-relaxed text-[#BBBBB9]">
-//             Discover how we ve transformed businesses with our innovative solutions. 
-//             Read what our valued clients have to say about their journey with us.
-//           </p>
-//           <div className="w-24 h-1 bg-gradient-to-r from-[#C9F31D] to-[#BBBBB9] mx-auto mt-8 rounded-full" />
-//         </div>
-
-//         {/* Testimonials Container */}
-//         <div className="relative overflow-hidden py-10">
-//           <div 
-//             ref={trackRef}
-//             className="flex gap-10 will-change-transform"
-//             style={{ transform: `translateX(${-currentIndex * cardWidth}px)` }}
-//           >
-//             {testimonials.map((testimonial, index) => (
-//               <div
-//                 key={testimonial.id}
-//                 ref={el => { (cardsRef.current as HTMLDivElement[])[index] = el!; }}
-//                 className="min-w-[400px] bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm border border-white/10 rounded-3xl p-10 relative cursor-pointer transition-all duration-400 hover:border-[#C9F31D]/30 hover:shadow-2xl hover:shadow-[#C9F31D]/10"
-//                 onMouseEnter={() => handleCardHover(index, true)}
-//                 onMouseLeave={() => handleCardHover(index, false)}
-//               >
-//                 {/* Hover Background Effect */}
-//                 <div className="absolute inset-0 bg-gradient-to-br from-[#C9F31D]/5 to-transparent rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-400" />
-                
-//                 {/* Quote Icon */}
-//                 <div className="absolute -top-4 right-8 w-16 h-16 bg-gradient-to-br from-[#C9F31D] to-[#9FEC1C] rounded-full flex items-center justify-center text-2xl font-bold text-black shadow-lg shadow-[#C9F31D]/30">
-              
-//                 </div>
-
-//                 <div className="relative z-10">
-//                   {/* Rating */}
-//                   <div className="flex gap-1 mb-5">
-//                     {[...Array(testimonial.rating)].map((_, i) => (
-//                       <span key={i} className="text-[#C9F31D] text-xl">★</span>
-//                     ))}
-//                   </div>
-
-//                   {/* Testimonial Text */}
-//                   <p className="text-gray-200 text-lg leading-relaxed italic mb-8">
-//                     {testimonial.text}
-//                   </p>
-
-//                   {/* Author Info */}
-//                   <div className="flex items-center gap-4">
-//                     <div className="w-16 h-16 bg-gradient-to-br from-[#C9F31D] to-[#9FEC1C] rounded-full flex items-center justify-center text-xl font-bold text-black border-4 border-[#C9F31D]/20">
-//                       {testimonial.avatar}
-//                     </div>
-//                     <div>
-//                       <h4 className="text-white text-xl font-semibold mb-1">
-//                         {testimonial.name}
-//                       </h4>
-//                       <div className="text-[#BBBBB9] text-sm mb-1">
-//                         {testimonial.position}
-//                       </div>
-//                       <div className="text-[#C9F31D] text-sm font-semibold">
-//                         {testimonial.company}
-//                       </div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Navigation */}
-//         <div ref={navRef} className="flex justify-center items-center gap-8 mt-16 opacity-0">
-//           <button
-//             onClick={handlePrev}
-//             className="w-16 h-16 border-2 border-[#C9F31D] bg-transparent rounded-full text-[#C9F31D] text-2xl hover:bg-[#C9F31D] hover:text-black transition-all duration-300 hover:scale-110 flex items-center justify-center"
-//           >
-//             ‹
-//           </button>
-
-//           <div className="flex gap-3">
-//             {[...Array(Math.ceil(testimonials.length / visibleCards))].map((_, index) => (
-//               <button
-//                 key={index}
-//                 onClick={() => handleDotClick(index)}
-//                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-//                   Math.floor(currentIndex / visibleCards) === index
-//                     ? 'bg-[#C9F31D] scale-125'
-//                     : 'bg-[#C9F31D]/30 hover:bg-[#C9F31D]/60'
-//                 }`}
-//               />
-//             ))}
-//           </div>
-
-//           <button
-//             onClick={handleNext}
-//             className="w-16 h-16 border-2 border-[#C9F31D] bg-transparent rounded-full text-[#C9F31D] text-2xl hover:bg-[#C9F31D] hover:text-black transition-all duration-300 hover:scale-110 flex items-center justify-center"
-//           >
-//             ›
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default TestimonialsSection;
+export default TestimonialsSection;

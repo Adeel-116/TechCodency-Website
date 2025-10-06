@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
 
+@theme {
+  --color-primary-orange: #DB4619;
+  --color-primary-orange-support: #EB7D1E;
+  --color-secondary-darkblue: #072E62;
+  --color-secondary-darkblue-support: #0750A9;
+  --color-text-primary: #374151;
+  --color-text-secondary: #000000;
+  --color-bg-white: #FAFAFA;
+  --color-bg-black:#000000;
+}
+
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;              /* width of scrollbar */
@@ -24,8 +35,20 @@ html {
   scroll-behavior: auto !important;
 }
 
+html.lenis {
+  height: auto;
+}
 
-*{
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+
+* {
   scroll-behavior: auto !important;
 }
 
@@ -179,4 +202,9 @@ html {
   position: absolute;
   width: 200px;
   height: 200px;
+}
+
+.front .side {
+  background-color: green;
+  transform: translateZ(250px);
 }

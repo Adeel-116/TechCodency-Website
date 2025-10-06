@@ -18,7 +18,7 @@ const CaseStudy = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isTransitioning, setIsTransitioning] = useState(false)
     const [slideWidth, setSlideWidth] = useState(820)
-    const [slideMargin, setSlideMargin] = useState(10) // Add state for margin
+    const [slideMargin, setSlideMargin] = useState(10) 
 
     const isDragging = useRef(false);
     const startX = useRef(0);
@@ -99,8 +99,8 @@ const CaseStudy = () => {
 
         gsap.to(slider, {
             x: -index * slideWidth,
-            duration: 1.5,
-            ease: 'power2.out',
+            duration: 1,
+            ease: 'power3.in',
             onComplete: () => setIsTransitioning(false)
         });
     }, [isTransitioning, caseStudyImages.length, slideWidth]);
@@ -121,7 +121,7 @@ const CaseStudy = () => {
             if (!isDragging.current && !isTransitioning) {
                 nextSlide();
             }
-        }, 4000);
+        }, 1500);
 
         return () => clearInterval(interval);
     }, [currentIndex, isTransitioning, nextSlide]);
@@ -166,7 +166,6 @@ const CaseStudy = () => {
 
         const diff = currentX.current - startX.current;
 
-        // Determine slide direction based on drag distance
         if (Math.abs(diff) > dragThreshold) {
             if (diff > 0) {
                 prevSlide();
