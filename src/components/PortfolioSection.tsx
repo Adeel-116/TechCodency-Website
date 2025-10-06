@@ -278,13 +278,6 @@ const PortfolioSection: React.FC = () => {
           Showcasing Creativity, Innovation,<span className="text-secondary-darkblue">and Excellence</span>
         </h1>
 
-
-        <p className="leading-relaxed text-text-primary xl:w-[70%] sm:w-[90%] w-[95%]  text-center mb-5"
-          style={{
-            fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
-            fontWeight: 400,
-          }}>We dont just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
-
       </div>
 
 
@@ -295,7 +288,7 @@ const PortfolioSection: React.FC = () => {
             ref={scrollRef}
             className={`flex overflow-x-auto gap-2 w-full mx-auto transition-all duration-300 custom-scrollbar ${isScrolling ? 'shadow-inner' : ''}`}
           >
-            <style jsx>{`
+            <style>{`
             .custom-scrollbar {
   overflow-x: auto;     
   overflow-y: hidden;   

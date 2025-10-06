@@ -1,9 +1,6 @@
 'use client'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Lenis from "@studio-freight/lenis";
-import { useEffect } from "react";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

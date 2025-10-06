@@ -312,7 +312,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
     <div
       className={`relative rounded-2xl transition-all duration-500 hover:scale-105 shadow-lg cursor-pointer ${outfit.className} ${
         plan.popular
-          ? 'shadow-2xl ring-2 2xl:p-10 xl:p-8 lg:p-4 sm:p-7 p-4'
+          ? 'shadow-2xl ring-2 2xl:p-10 xl:p-0 lg:p-4 sm:p-7 p-4'
           : 'hover:shadow-xl 2xl:p-8 xl:p-7 lg:p-4 sm:p-6 p-4'
       } ${isHovered ? 'transform -translate-y-2' : ''}`}
       style={{
@@ -330,9 +330,9 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
       <div className="relative z-10 h-full flex flex-col">
         {/* Popular Badge */}
         {plan.popular && (
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="absolute -top-13 left-1/2 transform -translate-x-1/2 z-20">
             <div 
-              className="px-4 py-2 rounded-full text-white text-sm font-bold shadow-lg"
+              className="px-3 py-2 rounded-full text-white text-[12px] font-bold shadow-lg"
               style={{
                 background: "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))"
               }}
@@ -343,34 +343,34 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
         )}
 
         {/* Plan Header */}
-        <div className="text-center 2xl:mb-10 xl:mb-8 mb-6">
+        <div className="text-center 2xl:mb-7 xl:mb-4 mb-6">
           <div
             className={`inline-flex rounded-2xl transition-all duration-300 ${
               isHovered ? 'scale-110' : ''
-            } 2xl:p-5 xl:p-4 lg:p-2 sm:p-4 p-3 2xl:mb-8 xl:mb-6 lg:mb-4 mb-6`}
+            } 2xl:p-5 xl:p-4 lg:p-2 sm:p-4 p-3 2xl:mb-5 xl:mb-3 lg:mb-3 mb-3`}
             style={{
               background: plan.popular
                 ? "linear-gradient(135deg, var(--color-primary-orange), var(--color-primary-orange-support))"
                 : "linear-gradient(135deg, var(--color-secondary-darkblue), var(--color-secondary-darkblue-support))"
             }}
           >
-            <div className="text-white 2xl:text-6xl xl:text-5xl lg:text-4xl text-5xl">
+            <div className="text-white bg-red-300 2xl:text-5xl xl:text-4xl lg:text-3.5xl text-4xl">
               {plan.icon}
             </div>
           </div>
           
-          <h3 className={`font-bold mb-3 ${outfit.className} 2xl:text-3xl xl:text-2xl text-xl`} 
+          <h3 className={`font-bold mb-1 ${outfit.className} 2xl:text-3xl xl:text-2xl text-xl`} 
               style={{ color: "var(--color-text-secondary)" }}>
             {plan.name}
           </h3>
           
-          <p className={`text-text-primary mb-4 ${outfit.className} 2xl:text-base xl:text-sm text-sm 2xl:leading-relaxed`}>
+          <p className={`text-text-primary mb-2 ${outfit.className} 2xl:text-base xl:text-sm text-sm 2xl:leading-relaxed`}>
             {plan.description}
           </p>
           
           <div className="flex items-baseline justify-center">
             <span
-              className={`font-bold ${outfit.className} 2xl:text-6xl xl:text-5xl text-4xl`}
+              className={`font-bold ${outfit.className} 2xl:text-6xl xl:text-4xl text-3xl`}
               style={{
                 color: plan.popular
                   ? "var(--color-primary-orange)"
@@ -383,7 +383,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, isHovered, onHover, onLeave }
         </div>
 
         {/* Features List */}
-        <div className={`flex-grow overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar ${
+        <div className={`flex-grow scroll-smooth custom-scrollbar ${
           plan.popular ? 'custom-scrollbar-popular' : ''
         } 2xl:space-y-4 xl:space-y-3 lg:space-y-2 space-y-2 2xl:mb-10 xl:mb-8 lg:mb-5 mb-6 
         2xl:max-h-80 xl:max-h-72 lg:max-h-60 sm:max-h-65 max-h-55 2xl:pr-2 pr-1`}>

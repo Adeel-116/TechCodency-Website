@@ -9,7 +9,7 @@ export default function HeroRightSection() {
   }, []);
 
   return (
-    <div className="2xl:w-[45%] xl:w-[40%] lg:w-[50%] w-full relative h-auto flex lg:justify-end justify-center items-center">
+    <div className="2xl:w-[45%] xl:w-[37%] lg:w-[50%] w-full relative h-auto flex lg:justify-end justify-center items-center">
       <div
         className={`relative w-full sm:h-[550px] h-[400px] overflow-hidden transition-all duration-1000 ease-out ${
           isVisible

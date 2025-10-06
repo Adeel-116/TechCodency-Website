@@ -21,13 +21,13 @@ export default function HeroLeftSection() {
 
                     <div className='w-full h-auto'>
                         <div className="flex items-center">
-                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(5.5rem,10vw,6.5rem)]  lg:text-[5rem] text-[clamp(3.5rem,8vw,6.5rem)]`}>
+                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(4rem,8vw,5rem)]  lg:text-[5rem] text-[clamp(3.5rem,8vw,6.5rem)]`}>
                                 Beyond <span className='text-secondary-darkblue'>Digital</span>
                             </h1>
                         </div>
 
                         <div className='flex items-center'>
-                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(5.5rem,10vw,6.5rem)] lg:text-[5rem] text-[clamp(3.5rem,8vw,6.5rem)]`}>
+                            <h1 className={`w-fit h-auto font-bold leading-[0.9] ${teko.className} 2xl:[8rem] xl:text-[clamp(4rem,8vw,5rem)] lg:text-[5rem] text-[clamp(3.5rem,8vw,6.5rem)]`}>
                                 Strategies
                             </h1>
                             <div className='sm:ml-5 ml-2'>
@@ -37,7 +37,7 @@ export default function HeroLeftSection() {
                     </div>
 
                     <div className='w-full h-auto'>
-                        <p className={`text-text-primary lg:w-[80%] md:w-[90%] xl:text-[18px] text-[15px] mb-2 ${outfit.className}`}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A excepturi esse ducimus nisi blanditiis qui, maiores necessitatibus iure culpa dolor. Eligendi voluptatum, repudiandae distinctio animi quidem quam similique odio architecto ipsum inventore atque rem quisquam quibusdam minus optio nulla velit, laboriosam dicta. Quam magnam facere impedit corporis, mollitia animi veniam?</p>
+                        <p className={`text-text-primary lg:w-[80%] md:w-[90%] 2xl:text-[18px] x:text-[16px] text-[15px] mb-2 ${outfit.className}`}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A excepturi esse ducimus nisi blanditiis qui, maiores necessitatibus iure culpa dolor. Eligendi voluptatum, repudiandae distinctio animi quidem quam similique odio architecto ipsum inventore atque rem quisquam quibusdam minus optio nulla velit, laboriosam dicta. Quam magnam facere impedit corporis, mollitia animi veniam?</p>
                     </div>
 
                     <div className="w-full">
