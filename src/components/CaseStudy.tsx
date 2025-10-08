@@ -99,7 +99,7 @@ const CaseStudy = () => {
 
         gsap.to(slider, {
             x: -index * slideWidth,
-            duration: 1.5,
+            duration: 1,
             ease: 'power2.out',
             onComplete: () => setIsTransitioning(false)
         });
@@ -121,7 +121,7 @@ const CaseStudy = () => {
             if (!isDragging.current && !isTransitioning) {
                 nextSlide();
             }
-        }, 4000);
+        }, 2000);
 
         return () => clearInterval(interval);
     }, [currentIndex, isTransitioning, nextSlide]);
@@ -174,7 +174,7 @@ const CaseStudy = () => {
                 nextSlide();
             }
         } else {
-            // Snap back to current slide
+            
             goToSlide(currentIndex);
         }
     };
