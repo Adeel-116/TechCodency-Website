@@ -1,9 +1,9 @@
-"use client"
-import React from "react"
-import { Outfit, Teko } from "next/font/google"
-import PortfolioSection from "./PortfolioSection"
-import ServiceCard from "./ServiceCard"
+"use client";
 
+import React from "react";
+import { Outfit, Teko } from "next/font/google";
+import PortfolioSection from "./PortfolioSection";
+import ServiceCard from "./ServiceCard";
 
 const outfit = Outfit({
   weight: ["100", "300", "400", "700", "900"],
@@ -26,7 +26,6 @@ const servicesData = [
     imageAlt: "Web Design Service",
     tags: ["UI/UX", "Website Design", "E-commerce", "Motion Graphics"],
     top: 10,
-    
   },
   {
     number: "02",
@@ -37,7 +36,7 @@ const servicesData = [
     imageSrc: "/images/service-1.webp",
     imageAlt: "Development Service",
     tags: ["Frontend", "Backend", "Mobile Apps", "API Integration"],
-     top: 10,
+    top: 10,
   },
   {
     number: "03",
@@ -48,7 +47,7 @@ const servicesData = [
     imageSrc: "/images/service-1.webp",
     imageAlt: "Marketing Service",
     tags: ["SEO", "Social Media", "Content Marketing", "PPC Advertising"],
-     top: 10,
+    top: 10,
   },
   {
     number: "04",
@@ -64,33 +63,40 @@ const servicesData = [
       "Process Optimization",
       "Technology Audit",
     ],
-     top: 10,
+    top: 10,
   },
-]
+];
 
 function Services() {
+  const handleDownloadCV = () => {
+    // Assume the PDF is in your public folder, e.g. public/Adeel-Full-Stack-Developer.pdf
+    const link = document.createElement("a");
+    link.href = "/Adeel-Full-Stack-Developer.pdf";
+    link.download = "Adeel-Full-Stack-Developer.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
-
     <>
       <div className="w-full h-auto flex flex-col justify-center items-center text-center">
         <div
           className={`flex items-center gap-4 w-fit mb-5 ${outfit.className} relative`}
         >
-          {/* Left Line */}
           <div
             className="w-16 h-[3px] rounded-full relative"
             style={{
-              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              background:
+                "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
             }}
-          >
-          </div>
+          ></div>
 
-          {/* Text with gradient */}
           <span
             className="font-black text-base uppercase tracking-[0.2em] relative px-4 py-2"
             style={{
-              background: "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
+              background:
+                "linear-gradient(to right, var(--color-primary-orange), var(--color-primary-orange-support))",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -100,14 +106,13 @@ function Services() {
             OUR SERVICES
           </span>
 
-          {/* Right Line */}
           <div
             className="w-16 h-[3px] rounded-full relative"
             style={{
-              background: "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
+              background:
+                "linear-gradient(to right, var(--color-primary-orange-support), var(--color-primary-orange))",
             }}
-          >
-          </div>
+          ></div>
         </div>
 
         <h1
@@ -122,45 +127,59 @@ function Services() {
           Our approach to <span className="text-secondary-darkblue">your brand!</span>
         </h1>
 
-
-        <p className="leading-relaxed text-gray-700 xl:w-[70%] sm:w-[90%] w-[95%]  text-center mb-5"
+        <p
+          className="leading-relaxed text-gray-700 xl:w-[70%] sm:w-[90%] w-[95%] text-center mb-5"
           style={{
             fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)",
             fontWeight: 400,
-          }}>We don,t just deliver services—we create transformative experiences. Our philosophy blends vision, innovation, and a relentless pursuit of excellence. Every project we undertake is an opportunity to push boundaries, think creatively, and challenge the status quo.</p>
+          }}
+        >
+          We don’t just deliver services—we create transformative experiences. Our
+          philosophy blends vision, innovation, and a relentless pursuit of
+          excellence. Every project we undertake is an opportunity to push
+          boundaries, think creatively, and challenge the status quo.
+        </p>
 
+        <button
+          onClick={handleDownloadCV}
+          className="px-6 py-3 bg-primary-orange text-white rounded hover:bg-primary-orange-dark"
+          aria-label="Download Resume"
+        >
+          Download CV
+        </button>
       </div>
-      
+
       <div className="w-full h-auto">
-        <div className="w-full relative 2xl:h-[260vh] xl:h-[290vh] lg:h-[260vh]bg-[#FAFAFA] h-auto py-5">
-          {servicesData.map((service, index) => (
-            <div
-              key={index}
-              className="w-full h-auto bg-bg-white lg:sticky"
-              style={{
-                top: `${service.top}vh`,
-                borderTop: "1px dashed gray",
-                zIndex: index + 1, 
-              }}
-            >
-              <ServiceCard
-                number={service.number}
-                title={service.title}
-                description={service.description}
-                buttonText={service.buttonText}
-                imageSrc={service.imageSrc}
-                imageAlt={service.imageAlt}
-                tags={service.tags}
-              />
-            </div>
-          ))}
+        <div className="w-full relative py-5">
+          <div className="w-full relative py-5">
+            {servicesData.map((service, index) => (
+              <div
+                key={index}
+                className="w-full h-auto bg-bg-white lg:sticky"
+                style={{
+                  top: `${service.top}vh`,
+                  borderTop: "1px dashed gray",
+                  zIndex: index + 1,
+                }}
+              >
+                <ServiceCard
+                  number={service.number}
+                  title={service.title}
+                  description={service.description}
+                  buttonText={service.buttonText}
+                  imageSrc={service.imageSrc}
+                  imageAlt={service.imageAlt}
+                  tags={service.tags}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-        
       </div>
-      
+
       <PortfolioSection />
     </>
-  )
+  );
 }
 
-export default Services
+export default Services;

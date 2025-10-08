@@ -10,6 +10,7 @@ import { Teko } from "next/font/google";
 import { RiCloseLine } from "react-icons/ri";
 import CaseStudy from "@/components/CaseStudy";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import Footer from "@/components/Footer";
 const teko = Teko({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
@@ -60,6 +61,16 @@ export default function Home() {
         <header className="w-full h-auto">
           <Header setMenuOpen={setMenuOpen} />
         </header>
+          <HeroSection getHeaderHeight={0} />
+          <MarqueeSection />
+          <AboutUS />
+          <Services />
+          <PricingPlans />
+          <CaseStudy />
+          <TestimonialsSection />
+          <Footer />
+      
+        </div>
 
         <HeroSection getHeaderHeight={0} />
         <MarqueeSection />
@@ -69,8 +80,6 @@ export default function Home() {
         <CaseStudy />
        
 
-
-      </div>
 
       <div
         className={`fixed top-0 left-0 w-full h-full bg-primary-orange-support transition-all duration-500 ${menuOpen ? 'z-[5] opacity-100' : 'z-[-100] opacity-0'

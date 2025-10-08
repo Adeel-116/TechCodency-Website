@@ -12,7 +12,7 @@ const teko = Teko({
   subsets: ["latin"],
 });
 
-// Type definitions
+
 interface UseCounterReturn {
   count: number;
   startAnimation: () => void;
