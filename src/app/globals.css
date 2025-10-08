@@ -12,9 +12,12 @@
   --color-bg-black:#000000;
 }
 
+body{
+  overflow: hidden;
+}
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;              /* width of scrollbar */
+  width: 8px;             
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
