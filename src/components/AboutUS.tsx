@@ -133,13 +133,6 @@ export default function AboutUS() {
             </p>
           </div>
 
-          {/* Button */}
-          <div className="w-fit" style={{ paddingTop: "clamp(2rem, 6vw, 4rem)" }}>
-            <GetStartedButton buttonTitle="GET STARTED" />
-          </div>
-
-           {/* Stats Section - Added after second paragraph */}
-    
         </div>
       </div>
 
